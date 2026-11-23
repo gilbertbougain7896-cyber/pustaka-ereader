@@ -1,5 +1,46 @@
 [
  {
+  "id": "catatan-pembunuhan-sang-novelis",
+  "title": "Catatan Pembunuhan Sang Novelis",
+  "cover": "Catatan Pembunuhan Sang Novelis",
+  "author": "Keigo Higashino",
+  "year": 2020,
+  "pages": 304,
+  "genres": [
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Misteri, Thriller",
+  "col": "cream",
+  "coverImg": "books/catatan-pembunuhan-sang-novelis/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "PEMBUNUHAN",
+  "paras": [
+   "Catatan Nonoguchi Osamu",
+   "1",
+   "Peristiwa itu terjadi pada Selasa, 16 April.",
+   "Pukul 15.30 aku naik kereta menuju stasiun",
+   "terdekat rumah Hidaka Kunihiko yang hanya",
+   "berjarak satu stasiun dari stasiun terdekat",
+   "kediamanku. Setiba di stasiun tujuan, aku",
+   "menempuh perjalanan dengan bus. Keseluruhan",
+   "perjalanan akan memakan waktu sekitar dua",
+   "puluh menit plus waktu berjalan kaki.",
+   "Sebenarnya aku sudah sering berkunjung ke",
+   "rumah Hidaka tanpa maksud tertentu, tapi kali",
+   "ini berbeda. Dengan kata lain, jika bukan hari ini, mungkin aku tidak akan punya kesempatan",
+   "menemuinya lagi."
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/catatan-pembunuhan-sang-novelis/catatan-pembunuhan-sang-novelis---keigo-higashino.azw3",
+   "epub": "books/catatan-pembunuhan-sang-novelis/catatan-pembunuhan-sang-novelis---keigo-higashino.epub",
+   "pdf": "books/catatan-pembunuhan-sang-novelis/catatan-pembunuhan-sang-novelis---keigo-higashino.pdf"
+  }
+ },
+ {
   "id": "pembunuhan-di-nihonbashi",
   "title": "Pembunuhan di Nihonbashi",
   "cover": "Pembunuhan di Nihonbashi",
