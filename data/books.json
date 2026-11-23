@@ -1,5 +1,48 @@
 [
  {
+  "id": "teka-teki-rumah-aneh",
+  "title": "Teka-Teki Rumah Aneh",
+  "cover": "Teka-Teki Rumah Aneh",
+  "author": "Uketsu",
+  "year": 2023,
+  "pages": 224,
+  "genres": [
+   "Sastra klasik",
+   "Misteri",
+   "Thriller",
+   "Horor"
+  ],
+  "genre": "Sastra klasik, Misteri, Thriller, Horor",
+  "col": "terra",
+  "coverImg": "books/teka-teki-rumah-aneh/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "paras": [
+   "BAB 1",
+   "RUMAH ANEH",
+   "MASALAH YANG DICERITAKAN SEORANG",
+   "KENALAN",
+   "SAAT ini, aku berprofesi sebagai penulis lepas spesialis occult— hal-hal gaib. Tuntutan profesi membuatku kerap bersinggungan dengan cerita hantu maupun pengalaman mistis. Dan di antaranya, aku paling sering mendengar cerita supranatural yang terjadi di “rumah.”",
+   "“Aku mendengar bunyi langkah di lantai dua, padahal di sana tidak ada orang.”",
+   "“Rasanya seperti ada yang memperhatikanku waktu aku berada di ruang tamu sendirian.”",
+   "“Terdengar suara orang bicara dari dalam lemari.”",
+   "Tak terhitung banyaknya kisah-kisah mengenai bangunan yang dibayangi sejarah kelam.",
+   "Namun, cerita tentang “rumah” yang kudengar pada waktu itu agak berbeda dari cerita-cerita serupa lainnya.",
+   "* * *",
+   "Pada bulan September tahun 2019, seorang kenalan bernama Yanaoka-san menghubungiku karena ada masalah yang ingin dibahas. Yanaoka-san bekerja sebagai staf sales di sebuah agensi editorial. Kami berdua berteman dekat dan sesekali pergi makan bersama sejak berkenalan beberapa tahun lalu dalam urusan pekerjaan.",
+   "Tidak lama lagi Yanaoka-san akan menyambut kelahiran anak pertamanya. Sehubungan dengan peristiwa itu, Yanaoka-san pun memantapkan diri untuk membeli rumah pertamanya. Setelah menghabiskan waktu setiap malam sampai larut melihat-lihat informasi properti, Yanaoka-san akhirnya menemukan satu rumah yang ideal di kawasan Tokyo.",
+   "Rumah dua lantai itu berada di daerah permukiman yang tenang. Banyak hutan di sekitarnya meskipun berlokasi di dekat stasiun, serta usia bangunannya sendiri terbilang baru meskipun berstatus rumah second. Ketika Yanaoka-san beserta istri datang melihat-lihat rumah itu, mereka berdua langsung jatuh hati pada interiornya yang lega dan terang."
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/teka-teki-rumah-aneh/teka-teki-rumah-aneh---uketsu.azw3",
+   "epub": "books/teka-teki-rumah-aneh/teka-teki-rumah-aneh---uketsu.epub",
+   "pdf": "books/teka-teki-rumah-aneh/teka-teki-rumah-aneh---uketsu.pdf"
+  }
+ },
+ {
   "id": "kesetiaan-mr-x",
   "title": "Kesetiaan Mr. X",
   "cover": "Kesetiaan Mr. X",
