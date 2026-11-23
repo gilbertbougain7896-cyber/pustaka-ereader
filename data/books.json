@@ -1,5 +1,41 @@
 [
  {
+  "id": "tragedi-pedang-keadilan",
+  "title": "Tragedi Pedang Keadilan",
+  "cover": "Tragedi Pedang Keadilan",
+  "author": "Keigo Higashino",
+  "year": 2024,
+  "pages": 464,
+  "genres": [
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Misteri, Thriller",
+  "col": "cream",
+  "coverImg": "books/tragedi-pedang-keadilan/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "paras": [
+   "Saat menatap senapan berburu yang berkilat tajam itu, Nagamine merasakan kepedihan mendalam. Ia teringat betapa ia pernah tergila-gila pada olahraga menembak. Ketegangan saat mengaitkan jari di pelatuk, rasa terkejut sekejap ketika senjata ditembakkan, lalu kenikmatan yang timbul saat tembakannya tepat sasaran, semua sensasi itu masih terekam jelas di sekujur tubuh.",
+   "Ia sedang menekuni katalog, yang setiap beberapa tahun sekali dikirimkan oleh toko tempatnya membeli senjata api untuk memperkenalkan produk terbaru mereka. Di bawah foto tercantum keterangan berikut: “Gagang senjata setengah pelitur. Dilengkapi kotak penyimpanan buatan Italia.” Ia menghela napas begitu tatapannya beralih ke informasi harga. Uang 950 ribu yen bukan jumlah yang bisa dibelanjakan begitu saja demi hobi, apalagi ia sudah berhenti mengikuti kompetisi menembak karena penyakit mata kering. Jelas penyakit itu muncul karena ia terlalu sering menatap display selama sekian tahun merancang desain panel IC untuk perusahaan perangkat semikonduktor.",
+   "Nagamine menutup katalog, kemudian melepas kacamata. Meski penyakit mata kering yang diidap telah sembuh, penglihatannya melemah dan mulai mengalami presbiopia. Alhasil, ia harus mengenakan kacamata untuk membaca huruf-huruf berukuran kecil. Putrinya, Ema, pasti akan mengomel setiap kali Nagamine mencari-cari kacamata.",
+   "“Astaga, Ayah...” Begitu biasanya ia mengomel.",
+   "Dengan kondisi mata begitu, sebenarnya Nagamine masih bisa melakukan olahraga menembak. Namun, alasan utama ia berhenti adalah karena ia tidak ingin lagi memforsir kemampuan mata. Tidak heran jantungnya selalu berdebar dan dirinya diliputi kerinduan setiap kali melihat foto senjata api. Setahun terakhir ia tidak pernah lagi menyentuh senapan berburu kesayangannya, yang kini berubah fungsi menjadi hiasan di atas lemari ruang duduk.",
+   "Jam dinding menunjukkan pukul 19.00 lebih. Ia meraih remote televisi, tetapi saat hendak menekan tombol, terdengar keramaian dari luar jendela.",
+   "Ia bangkit dari sofa dan membuka tirai pintu kaca yang menghadap halaman. Di luar sana terlihat bayangan beberapa orang yang sepertinya keluarga.",
+   "Nagamine segera mengetahui asal keramaian tersebut. Di langit tampak kembang api yang dinyalakan dalam rangka festival kembang api lokal. Berbeda dengan kota-kota besar, atraksi kembang api di daerah ini bisa dinikmati dari jarak jauh, bahkan dari rumah Nagamine sekalipun, karena nyaris tidak ada bangunan tinggi di sekitarnya.",
+   "Karena atraksi ini bisa disaksikan dari rumah, sebenarnya mereka tidak perlu pergi ke tempat yang penuh kerumunan orang. Namun, Nagamine tahu gadis-gadis remaja itu tidak akan setuju, karena tujuan mereka sebenarnya bukan menonton kembang api, melainkan supaya bisa ikut heboh bersama teman-teman lain. Bagi mereka, tempat ramai adalah syarat mutlak. Nagamine yakin saat ini gadis-gadis itu sedang asyik membahas masalah-masalah yang hanya bisa dipecahkan oleh mereka—menggunakan istilah yang hanya dipahami oleh kaum mereka—sementara tangan mereka memegang jagung bakar atau es krim."
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/tragedi-pedang-keadilan/tragedi-pedang-keadilan---keigo-higashino.azw3",
+   "epub": "books/tragedi-pedang-keadilan/tragedi-pedang-keadilan---keigo-higashino.epub",
+   "pdf": "books/tragedi-pedang-keadilan/tragedi-pedang-keadilan---keigo-higashino.pdf"
+  }
+ },
+ {
   "id": "sherlock-holmes",
   "title": "The Adventures of Sherlock Holmes",
   "cover": "Sherlock Holmes",
