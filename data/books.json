@@ -1,5 +1,47 @@
 [
  {
+  "id": "pembunuhan-di-nihonbashi",
+  "title": "Pembunuhan di Nihonbashi",
+  "cover": "Pembunuhan di Nihonbashi",
+  "author": "Keigo Higashino",
+  "year": 2020,
+  "pages": 304,
+  "genres": [
+   "Sastra klasik",
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Sastra klasik, Misteri, Thriller",
+  "col": "terra",
+  "coverImg": "books/pembunuhan-di-nihonbashi/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "paras": [
+   "4",
+   "Saat makan malam, Naho menceritakan semua yang didengarnya dari Kaga. Butuh waktu cukup lama bagi Satoko untuk memahami arti “misteri tiga puluh menit yang hilang”, sampai Naho harus menjelaskannya dengan menulis rute pergerakan Takura berikut detail jamnya.",
+   "“Hmm... Kurasa soal tiga puluh menit itu tidak terlalu penting,” komentar Satoko ragu setelah akhirnya dia memahami penjelasan cucunya.",
+   "“Tapi sepertinya polisi yakin kejahatan itu terjadi dalam jangka waktu tiga puluh menit itu.”",
+   "“Tetap saja aneh. Pertama-tama, apakah Takura-san adalah tipe orang yang bisa melakukan hal seperti itu? Dia bukan orang yang sanggup melakukan hal mengerikan begitu. Selain selalu menepati janji, dia juga selalu berusaha menempatkan diri pada posisi orang lain. Akhir-akhir ini jarang ada orang yang penuh perhatian seperti dia. Saat Obāchan akan meninggalkan rumah sakit, dialah yang pertama kali datang...”",
+   "Naho menggerak-gerakkan tangan untuk memotong ucapan Satoko. “Tak perlu panjang membahas bagaimana Takura-san itu orang baik karena kita semua sudah tahu. Yang penting sekarang bagaimana menghilangkan kecurigaan mereka pada Takura-san.”",
+   "“Makanya Obāchan bilang sebaiknya kau bicara dengan para detektif itu. Mereka tidak kenal baik Takura-san, makanya ide aneh itu bisa muncul.”",
+   "“Percuma saja,” bisik Naho. Dia memandang ayahnya. Wajah Fumitaka yang selama ini diam saja terlihat gundah. “Otosan, apa yang sedang Otōsan pikirkan?”",
+   "“Eh? Ah, tidak. Aku hanya berpikir apakah benar Takura-san pulang-pergi seperti itu.”",
+   "“Seperti itu?”",
+   "“Kau bilang setelah mengunjungi Kodencho, dia mampir ke rumah ini lalu kembali ke kantor sebelum akhirnya pulang ke rumah.”",
+   "“Begitu kata Kaga-san.”",
+   "“Hmm, begitu ya...” Fumitaka tampak tenggelam dalam pikirannya.",
+   "“Memangnya kenapa?”"
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/pembunuhan-di-nihonbashi/pembunuhan-di-nihonbashi---keigo-higashino.azw3",
+   "epub": "books/pembunuhan-di-nihonbashi/pembunuhan-di-nihonbashi---keigo-higashino.epub",
+   "pdf": "books/pembunuhan-di-nihonbashi/pembunuhan-di-nihonbashi---keigo-higashino.pdf"
+  }
+ },
+ {
   "id": "keajaiban-toko-kelontong-namiya",
   "title": "Keajaiban Toko Kelontong Namiya",
   "cover": "Keajaiban Toko Kelontong Namiya",
