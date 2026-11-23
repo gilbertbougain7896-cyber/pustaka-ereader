@@ -1,0 +1,365 @@
+[
+ {
+  "id": "sherlock-holmes",
+  "title": "The Adventures of Sherlock Holmes",
+  "cover": "Sherlock Holmes",
+  "author": "Arthur Conan Doyle",
+  "year": 1892,
+  "pages": 307,
+  "genre": "Misteri",
+  "col": "brown",
+  "isNew": true,
+  "blurb": "Dua belas kisah pertama sang detektif dari Baker Street, dengan Dr. Watson sebagai penutur. Setiap cerita berdiri sendiri, jadi mudah dibaca sedikit demi sedikit di sela perjalanan.",
+  "lang": "Inggris",
+  "chapter": "A Scandal in Bohemia",
+  "paras": [
+   "To Sherlock Holmes she is always the woman. I have seldom heard him mention her under any other name. In his eyes she eclipses and predominates the whole of her sex. It was not that he felt any emotion akin to love for Irene Adler. All emotions, and that one particularly, were abhorrent to his cold, precise but admirably balanced mind. He was, I take it, the most perfect reasoning and observing machine that the world has seen, but as a lover he would have placed himself in a false position. He never spoke of the softer passions, save with a gibe and a sneer. They were admirable things for the observer, excellent for drawing the veil from men’s motives and actions. But for the trained reasoner to admit such intrusions into his own delicate and finely adjusted temperament was to introduce a distracting factor which might throw a doubt upon all his mental results. Grit in a sensitive instrument, or a crack in one of his own high-power lenses, would not be more disturbing than a strong emotion in a nature such as his. And yet there was but one woman to him, and that woman was the late Irene Adler, of dubious and questionable memory.",
+   "I had seen little of Holmes lately. My marriage had drifted us away from each other. My own complete happiness, and the home-centred interests which rise up around the man who first finds himself master of his own establishment, were sufficient to absorb all my attention, while Holmes, who loathed every form of society with his whole Bohemian soul, remained in our lodgings in Baker Street, buried among his old books.",
+   "One night I was returning from a journey to a patient, when my way led me through Baker Street. As I passed the well-remembered door, I was seized with a keen desire to see Holmes again, and to know how he was employing his extraordinary powers."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "dracula",
+  "title": "Dracula",
+  "cover": "Dracula",
+  "author": "Bram Stoker",
+  "year": 1897,
+  "pages": 418,
+  "genre": "Horor",
+  "col": "terra",
+  "isNew": true,
+  "blurb": "Novel yang dituturkan lewat surat, jurnal, dan kliping koran tentang Count Dracula dan orang-orang yang memburunya.",
+  "lang": "Inggris",
+  "chapter": "Jurnal Jonathan Harker",
+  "paras": [
+   "3 May. Bistritz.—Left Munich at 8:35 P.M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late. Buda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets.",
+   "The impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "meditations",
+  "title": "Meditations",
+  "cover": "Meditations",
+  "author": "Marcus Aurelius",
+  "year": null,
+  "pages": 254,
+  "genre": "Filsafat",
+  "col": "cream",
+  "isNew": true,
+  "blurb": "Catatan pribadi seorang kaisar Romawi tentang disiplin diri, kerendahan hati, dan ketenangan batin.",
+  "lang": "Inggris",
+  "chapter": "Buku Pertama",
+  "paras": [
+   "From my grandfather Verus I learned good morals and the government of my temper.",
+   "From the reputation and remembrance of my father, modesty and a manly character.",
+   "From my mother, piety and beneficence, and abstinence, not only from evil deeds, but even from evil thoughts; and further, simplicity in my way of living, far removed from the habits of the rich."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "pride-and-prejudice",
+  "title": "Pride and Prejudice",
+  "cover": "Pride and Prejudice",
+  "author": "Jane Austen",
+  "year": 1813,
+  "pages": 432,
+  "genre": "Romansa",
+  "col": "sage",
+  "isNew": false,
+  "blurb": "Kisah Elizabeth Bennet dan Mr. Darcy tentang kesombongan, prasangka, dan cinta yang lahir dari salah paham.",
+  "lang": "Inggris",
+  "chapter": "Bab 1",
+  "paras": [
+   "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
+   "However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters.",
+   "“My dear Mr. Bennet,” said his lady to him one day, “have you heard that Netherfield Park is let at last?”",
+   "Mr. Bennet replied that he had not."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "moby-dick",
+  "title": "Moby-Dick",
+  "cover": "Moby-Dick",
+  "author": "Herman Melville",
+  "year": 1851,
+  "pages": 635,
+  "genre": "Petualangan",
+  "col": "honey",
+  "isNew": false,
+  "blurb": "Perburuan Kapten Ahab terhadap paus putih raksasa, dikisahkan oleh pelaut bernama Ishmael.",
+  "lang": "Inggris",
+  "chapter": "Loomings",
+  "paras": [
+   "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation.",
+   "Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; then, I account it high time to get to sea as soon as I can."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "max-havelaar",
+  "title": "Max Havelaar",
+  "cover": "Max Havelaar",
+  "author": "Multatuli",
+  "year": 1860,
+  "pages": 320,
+  "genre": "Sastra klasik",
+  "col": "blue",
+  "isNew": false,
+  "blurb": "Novel Belanda yang membongkar penindasan sistem tanam paksa di Hindia Belanda lewat mata seorang asisten residen.",
+  "lang": "Belanda",
+  "chapter": "Bab 1",
+  "paras": [
+   "Ik ben makelaar in koffie, en woon op de Lauriergracht, No. 37.",
+   "Het is mijn gewoonte niet, romans te schrijven, of zulke dingen, en het heeft dan ook lang geduurd, voor ik er toe overging een paar riemen papier extra te bestellen."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "habis-gelap",
+  "title": "Habis Gelap Terbitlah Terang",
+  "cover": "Habis Gelap Terbitlah Terang",
+  "author": "R.A. Kartini",
+  "year": 1911,
+  "pages": 268,
+  "genre": "Sejarah",
+  "col": "terra",
+  "isNew": false,
+  "blurb": "Kumpulan surat R.A. Kartini tentang pendidikan, perempuan, dan cita-cita pembaruan.",
+  "lang": "Indonesia",
+  "chapter": "Pratinjau",
+  "paras": [
+   "Naskah pratinjau untuk buku ini belum ditambahkan di demo.",
+   "Di situs sebenarnya, pratinjau diambil dari halaman awal berkas EPUB yang diunggah."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "frankenstein",
+  "title": "Frankenstein",
+  "cover": "Frankenstein",
+  "author": "Mary Shelley",
+  "year": 1818,
+  "pages": 280,
+  "genre": "Horor",
+  "col": "brown",
+  "isNew": false,
+  "blurb": "Seorang ilmuwan muda menciptakan makhluk hidup dan harus menanggung akibatnya.",
+  "lang": "Inggris",
+  "chapter": "Surat 1",
+  "paras": [
+   "You will rejoice to hear that no disaster has accompanied the commencement of an enterprise which you have regarded with such evil forebodings. I arrived here yesterday, and my first task is to assure my dear sister of my welfare and increasing confidence in the success of my undertaking.",
+   "I am already far north of London, and as I walk in the streets of Petersburgh, I feel a cold northern breeze play upon my cheeks, which braces my nerves and fills me with delight."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "art-of-war",
+  "title": "The Art of War",
+  "cover": "The Art of War",
+  "author": "Sun Tzu",
+  "year": null,
+  "pages": 112,
+  "genre": "Filsafat",
+  "col": "honey",
+  "isNew": false,
+  "blurb": "Risalah strategi kuno yang ringkas, dibaca hingga kini untuk perang, bisnis, dan kehidupan.",
+  "lang": "Inggris",
+  "chapter": "Bab 1",
+  "paras": [
+   "Sun Tzu said: The art of war is of vital importance to the State. It is a matter of life and death, a road either to safety or to ruin. Hence it is a subject of inquiry which can on no account be neglected.",
+   "The art of war, then, is governed by five constant factors, to be taken into account in one’s deliberations, when seeking to determine the conditions obtaining in the field."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "treasure-island",
+  "title": "Treasure Island",
+  "cover": "Treasure Island",
+  "author": "Robert Louis Stevenson",
+  "year": 1883,
+  "pages": 292,
+  "genre": "Petualangan",
+  "col": "blue",
+  "isNew": false,
+  "blurb": "Petualangan bajak laut, peta harta karun, dan Long John Silver yang tak bisa ditebak.",
+  "lang": "Inggris",
+  "chapter": "Bagian Satu",
+  "paras": [
+   "Squire Trelawney, Dr. Livesey, and the rest of these gentlemen having asked me to write down the whole particulars about Treasure Island, from the beginning to the end, keeping nothing back but the bearings of the island, and that only because there is still treasure not yet lifted, I take up my pen in the year of grace 17__ and go back to the time when my father kept the Admiral Benbow inn."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "time-machine",
+  "title": "The Time Machine",
+  "cover": "The Time Machine",
+  "author": "H.G. Wells",
+  "year": 1895,
+  "pages": 118,
+  "genre": "Fiksi ilmiah",
+  "col": "sage",
+  "isNew": false,
+  "blurb": "Seorang penemu menjelajah ke masa depan yang jauh dan menemukan masyarakat yang terbelah dua.",
+  "lang": "Inggris",
+  "chapter": "Bab 1",
+  "paras": [
+   "The Time Traveller (for so it will be convenient to speak of him) was expounding a recondite matter to us. His grey eyes shone and twinkled, and his usually pale face was flushed and animated.",
+   "The fire burned brightly, and the soft radiance of the incandescent lights in the lilies of silver caught the bubbles that flashed and passed in our glasses."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "alice",
+  "title": "Alice’s Adventures in Wonderland",
+  "cover": "Alice in Wonderland",
+  "author": "Lewis Carroll",
+  "year": 1865,
+  "pages": 200,
+  "genre": "Anak dan remaja",
+  "col": "cream",
+  "isNew": false,
+  "blurb": "Alice jatuh ke lubang kelinci dan tiba di dunia yang aturannya serba terbalik.",
+  "lang": "Inggris",
+  "chapter": "Bab 1",
+  "paras": [
+   "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, “and what is the use of a book,” thought Alice “without pictures or conversations?”",
+   "So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "crime-and-punishment",
+  "title": "Crime and Punishment",
+  "cover": "Crime and Punishment",
+  "author": "Fyodor Dostoevsky",
+  "year": 1866,
+  "pages": 545,
+  "genre": "Sastra klasik",
+  "col": "brown",
+  "isNew": false,
+  "blurb": "Seorang mahasiswa miskin di St. Petersburg melakukan kejahatan dan digerogoti rasa bersalah.",
+  "lang": "Inggris",
+  "chapter": "Bagian Satu",
+  "paras": [
+   "On an exceptionally hot evening early in July a young man came out of the garret in which he lodged in S. Place and walked slowly, as though in hesitation, towards K. bridge.",
+   "He had successfully avoided meeting his landlady on the staircase. His garret was under the roof of a high, five-storied house and was more like a cupboard than a room."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "around-the-world",
+  "title": "Around the World in Eighty Days",
+  "cover": "Around the World",
+  "author": "Jules Verne",
+  "year": 1872,
+  "pages": 220,
+  "genre": "Petualangan",
+  "col": "terra",
+  "isNew": false,
+  "blurb": "Phileas Fogg bertaruh bisa mengelilingi dunia dalam delapan puluh hari, bersama pelayannya yang setia.",
+  "lang": "Inggris",
+  "chapter": "Bab 1",
+  "paras": [
+   "Mr. Phileas Fogg lived, in 1872, at No. 7, Saville Row, Burlington Gardens, the house in which Sheridan died in 1814.",
+   "He was one of the most noticeable members of the Reform Club, though he seemed always to avoid attracting attention; an enigmatical personage, about whom little was known, except that he was a polished man of the world."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "dorian-gray",
+  "title": "The Picture of Dorian Gray",
+  "cover": "Dorian Gray",
+  "author": "Oscar Wilde",
+  "year": 1890,
+  "pages": 254,
+  "genre": "Sastra klasik",
+  "col": "sage",
+  "isNew": false,
+  "blurb": "Seorang pemuda tampan menjaga kecantikannya, sementara lukisan dirinya yang menanggung dosanya.",
+  "lang": "Inggris",
+  "chapter": "Bab 1",
+  "paras": [
+   "The studio was filled with the rich odour of roses, and when the light summer wind stirred amidst the trees of the garden, there came through the open door the heavy scent of the lilac, or the more delicate perfume of the pink-flowering thorn.",
+   "In the centre of the room, clamped to an upright easel, stood the full-length portrait of a young man of extraordinary personal beauty."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "little-women",
+  "title": "Little Women",
+  "cover": "Little Women",
+  "author": "Louisa May Alcott",
+  "year": 1868,
+  "pages": 449,
+  "genre": "Anak dan remaja",
+  "col": "honey",
+  "isNew": false,
+  "blurb": "Empat saudari March tumbuh dewasa di masa Perang Saudara Amerika.",
+  "lang": "Inggris",
+  "chapter": "Bab 1",
+  "paras": [
+   "“Christmas won’t be Christmas without any presents,” grumbled Jo, lying on the rug.",
+   "“It’s so dreadful to be poor!” sighed Meg, looking down at her old dress.",
+   "“I don’t think it’s fair for some girls to have plenty of pretty things, and other girls nothing at all,” added little Amy, with an injured sniff."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "walden",
+  "title": "Walden",
+  "cover": "Walden",
+  "author": "Henry David Thoreau",
+  "year": 1854,
+  "pages": 352,
+  "genre": "Filsafat",
+  "col": "cream",
+  "isNew": false,
+  "blurb": "Catatan dua tahun hidup sederhana di tepi danau, tentang alam dan kemandirian.",
+  "lang": "Inggris",
+  "chapter": "Ekonomi",
+  "paras": [
+   "When I wrote the following pages, or rather the bulk of them, I lived alone, in the woods, a mile from any neighbor, in a house which I had built myself, on the shore of Walden Pond, in Concord, Massachusetts, and earned my living by the labor of my hands only."
+  ],
+  "pub": true,
+  "files": {}
+ },
+ {
+  "id": "hound",
+  "title": "The Hound of the Baskervilles",
+  "cover": "The Hound of the Baskervilles",
+  "author": "Arthur Conan Doyle",
+  "year": 1902,
+  "pages": 256,
+  "genre": "Misteri",
+  "col": "blue",
+  "isNew": false,
+  "blurb": "Holmes dan Watson menyelidiki kutukan anjing raksasa yang menghantui rawa Dartmoor.",
+  "lang": "Inggris",
+  "chapter": "Bab 1",
+  "paras": [
+   "Mr. Sherlock Holmes, who was usually very late in the mornings, save upon those not infrequent occasions when he was up all night, was seated at the breakfast table.",
+   "I stood upon the hearth-rug and picked up the stick which our visitor had left behind him the night before."
+  ],
+  "pub": true,
+  "files": {}
+ }
+]

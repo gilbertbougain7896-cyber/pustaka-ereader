@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pustaka Ereader - Demo katalog buku ramah e-reader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<script>(function(){var t=null;try{t=localStorage.getItem('pt-theme')}catch(e){}if(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light')})()</script>
+<style>
+:root{
+  --paper:#FBF1E6; --panel:#FFF9F2; --tint:#F8E6D6; --tint2:#F3DCCB;
+  --ink:#3B2F2A; --muted:#7A6A60; --line:#F0DCCB; --line2:#E6CDB8;
+  --accent:#B5502F; --sage:#CBD6BF; --honey:#F2D68A;
+  --ease:cubic-bezier(.22,1,.36,1); --ease-io:cubic-bezier(.65,0,.35,1);
+  --shadow:0 8px 22px rgba(150,100,70,.14); --shadow-up:0 18px 40px rgba(150,100,70,.26);
+  --onacc:#FBF1E6; --ink2:#5A4A42; --err:#9A3A22; --hdr:rgba(251,241,230,.86); --dev:#4A3B35;
+  --okbg:#DCE8DA; --oktx:#2F4A2E; --drbg:#F6E3B0; --drtx:#5A430A; --badbg:#F3D9D0; --badtx:#7A2A19; --sagetx:#5F6B55;
+  --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%237A6A60' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --paper:#1C1613; --panel:#2A211C; --tint:#33271F; --tint2:#3C2D24;
+  --ink:#F4E8DA; --muted:#BBA796; --line:#45342B; --line2:#5C4739;
+  --accent:#EC9570; --sage:#34402F; --honey:#E8B94F;
+  --shadow:0 8px 22px rgba(0,0,0,.38); --shadow-up:0 18px 40px rgba(0,0,0,.55);
+  --onacc:#2A1710; --ink2:#D8C6B6; --err:#F2907A; --hdr:rgba(28,22,19,.82); --dev:#0F0B09;
+  --okbg:#2F3E2D; --oktx:#BFDDB8; --drbg:#4A3C17; --drtx:#F2D68A; --badbg:#4C2A22; --badtx:#F6B7A6; --sagetx:#B7C5AB;
+  --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23BBA796' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--paper);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- transisi halaman ---------- */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.55s;animation-timing-function:var(--ease);mix-blend-mode:normal}
+html.vt-nav::view-transition-old(root){animation-name:vt-out}
+html.vt-nav::view-transition-new(root){animation-name:vt-in}
+html.vt-grid::view-transition-old(root),html.vt-grid::view-transition-new(root){animation:none}
+@keyframes vt-out{to{transform:translateY(-10px) scale(.994)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(26px)}}
+::view-transition-group(*){animation-duration:.65s;animation-timing-function:var(--ease)}
+::view-transition-group(site-header){animation:none}
+::view-transition-image-pair(*){isolation:auto}
+::view-transition-old(*),::view-transition-new(*){mix-blend-mode:normal}
+
+/* ---------- mode gelap ---------- */
+html.vt-theme::view-transition-old(root),html.vt-theme::view-transition-new(root){animation:none;mix-blend-mode:normal}
+html.vt-theme::view-transition-old(root){z-index:1}
+html.vt-theme::view-transition-new(root){z-index:2}
+html.vt-theme #hdr{view-transition-name:none}
+html.theming,html.theming *,html.theming *::before,html.theming *::after{transition:background-color .6s var(--ease),color .6s var(--ease),border-color .6s var(--ease),box-shadow .6s var(--ease)!important}
+.mode{position:relative;width:46px;height:46px;border:1.5px solid var(--line2);background:var(--panel);border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden;transition:transform .5s var(--ease),background .3s}
+.mode:hover{transform:rotate(14deg) scale(1.06)}
+.mode:active{transform:scale(.92)}
+.mode svg{position:absolute;transition:transform .7s var(--ease),opacity .45s}
+.mode .sun{opacity:0;transform:translateY(24px) rotate(-60deg)}
+html[data-theme="dark"] .mode .sun{opacity:1;transform:none}
+html[data-theme="dark"] .mode .moon{opacity:0;transform:translateY(-24px) rotate(60deg)}
+.modeb{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border:0;background:transparent;border-radius:14px;font-size:14px;color:var(--sagetx);text-align:left}
+.modeb:hover{background:rgba(255,249,242,.35)}
+/* ---------- animasi masuk (muat awal / tanpa View Transitions) ---------- */
+.rise{opacity:1}
+html.intro .rise{animation:rise .85s var(--ease) both;animation-delay:calc(var(--i,0)*55ms)}
+@keyframes rise{from{opacity:0;transform:translateY(22px) scale(.985)}}
+@keyframes pop{from{opacity:0;transform:scale(.92) translateY(8px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}}
+
+/* ---------- header ---------- */
+#hdr{position:sticky;top:0;z-index:40;background:var(--hdr);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1.5px solid transparent;transition:border-color .4s,box-shadow .4s;view-transition-name:site-header}
+#hdr.scrolled{border-color:var(--line);box-shadow:0 8px 24px rgba(150,100,70,.08)}
+.hrow{display:flex;align-items:center;gap:20px;min-height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:23px;letter-spacing:-.02em}
+.logo svg{transition:transform .6s var(--ease)}
+.logo:hover svg{transform:rotate(-8deg) scale(1.08)}
+.nav{display:flex;gap:6px;margin-left:12px}
+.nav a{position:relative;text-decoration:none;font-weight:500;font-size:15px;padding:10px 14px;border-radius:999px;transition:background .3s,color .3s}
+.nav a:hover{background:var(--tint)}
+.nav a.on{background:var(--tint2);font-weight:600}
+.search{margin-left:auto;position:relative;width:min(340px,100%)}
+.search input{width:100%;height:46px;padding:0 18px 0 46px;border:1.5px solid var(--line2);border-radius:999px;background:var(--panel);transition:border-color .3s,box-shadow .4s var(--ease),width .5s var(--ease)}
+.search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 5px rgba(181,80,47,.12)}
+.search svg{position:absolute;left:16px;top:13px}
+.burger{display:none;width:46px;height:46px;border:0;background:transparent;border-radius:14px;align-items:center;justify-content:center}
+.burger:hover{background:var(--tint)}
+
+/* drawer mobile */
+#scrim{position:fixed;inset:0;background:rgba(59,47,42,.45);opacity:0;pointer-events:none;transition:opacity .45s var(--ease);z-index:80}
+#drawer{position:fixed;top:0;bottom:0;left:0;width:min(300px,84vw);background:var(--panel);z-index:90;transform:translateX(-104%);transition:transform .55s var(--ease);box-shadow:8px 0 30px rgba(120,80,50,.18);display:flex;flex-direction:column;border-radius:0 28px 28px 0;visibility:hidden}
+body.drawer #scrim{opacity:1;pointer-events:auto}
+body.drawer #drawer{transform:none;visibility:visible}
+#drawer .dh{display:flex;align-items:center;justify-content:space-between;padding:14px 12px 14px 22px}
+#drawer a.dl{display:flex;align-items:center;min-height:54px;padding:0 22px;text-decoration:none;font-weight:500;border-radius:18px;margin:2px 12px;transition:background .3s,transform .4s var(--ease);opacity:0;transform:translateX(-14px)}
+body.drawer #drawer a.dl{opacity:1;transform:none;transition-delay:calc(var(--i)*60ms+120ms)}
+#drawer a.dl:hover{background:var(--tint)}
+
+/* ---------- komponen umum ---------- */
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 18px;border-radius:999px;border:1.5px solid var(--line2);background:transparent;font-weight:500;font-size:15px;transition:background .35s,color .35s,border-color .35s,transform .4s var(--ease)}
+.chip:hover{background:var(--tint);transform:translateY(-2px)}
+.chip:active{transform:scale(.96)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 26px;border:0;border-radius:16px;background:var(--accent);color:var(--onacc);font-weight:600;text-decoration:none;transition:transform .45s var(--ease),box-shadow .45s var(--ease),background .3s,opacity .3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(181,80,47,.32)}
+.btn:active{transform:scale(.97)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line2)}
+.btn.ghost:hover{background:var(--tint);box-shadow:none}
+.field{width:100%;min-height:50px;padding:0 16px;border:1.5px solid var(--line2);border-radius:16px;background:var(--panel);transition:border-color .3s,box-shadow .4s var(--ease)}
+textarea.field{padding:14px 16px;min-height:120px;resize:vertical}
+.field:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 5px rgba(181,80,47,.12)}
+.card-box{background:var(--panel);border:1.5px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}
+.ad{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1.5px dashed var(--line2);border-radius:22px;background:var(--tint);color:var(--muted);text-align:center;font-size:13px}
+.ad b{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+
+/* ---------- banner ---------- */
+.banner{position:relative;margin-top:22px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-up)}
+.slides{display:grid}
+.slide{grid-area:1/1;display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;padding:44px 56px;opacity:0;pointer-events:none;transform:translateX(40px);transition:opacity .8s var(--ease),transform 1s var(--ease);background-image:radial-gradient(120% 140% at 85% 20%,rgba(255,255,255,.2),transparent 55%)}
+.slide.on{opacity:1;pointer-events:auto;transform:none}
+.slide.prev{transform:translateX(-40px)}
+.slide .tx{display:flex;flex-direction:column;gap:14px;max-width:560px}
+.slide .stag{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.22)}
+.slide h2{font-size:clamp(30px,4.2vw,50px);line-height:1.04;letter-spacing:-.025em;font-weight:600}
+.slide p{font-size:17px;opacity:.9}
+.slide .meta{font-size:14px;opacity:.85}
+.slide .acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.slide .bk{width:176px;aspect-ratio:2/3;border-radius:22px;padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 22px 40px rgba(40,20,10,.34);transform:rotate(5deg) scale(.9);transition:transform 1.1s var(--ease)}
+.slide.on .bk{transform:rotate(3deg) scale(1)}
+.slide:hover .bk{transform:rotate(-1deg) scale(1.04)}
+.dots{position:absolute;left:56px;bottom:22px;display:flex;gap:8px}
+.dots button{height:10px;width:10px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.5);transition:width .6s var(--ease),background .4s}
+.dots button.on{width:34px;background:#fff}
+
+/* ---------- katalog ---------- */
+.genres{display:flex;gap:10px;overflow-x:auto;padding:26px 28px 6px;margin:0 -28px;scrollbar-width:none}
+.genres::-webkit-scrollbar{display:none}
+.genres .chip{flex:none}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:44px;padding:26px 0 70px;align-items:start}
+.bar{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px 18px;margin-bottom:22px}
+.bar .cnt{font-size:22px;font-weight:600;letter-spacing:-.01em;margin-right:auto;min-width:210px}
+.sel{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--muted);font-weight:500}
+.sel select{height:44px;padding:0 38px 0 16px;border:1.5px solid var(--line2);border-radius:14px;background:var(--panel) var(--chev) no-repeat right 14px center;appearance:none;-webkit-appearance:none;color:var(--ink);font-size:15px;transition:border-color .3s,box-shadow .4s var(--ease)}
+.sel select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 5px rgba(181,80,47,.12)}
+#populer,#genres{scroll-margin-top:96px}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:26px 22px}
+.card{display:flex;flex-direction:column;overflow:hidden;text-decoration:none;background:var(--panel);border:1.5px solid var(--line);border-radius:26px;box-shadow:var(--shadow);transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-up)}
+.card:active{transform:translateY(-3px) scale(.985)}
+.cv{position:relative;aspect-ratio:2/3;padding:40px 16px 16px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.cv .ct{font-size:20px;font-weight:500;line-height:1.14;letter-spacing:-.01em;transition:transform .7s var(--ease)}
+.card:hover .cv .ct{transform:translateY(-4px)}
+.cv .badge{position:absolute;top:12px;left:12px;font-size:10px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:999px;background:var(--honey);color:#3B2F2A}
+.ci{display:flex;flex-direction:column;gap:2px;padding:14px 16px 16px}
+.ci b{font-weight:600;font-size:16px;line-height:1.25}
+.ci .a{font-size:13px;color:var(--muted)}
+.ci .m{font-size:12px;color:var(--muted)}
+.ci .ok{display:flex;align-items:center;gap:5px;margin-top:5px;font-size:12px;font-weight:600;color:var(--accent)}
+.empty{grid-column:1/-1;padding:56px 20px;text-align:center;color:var(--muted);border:1.5px dashed var(--line2);border-radius:26px;animation:pop .6s var(--ease)}
+.pager{display:flex;gap:8px;justify-content:center;margin-top:34px}
+.pager button{min-width:46px;height:46px;border-radius:16px;border:1.5px solid var(--line2);background:transparent;font-weight:600;transition:background .3s,transform .4s var(--ease),color .3s}
+.pager button:hover{background:var(--tint);transform:translateY(-2px)}
+.pager button.on{background:var(--accent);border-color:var(--accent);color:var(--onacc)}
+.side{display:flex;flex-direction:column;gap:26px}
+.side h2{font-size:24px;font-weight:600;padding-bottom:12px;border-bottom:2px solid var(--line2);margin-bottom:6px}
+.top a{display:flex;align-items:center;gap:14px;padding:12px 6px;text-decoration:none;border-bottom:1.5px solid var(--line);border-radius:18px;transition:background .35s,transform .5s var(--ease),padding .5s var(--ease)}
+.top a:hover{background:var(--tint);transform:translateX(6px)}
+.top .n{flex:none;width:30px;text-align:center;font-size:30px;font-weight:600;line-height:1;color:var(--accent);font-variant-numeric:lining-nums tabular-nums}
+.top .c{flex:none;width:44px;height:66px;border-radius:12px;box-shadow:0 6px 14px rgba(150,100,70,.22)}
+.top .t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.top .t b{font-weight:600;font-size:16px;line-height:1.25}
+.top .t span{font-size:13px;color:var(--muted)}
+
+/* ---------- detail ---------- */
+.crumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:28px 0 8px;font-size:14px;color:var(--muted)}
+.crumb a{text-decoration:none;padding:4px 10px;border-radius:999px;transition:background .3s}
+.crumb a:hover{background:var(--tint)}
+.crumb b{color:var(--ink);font-weight:500}
+.dtl{display:grid;grid-template-columns:340px minmax(0,1fr);gap:56px;padding:18px 0 56px;align-items:start}
+.dcover{view-transition-name:cover;position:sticky;top:104px;aspect-ratio:2/3;border-radius:34px;padding:30px 28px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 22px 44px rgba(150,100,70,.3);overflow:hidden}
+.dcover .au{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.dcover h2{font-size:36px;line-height:1.05;letter-spacing:-.02em;font-weight:500}
+.dcover .ln{display:block;height:3px;width:44px;background:#E8B94F;border-radius:3px}
+.dinfo{display:flex;flex-direction:column;gap:20px;min-width:0}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border:1.5px solid var(--accent);border-radius:999px;color:var(--accent)}
+.tag.f{background:var(--accent);color:var(--onacc)}
+.dinfo h1{font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.03em;font-weight:500}
+.dinfo .by{font-size:20px;color:var(--muted)}
+.dinfo .ds{max-width:620px;font-size:18px;line-height:1.7}
+.dl-box{display:flex;flex-direction:column;gap:14px;padding:22px;background:var(--tint);border:1.5px solid var(--line2);border-radius:26px}
+.dl-row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.dl-row .sel{flex:1;min-width:180px}
+.dl-row select{height:54px;font-size:16px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.tile{padding:14px 18px;background:var(--panel);border:1.5px solid var(--line);border-radius:20px;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.tile:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.tile dt{font-size:13px;color:var(--muted)}
+.tile dd{margin:2px 0 0;font-weight:600}
+.lnk{align-self:flex-start;display:inline-flex;gap:8px;align-items:center;min-height:44px;padding:0 6px;color:var(--muted);text-decoration:none;font-weight:500;border-radius:12px;transition:color .3s,transform .4s var(--ease)}
+.lnk:hover{color:var(--accent);transform:translateX(4px)}
+
+.rd{background:var(--tint2);padding:60px 0}
+.rd .in{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:56px;align-items:center}
+.rd h2{font-size:clamp(28px,3.4vw,40px);letter-spacing:-.02em;font-weight:500;margin-bottom:10px}
+.rd .lead{max-width:460px;font-size:17px;color:var(--ink2);margin-bottom:26px}
+.ctl{display:flex;flex-direction:column;gap:20px}
+.ctl .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ctl .lb{width:92px;font-size:14px;font-weight:600;color:var(--ink2)}
+.sq{width:52px;height:52px;border-radius:18px;border:1.5px solid var(--line2);background:var(--paper);font-weight:600;transition:transform .4s var(--ease),background .3s}
+.sq:hover{transform:translateY(-3px)}
+.sq:active{transform:scale(.92)}
+.note{max-width:440px;padding:14px 18px;background:var(--paper);border:1.5px solid var(--line2);border-radius:20px;font-size:14px;line-height:1.6;color:var(--ink2)}
+.dev{width:min(350px,100%);padding:18px;border-radius:40px;background:var(--dev);box-shadow:0 26px 48px rgba(90,50,30,.34);outline-offset:6px}
+.scr{position:relative;aspect-ratio:3/4;display:flex;flex-direction:column;padding:22px 26px 16px;border-radius:24px;overflow:hidden;touch-action:pan-y;user-select:none;transition:background-color .6s var(--ease),color .6s var(--ease)}
+.scr .hd{flex:none;display:flex;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid;transition:color .6s,border-color .6s}
+.scr .tx{flex:1;overflow:hidden;padding-top:14px;white-space:pre-wrap;line-height:1.6;font-family:Georgia,'Times New Roman',serif;transition:font-size .45s var(--ease)}
+.scr .ft{flex:none;display:flex;flex-direction:column;gap:6px;font-size:11px;transition:color .6s}
+.scr .pb{height:3px;border-radius:3px;transition:background .6s}
+.scr .pb i{display:block;height:100%;border-radius:3px;transition:width .6s var(--ease),background .6s}
+.zone{position:absolute;top:0;bottom:0;width:34%;border:0;background:transparent;padding:0}
+.zone.l{left:0}.zone.r{right:0}
+.nxt{display:flex;gap:12px;margin-top:16px;justify-content:center}
+.nxt .btn{min-height:48px;padding:0 22px}
+.rel{padding-top:64px;padding-bottom:76px}
+.rel h2{font-size:30px;font-weight:500;letter-spacing:-.02em;margin-bottom:28px}
+
+/* ---------- lapor ---------- */
+.narrow{max-width:760px;margin:0 auto;padding:56px 28px 90px}
+.narrow h1{font-size:clamp(34px,5vw,52px);letter-spacing:-.03em;font-weight:500;line-height:1.05;margin-bottom:12px}
+.rs{display:flex;flex-direction:column;gap:10px;margin:22px 0}
+.rs label{display:flex;gap:14px;align-items:center;padding:16px 20px;background:var(--panel);border:1.5px solid var(--line);border-radius:20px;cursor:pointer;transition:border-color .3s,background .3s,transform .45s var(--ease),box-shadow .45s var(--ease)}
+.rs label:hover{transform:translateX(5px);box-shadow:var(--shadow)}
+.rs input{accent-color:var(--accent);width:20px;height:20px}
+.rs label:has(input:checked){border-color:var(--accent);background:var(--tint)}
+.rs small{display:block;color:var(--muted);font-size:13px}
+.frm{display:flex;flex-direction:column;gap:18px}
+.frm label.l{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:15px}
+.frm label.l span{font-weight:400;color:var(--muted);font-size:13px}
+.ok-box{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;padding:56px 24px;animation:pop .8s var(--ease)}
+.ok-box svg circle{stroke-dasharray:176;stroke-dashoffset:176;animation:draw .9s .1s var(--ease) forwards}
+.ok-box svg path{stroke-dasharray:50;stroke-dashoffset:50;animation:draw .6s .65s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ---------- footer ---------- */
+footer{border-top:1.5px solid var(--line);padding:34px 0 44px;color:var(--muted);font-size:14px}
+footer .in{display:flex;flex-wrap:wrap;gap:12px 26px;align-items:center;justify-content:space-between}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 20px}
+footer a{text-decoration:none;padding:4px 0}
+footer a:hover{color:var(--accent)}
+
+/* ---------- admin ---------- */
+body.is-admin #hdr,body.is-admin footer{display:none}
+.adm{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+.asd{position:sticky;top:0;align-self:start;height:100vh;background:var(--sage);padding:26px 16px;display:flex;flex-direction:column;gap:26px;border-radius:0 34px 34px 0}
+.asd .brand{display:flex;align-items:center;gap:10px;text-decoration:none;padding:0 8px}
+.asd .brand b{display:block;font-size:19px;line-height:1.1}
+.asd .brand span{font-size:12px;color:var(--sagetx)}
+.asd nav{display:flex;flex-direction:column;gap:4px}
+.asd nav a{display:flex;align-items:center;gap:12px;min-height:50px;padding:0 14px;border-radius:18px;text-decoration:none;font-weight:500;transition:background .35s,transform .5s var(--ease)}
+.asd nav a:hover{background:rgba(255,249,242,.5);transform:translateX(4px)}
+.asd nav a.on{background:rgba(255,249,242,.78);font-weight:600}
+.asd .back{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;text-decoration:none;font-size:14px;color:var(--sagetx);border-radius:14px}
+.asd .back:hover{background:rgba(255,249,242,.5)}
+.amain{padding:40px 48px 70px;display:flex;flex-direction:column;gap:28px;min-width:0}
+.amain h1{font-size:clamp(30px,4vw,42px);letter-spacing:-.025em;font-weight:500;line-height:1.1}
+.ahd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.stat{padding:20px 24px;border-radius:26px;display:flex;flex-direction:column;gap:2px;transition:transform .5s var(--ease)}
+.stat:hover{transform:translateY(-4px)}
+.stat b{font-size:40px;line-height:1.1;font-weight:600;font-variant-numeric:lining-nums tabular-nums}
+.stat span{font-size:14px;color:var(--ink2)}
+.tbl{border-radius:28px;overflow:hidden;border:1.5px solid var(--line);background:var(--panel);box-shadow:var(--shadow)}
+.tbl table{width:100%;border-collapse:collapse;font-size:14.5px}
+.tbl th{text-align:left;padding:14px 18px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--tint);font-weight:600}
+.tbl td{padding:14px 18px;border-top:1.5px solid var(--line);vertical-align:middle}
+.tbl tr{transition:background .3s}
+.tbl tbody tr:hover{background:var(--tint)}
+.pill{display:inline-flex;align-items:center;padding:3px 12px;border-radius:999px;font-size:12px;font-weight:600}
+.pill.ok{background:var(--okbg);color:var(--oktx)}.pill.dr{background:var(--drbg);color:var(--drtx)}.pill.bad{background:var(--badbg);color:var(--badtx)}
+.fmt{display:inline-block;padding:2px 9px;margin-right:4px;border-radius:999px;background:var(--tint2);font-size:11.5px;font-weight:600}
+.scroll-x{overflow-x:auto}
+.ug{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:28px;align-items:start}
+.dz{display:flex;flex-direction:column;align-items:center;gap:12px;padding:34px 20px;text-align:center;border:2px dashed var(--line2);border-radius:28px;background:var(--panel);transition:background .4s,border-color .4s,transform .5s var(--ease)}
+.dz.drag{background:var(--tint);border-color:var(--accent);transform:scale(1.01)}
+.files{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:6px}
+.fl{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--tint);border-radius:18px;text-align:left;animation:fadeUp .6s var(--ease) both}
+.fl .nm{flex:1;min-width:0;font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fl .pr{flex:0 0 90px;height:6px;border-radius:6px;background:var(--line2);overflow:hidden}
+.fl .pr i{display:block;height:100%;width:0;background:var(--accent);border-radius:6px;transition:width 1.2s var(--ease)}
+.fg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.fg .full{grid-column:1/-1}
+.fg label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+.bd{align-self:flex-start;font-size:11px;font-weight:600;padding:1px 9px;border-radius:999px}
+.bd.f{background:var(--okbg);color:var(--oktx)}.bd.m{background:var(--drbg);color:var(--drtx)}
+.chk{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.chk li{display:flex;gap:10px;align-items:center;list-style:none;font-size:14.5px;color:var(--muted);transition:color .4s}
+.chk{padding:0}
+.chk li i{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line2);display:grid;place-items:center;transition:background .4s,border-color .4s,transform .5s var(--ease)}
+.chk li i svg{opacity:0;transform:scale(.4);transition:opacity .3s,transform .5s var(--ease)}
+.chk li.done{color:var(--ink)}
+.chk li.done i{background:var(--accent);border-color:var(--accent);transform:scale(1.1)}
+.chk li.done i svg{opacity:1;transform:none}
+.meter{height:10px;border-radius:10px;background:var(--line);overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--accent);border-radius:10px;transition:width .8s var(--ease)}
+.stickyc{position:sticky;top:24px;display:flex;flex-direction:column;gap:18px}
+.rp{display:flex;flex-direction:column;gap:6px;padding:22px 24px;margin-bottom:14px}
+.rp.done{opacity:.6}
+.rp .top2{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+#toast{position:fixed;left:50%;bottom:24px;z-index:120;transform:translate(-50%,30px);opacity:0;pointer-events:none;max-width:min(92vw,520px);padding:14px 22px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:14.5px;box-shadow:0 14px 32px rgba(40,20,10,.35);transition:transform .55s var(--ease),opacity .4s}
+#toast.on{transform:translate(-50%,0);opacity:1}
+
+/* ---------- responsif ---------- */
+@media(max-width:1060px){
+  .cols{grid-template-columns:1fr}
+  .side .tall{display:none}
+  .dtl{grid-template-columns:260px minmax(0,1fr);gap:36px}
+  .rd .in{grid-template-columns:minmax(0,1fr);justify-items:center;gap:36px}
+  .ug{grid-template-columns:1fr}
+  .stickyc{position:static}
+}
+@media(max-width:860px){
+  .nav{display:none}
+  .burger{display:flex}
+  .hrow{flex-wrap:wrap;gap:8px 8px;min-height:0;padding:10px 0 12px}
+  .logo{font-size:21px;margin-right:auto}
+  .search{order:4;width:100%;margin:0}
+  .mode{order:2}
+  .wrap{padding:0 16px}
+  .genres{padding:20px 16px 4px;margin:0 -16px}
+  .banner{border-radius:28px;margin-top:14px}
+  .slide{grid-template-columns:1fr;padding:30px 24px 64px;gap:22px}
+  .slide .bk{display:none}
+  .dots{left:24px}
+  #grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 14px}
+  .cv{padding:34px 12px 12px}.cv .ct{font-size:17px}
+  .ci{padding:12px 12px 14px}.ci b{font-size:15px}
+  .dtl{grid-template-columns:1fr;gap:26px}
+  .dcover{position:relative;top:0;width:210px;margin:0 auto;padding:20px 18px;border-radius:26px}
+  .dcover h2{font-size:25px}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rd{padding:44px 0}
+  .adm{grid-template-columns:1fr}
+  .asd{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;border-radius:0 0 28px 28px;padding:14px 14px;gap:8px}
+  .asd nav{flex-direction:row;flex-wrap:wrap}
+  .asd nav a{min-height:44px;padding:0 14px}
+  .asd .back{margin:0 0 0 auto}
+  .amain{padding:26px 16px 56px}
+  .fg{grid-template-columns:1fr}
+  .tbl th:nth-child(n+4):not(:last-child),.tbl td:nth-child(n+4):not(:last-child){display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}
+
+.sp{--s-bg:#FBF1E6;--s-stroke:#3B2F2A;--s-l:#C9715A;--s-r:#6E8B6A;--s-dot:#E8B94F;--s-text:#3B2F2A;position:fixed;inset:0;z-index:300;display:grid;place-items:center;background:var(--s-bg)}
+.sp.dark,html[data-theme="dark"] .sp{--s-bg:#1C1613;--s-stroke:#FBF1E6;--s-l:#E58A63;--s-r:#8FAE88;--s-dot:#F2D68A;--s-text:#F4E8DA}
+.sp .sp-logo{width:min(330px,72vw);height:auto;overflow:visible;display:block}
+.sp .sdev{fill:none;stroke:var(--s-stroke);stroke-width:6.5;stroke-dasharray:1;stroke-dashoffset:1}
+.sp .pl{fill:var(--s-l)}.sp .pr{fill:var(--s-r);flex:none;height:auto;width:auto;background:none;overflow:visible;border-radius:0}.sp .dot{fill:var(--s-dot)}
+.sp .rip{fill:none;stroke:var(--s-dot);stroke-width:2;opacity:0}
+.sp .lt{fill:var(--s-text);opacity:0;transform:translateY(16px)}
+.sp .lt,.sp .pgL,.sp .pgR,.sp .pgL2,.sp .pgR2,.sp .dotp,.sp .dotw,.sp .rip{transform-box:fill-box}
+.sp .pgL{transform-origin:100% 50%;transform:scaleX(0)}
+.sp .pgR{transform-origin:0 50%;transform:scaleX(0)}
+.sp .pgL2{transform-origin:100% 100%}
+.sp .pgR2{transform-origin:0 100%}
+.sp .dotp{transform-origin:50% 50%;transform:scale(0)}
+.sp .dotw,.sp .rip{transform-origin:50% 50%}
+.sp.go .sdev{animation:spDraw 1.15s cubic-bezier(.65,0,.35,1) .1s forwards}
+.sp.go .pgL{animation:spOpen .9s cubic-bezier(.34,1.35,.64,1) .85s forwards}
+.sp.go .pgR{animation:spOpen .9s cubic-bezier(.34,1.35,.64,1) 1s forwards}
+.sp.go .pgL2{animation:spLiftL 1.1s cubic-bezier(.22,1,.36,1) .85s backwards}
+.sp.go .pgR2{animation:spLiftR 1.1s cubic-bezier(.22,1,.36,1) 1s backwards}
+.sp.go .dotp{animation:spPop .6s cubic-bezier(.34,1.8,.64,1) 1.5s forwards}
+.sp.go .lt{animation:spUp .85s cubic-bezier(.22,1,.36,1) calc(1.15s + var(--i)*48ms) forwards}
+@keyframes spDraw{to{stroke-dashoffset:0}}
+@keyframes spOpen{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes spLiftL{from{transform:rotate(-14deg) translateY(8px)}to{transform:none}}
+@keyframes spLiftR{from{transform:rotate(14deg) translateY(8px)}to{transform:none}}
+@keyframes spBreatheL{0%,100%{transform:rotate(0)}50%{transform:rotate(-3deg) translateY(-1px)}}
+@keyframes spBreatheR{0%,100%{transform:rotate(0)}50%{transform:rotate(3deg) translateY(-1px)}}
+@keyframes spPop{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes spPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+@keyframes spRip{0%{opacity:.65;transform:scale(1)}100%{opacity:0;transform:scale(4.6)}}
+@keyframes spUp{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.sp .sdev{stroke-dashoffset:0}.sp .pgL,.sp .pgR,.sp .dotp{transform:none}.sp .lt{opacity:1;transform:none}.sp.go *{animation:none!important}}
+
+</style>
+</head>
+<body>
+<div class="sp" id="sp" role="status" aria-label="Memuat Pustaka Ereader"><svg class="sp-logo" viewBox="0 0 350.8 172.4" role="img" aria-label="Pustaka Ereader">
+<g transform="translate(115.38 -4.75)"><g class="m-dev"><rect class="sdev" x="20" y="8" width="80" height="104" rx="17" pathLength="1"/></g>
+<g class="pgL"><g class="pgL2"><path class="pl" d="M57 87C50 77 41 72.500 31 72.500V33C42 33 51 37.500 57 45Z"/></g></g>
+<g class="pgR"><g class="pgR2"><path class="pr" d="M63 87C70 77 79 72.500 89 72.500V33C78 33 69 37.500 63 45Z"/></g></g>
+<g class="dotw"><circle class="rip" cx="60" cy="98" r="4"/><circle class="rip r2" cx="60" cy="98" r="4"/><g class="dotp"><circle class="dot" cx="60" cy="98" r="4"/></g></g></g>
+<g transform="translate(0.0 169.6)"><path class="lt w1" style="--i:0" d="M3.128 0.0V-32.2H15.019Q18.895819672131147 -32.2 21.432418032786885 -30.897433333333336Q23.969016393442622 -29.594866666666668 25.20950819672131 -27.3677Q26.45 -25.14053333333333 26.45 -22.311533333333333Q26.45 -19.665 25.253999999999998 -17.433999999999997Q24.058 -15.203 21.522908854166666 -13.834499999999998Q18.98781770833333 -12.466 15.019 -12.466H8.993V0.0ZM8.993 -17.227H14.674Q17.756 -17.227 19.113 -18.607Q20.47 -19.987 20.47 -22.31267441860465Q20.47 -24.724999999999998 19.113 -26.0705Q17.756 -27.416 14.674 -27.416H8.993Z"/><path class="lt w1" style="--i:1" d="M38.893 0.552Q36.087 0.552 34.086 -0.6325Q32.085 -1.817 31.0385 -4.162999999999999Q29.992 -6.5089999999999995 29.992 -9.936V-22.816H35.834V-10.48521212121212Q35.834 -7.521 37.03 -5.957Q38.226 -4.393 40.77099722852104 -4.393Q42.419098765432096 -4.393 43.70354938271605 -5.1865Q44.988 -5.9799999999999995 45.7125 -7.453112903225806Q46.437 -8.926225806451614 46.437 -11.03619887955182V-22.816H52.302V0.0H47.126999999999995L46.69 -3.864Q45.609 -1.863 43.608000000000004 -0.6555Q41.607 0.552 38.893 0.552Z"/><path class="lt w1" style="--i:2" d="M67.183 0.552Q64.193 0.552 61.8815 -0.4485Q59.57 -1.449 58.19 -3.2085Q56.81 -4.968 56.557 -7.245H62.422000000000004Q62.652 -6.348 63.2615 -5.6005Q63.871 -4.853 64.8485 -4.416Q65.826 -3.979 67.114 -3.979Q68.425 -3.979 69.2415 -4.3469999999999995Q70.058 -4.715 70.44900000000001 -5.313Q70.84 -5.911 70.84 -6.555Q70.84 -7.567 70.265 -8.0845Q69.69 -8.602 68.586 -8.935500000000001Q67.482 -9.269 65.964 -9.613999999999999Q64.492 -9.959 62.962500000000006 -10.419Q61.433 -10.879 60.168 -11.591999999999999Q58.903 -12.305 58.1325 -13.4205Q57.362 -14.536 57.362 -16.192Q57.362 -18.216 58.4545 -19.849Q59.547000000000004 -21.482 61.605500000000006 -22.424999999999997Q63.664 -23.368 66.539 -23.368Q70.587 -23.368 73.025 -21.493499999999997Q75.463 -19.619 75.87700000000001 -16.284H70.334Q70.104 -17.48 69.11500000000001 -18.147Q68.126 -18.814 66.516 -18.814Q64.837 -18.814 63.9515 -18.1815Q63.066 -17.549 63.066 -16.583Q63.066 -15.916 63.6755 -15.41Q64.285 -14.904 65.3775 -14.5475Q66.47 -14.190999999999999 67.919 -13.846Q70.357 -13.294 72.33500000000001 -12.6155Q74.313 -11.937 75.5205 -10.649000000000001Q76.72800000000001 -9.361 76.72800000000001 -6.8999999999999995Q76.774 -4.761 75.601 -3.0705Q74.428 -1.38 72.289 -0.4139999999999999Q70.15 0.552 67.183 0.552Z"/><path class="lt w1" style="--i:3" d="M91.54 0.0Q89.17099999999999 0.0 87.3885 -0.7474999999999999Q85.606 -1.4949999999999999 84.6285 -3.2315Q83.651 -4.968 83.651 -7.958V-17.916999999999998H79.741V-22.816H83.651L84.31691416309013 -28.910999999999998H89.50770815450645V-22.816H95.68V-17.916999999999998H89.516V-7.912Q89.516 -6.256 90.22900000000001 -5.6235Q90.94200000000001 -4.991 92.69 -4.991H95.519V0.0Z"/><path class="lt w1" style="--i:4" d="M108.031 0.552Q105.13300000000001 0.552 103.2355 -0.37949999999999995Q101.33800000000001 -1.311 100.418 -2.8865Q99.498 -4.462 99.498 -6.348Q99.498 -8.487 100.60377180232558 -10.081563063063061Q101.70954360465117 -11.676126126126125 103.92075290697676 -12.577063063063061Q106.13196220930233 -13.478 109.42524127906978 -13.478H115.23Q115.23 -15.203 114.72175609756098 -16.326166666666666Q114.21351219512195 -17.449333333333332 113.18496341463415 -18.016666666666666Q112.15641463414634 -18.584 110.584 -18.584Q108.744 -18.584 107.41 -17.744500000000002Q106.07600000000001 -16.905 105.77700000000002 -15.225999999999999H100.05000000000001Q100.30731250000001 -17.739170731707315 101.73115625 -19.553085365853658Q103.155 -21.367 105.47800000000001 -22.3675Q107.801 -23.368 110.607 -23.368Q113.8578888888889 -23.368 116.209 -22.264Q118.56011111111111 -21.16 119.82755555555556 -19.0785Q121.095 -16.997 121.095 -14.03V0.0H116.12700000000001L115.506 -3.6109999999999998Q115.02860975609757 -2.707655172413793 114.32430487804879 -1.9518275862068966Q113.62 -1.196 112.7 -0.6325Q111.78 -0.069 110.6213411764706 0.24150000000000002Q109.46268235294119 0.552 108.031 0.552ZM109.3824598540146 -4.025Q110.676 -4.025 111.6765 -4.485Q112.677 -4.945 113.39000000000001 -5.7493099999999995Q114.10300000000001 -6.55362 114.50550000000001 -7.59046Q114.90800000000002 -8.6273 115.02300000000001 -9.775V-9.798H110.078Q108.537 -9.798 107.55950000000001 -9.4185Q106.58200000000001 -9.039 106.1335 -8.372Q105.685 -7.705 105.685 -6.8309999999999995Q105.685 -5.934 106.13551459854014 -5.3015Q106.5860291970803 -4.669 107.41797445255474 -4.3469999999999995Q108.24991970802921 -4.025 109.3824598540146 -4.025Z"/><path class="lt w1" style="--i:5" d="M141.312 0.0 131.192 -12.558 140.162 -22.816H147.13100000000003L135.723 -10.143V-14.743L148.626 0.0ZM126.20100000000002 0.0V-33.12H132.06600000000003V0.0Z"/><path class="lt w1" style="--i:6" d="M159.55100000000002 0.552Q156.65300000000002 0.552 154.7555 -0.37949999999999995Q152.858 -1.311 151.93800000000002 -2.8865Q151.01800000000003 -4.462 151.01800000000003 -6.348Q151.01800000000003 -8.487 152.12377180232562 -10.081563063063061Q153.22954360465118 -11.676126126126125 155.44075290697677 -12.577063063063061Q157.65196220930235 -13.478 160.9452412790698 -13.478H166.75000000000003Q166.75000000000003 -15.203 166.241756097561 -16.326166666666666Q165.73351219512196 -17.449333333333332 164.70496341463416 -18.016666666666666Q163.67641463414637 -18.584 162.104 -18.584Q160.264 -18.584 158.93 -17.744500000000002Q157.596 -16.905 157.29700000000003 -15.225999999999999H151.57000000000002Q151.8273125 -17.739170731707315 153.25115625 -19.553085365853658Q154.675 -21.367 156.99800000000002 -22.3675Q159.32100000000003 -23.368 162.127 -23.368Q165.3778888888889 -23.368 167.729 -22.264Q170.08011111111114 -21.16 171.34755555555557 -19.0785Q172.615 -16.997 172.615 -14.03V0.0H167.64700000000002L167.026 -3.6109999999999998Q166.5486097560976 -2.707655172413793 165.8443048780488 -1.9518275862068966Q165.14000000000001 -1.196 164.22000000000003 -0.6325Q163.3 -0.069 162.1413411764706 0.24150000000000002Q160.9826823529412 0.552 159.55100000000002 0.552ZM160.9024598540146 -4.025Q162.19600000000003 -4.025 163.19650000000001 -4.485Q164.197 -4.945 164.91000000000003 -5.7493099999999995Q165.62300000000002 -6.55362 166.02550000000002 -7.59046Q166.42800000000003 -8.6273 166.543 -9.775V-9.798H161.598Q160.05700000000002 -9.798 159.07950000000002 -9.4185Q158.10200000000003 -9.039 157.6535 -8.372Q157.205 -7.705 157.205 -6.8309999999999995Q157.205 -5.934 157.65551459854015 -5.3015Q158.10602919708032 -4.669 158.93797445255478 -4.3469999999999995Q159.76991970802922 -4.025 160.9024598540146 -4.025Z"/><path class="lt w2" style="--i:7" d="M191.91200000000003 0.0V-32.2H211.83000000000004V-29.026H195.77600000000004V-17.802H210.45000000000005V-14.674H195.77600000000004V-3.174H211.83000000000004V0.0Z"/><path class="lt w2" style="--i:8" d="M217.07400000000004 0.0V-22.816H220.57000000000002L220.89200000000002 -18.4Q221.62800000000004 -19.964 222.82400000000004 -21.067999999999998Q224.02000000000004 -22.172 225.67600000000004 -22.77Q227.33200000000002 -23.368 229.44800000000004 -23.368V-19.32H228.39000000000004Q226.87200000000004 -19.32 225.51500000000004 -18.929000000000002Q224.15800000000004 -18.538 223.12300000000005 -17.664Q222.08800000000002 -16.79 221.51300000000003 -15.271999999999998Q220.93800000000005 -13.754 220.93800000000005 -11.5V0.0Z"/><path class="lt w2" style="--i:9" d="M243.47800000000004 0.552Q240.21200000000005 0.552 237.68200000000004 -0.9430000000000001Q235.15200000000004 -2.438 233.70300000000003 -5.1290000000000004Q232.25400000000005 -7.82 232.25400000000005 -11.408Q232.25400000000005 -15.042 233.68000000000006 -17.71Q235.10600000000005 -20.378 237.65900000000005 -21.872999999999998Q240.21200000000005 -23.368 243.57000000000005 -23.368Q246.92800000000005 -23.368 249.32000000000005 -21.872999999999998Q251.71200000000005 -20.378 253.00000000000006 -17.963Q254.28800000000004 -15.548 254.28800000000004 -12.696Q254.28800000000004 -12.236 254.28800000000004 -11.707Q254.28800000000004 -11.177999999999999 254.24200000000005 -10.534H235.15200000000004V-13.524H250.47000000000006Q250.33200000000005 -16.605999999999998 248.37700000000007 -18.354Q246.42200000000005 -20.102 243.47800000000004 -20.102Q241.50000000000006 -20.102 239.79800000000006 -19.228Q238.09600000000006 -18.354 237.06100000000004 -16.675Q236.02600000000004 -14.996 236.02600000000004 -12.466V-11.177999999999999Q236.02600000000004 -8.372 237.08400000000006 -6.486Q238.14200000000005 -4.6 239.84400000000005 -3.657Q241.54600000000005 -2.714 243.47800000000004 -2.714Q245.87000000000006 -2.714 247.48000000000008 -3.8179999999999996Q249.09000000000006 -4.922 249.82600000000005 -6.808H253.64400000000006Q253.04600000000005 -4.692 251.66600000000005 -3.036Q250.28600000000006 -1.38 248.23900000000006 -0.4139999999999999Q246.19200000000006 0.552 243.47800000000004 0.552Z"/><path class="lt w2" style="--i:10" d="M266.4320000000001 0.552Q263.58000000000004 0.552 261.6940000000001 -0.4139999999999999Q259.80800000000005 -1.38 258.88800000000003 -2.9899999999999998Q257.9680000000001 -4.6 257.9680000000001 -6.486Q257.9680000000001 -8.832 259.18700000000007 -10.442Q260.40600000000006 -12.052 262.63700000000006 -12.902999999999999Q264.86800000000005 -13.754 267.90400000000005 -13.754H274.06800000000004Q274.06800000000004 -15.87 273.37800000000004 -17.273Q272.68800000000005 -18.676 271.4000000000001 -19.389Q270.1120000000001 -20.102 268.31800000000004 -20.102Q266.0640000000001 -20.102 264.4080000000001 -18.975Q262.75200000000007 -17.848 262.38400000000007 -15.686H258.42800000000005Q258.70400000000006 -18.169999999999998 260.13000000000005 -19.872Q261.55600000000004 -21.573999999999998 263.74100000000004 -22.470999999999997Q265.92600000000004 -23.368 268.31800000000004 -23.368Q271.4920000000001 -23.368 273.6310000000001 -22.195Q275.77000000000004 -21.022 276.85100000000006 -18.929Q277.9320000000001 -16.836 277.9320000000001 -14.03V0.0H274.4820000000001L274.25200000000007 -4.094Q273.7920000000001 -3.128 273.07900000000006 -2.277Q272.36600000000004 -1.426 271.42300000000006 -0.8049999999999999Q270.4800000000001 -0.184 269.23800000000006 0.18400000000000002Q267.99600000000004 0.552 266.4320000000001 0.552ZM267.0300000000001 -2.714Q268.68600000000004 -2.714 269.99700000000007 -3.3810000000000002Q271.30800000000005 -4.048 272.22800000000007 -5.198Q273.1480000000001 -6.348 273.60800000000006 -7.773999999999999Q274.06800000000004 -9.2 274.06800000000004 -10.718V-10.764H268.22600000000006Q265.97200000000004 -10.764 264.59200000000004 -10.235Q263.21200000000005 -9.706 262.61400000000003 -8.786Q262.0160000000001 -7.866 262.0160000000001 -6.67Q262.0160000000001 -5.474 262.59100000000007 -4.577Q263.16600000000005 -3.6799999999999997 264.29300000000006 -3.197Q265.4200000000001 -2.714 267.0300000000001 -2.714Z"/><path class="lt w2" style="--i:11" d="M293.57200000000006 0.552Q290.16800000000006 0.552 287.61500000000007 -1.012Q285.06200000000007 -2.576 283.6590000000001 -5.29Q282.2560000000001 -8.004 282.2560000000001 -11.454Q282.2560000000001 -14.904 283.6590000000001 -17.595Q285.06200000000007 -20.286 287.63800000000003 -21.826999999999998Q290.21400000000006 -23.368 293.61800000000005 -23.368Q296.42400000000004 -23.368 298.60900000000004 -22.218Q300.79400000000004 -21.068 301.9440000000001 -18.998V-33.12H305.80800000000005V0.0H302.31200000000007L301.9440000000001 -3.772Q301.2080000000001 -2.668 300.0580000000001 -1.679Q298.9080000000001 -0.69 297.29800000000006 -0.06899999999999995Q295.68800000000005 0.552 293.57200000000006 0.552ZM293.98600000000005 -2.806Q296.28600000000006 -2.806 298.0570000000001 -3.887Q299.8280000000001 -4.968 300.81700000000006 -6.9Q301.80600000000004 -8.832 301.80600000000004 -11.408Q301.80600000000004 -13.984 300.81700000000006 -15.916Q299.8280000000001 -17.848 298.0570000000001 -18.929Q296.28600000000006 -20.009999999999998 293.98600000000005 -20.009999999999998Q291.7320000000001 -20.009999999999998 289.96100000000007 -18.929Q288.19000000000005 -17.848 287.201 -15.916Q286.21200000000005 -13.984 286.21200000000005 -11.408Q286.21200000000005 -8.832 287.201 -6.9Q288.19000000000005 -4.968 289.96100000000007 -3.887Q291.7320000000001 -2.806 293.98600000000005 -2.806Z"/><path class="lt w2" style="--i:12" d="M321.8620000000001 0.552Q318.59600000000006 0.552 316.06600000000003 -0.9430000000000001Q313.53600000000006 -2.438 312.0870000000001 -5.1290000000000004Q310.6380000000001 -7.82 310.6380000000001 -11.408Q310.6380000000001 -15.042 312.0640000000001 -17.71Q313.49000000000007 -20.378 316.04300000000006 -21.872999999999998Q318.59600000000006 -23.368 321.95400000000006 -23.368Q325.31200000000007 -23.368 327.70400000000006 -21.872999999999998Q330.09600000000006 -20.378 331.38400000000007 -17.963Q332.6720000000001 -15.548 332.6720000000001 -12.696Q332.6720000000001 -12.236 332.6720000000001 -11.707Q332.6720000000001 -11.177999999999999 332.6260000000001 -10.534H313.53600000000006V-13.524H328.85400000000004Q328.71600000000007 -16.605999999999998 326.7610000000001 -18.354Q324.80600000000004 -20.102 321.8620000000001 -20.102Q319.88400000000007 -20.102 318.1820000000001 -19.228Q316.4800000000001 -18.354 315.44500000000005 -16.675Q314.4100000000001 -14.996 314.4100000000001 -12.466V-11.177999999999999Q314.4100000000001 -8.372 315.4680000000001 -6.486Q316.52600000000007 -4.6 318.22800000000007 -3.657Q319.93000000000006 -2.714 321.8620000000001 -2.714Q324.2540000000001 -2.714 325.86400000000003 -3.8179999999999996Q327.47400000000005 -4.922 328.21000000000004 -6.808H332.0280000000001Q331.43000000000006 -4.692 330.05000000000007 -3.036Q328.6700000000001 -1.38 326.62300000000005 -0.4139999999999999Q324.5760000000001 0.552 321.8620000000001 0.552Z"/><path class="lt w2" style="--i:13" d="M337.22600000000006 0.0V-22.816H340.7220000000001L341.0440000000001 -18.4Q341.7800000000001 -19.964 342.9760000000001 -21.067999999999998Q344.1720000000001 -22.172 345.8280000000001 -22.77Q347.4840000000001 -23.368 349.6000000000001 -23.368V-19.32H348.5420000000001Q347.02400000000006 -19.32 345.66700000000003 -18.929000000000002Q344.31000000000006 -18.538 343.2750000000001 -17.664Q342.24000000000007 -16.79 341.6650000000001 -15.271999999999998Q341.0900000000001 -13.754 341.0900000000001 -11.5V0.0Z"/></g></svg></div>
+<a href="#main" class="sr" id="skip">Lewati ke konten</a>
+
+<header id="hdr">
+  <div class="wrap hrow">
+    <button type="button" class="burger" id="burger" aria-label="Buka menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <a class="logo" href="#beranda"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true"><rect x="5" y="2.5" width="20" height="25" rx="5" stroke="var(--ink)" stroke-width="2"/><path d="M10 10h10M10 15h10M10 20h6" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>Pustaka Ereader</a>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="#beranda" data-nav="home">Katalog</a>
+      <a href="#populer" data-nav="populer">Paling dicari</a>
+      <a href="#genre" data-nav="genre">Genre</a>
+      <a href="#lapor" data-nav="report">Lapor</a>
+    </nav>
+    <label class="search"><span class="sr">Cari judul atau penulis</span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="var(--muted)" stroke-width="2"/><path d="M14 14l4 4" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="q" type="search" placeholder="Cari judul atau penulis" autocomplete="off">
+    </label>
+    <button type="button" class="mode" id="modeBtn" aria-label="Ganti ke mode gelap" title="Mode gelap / terang">
+      <svg class="moon" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 119.5 4a7 7 0 0010.5 10.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg class="sun" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<div id="scrim"></div>
+<aside id="drawer" aria-label="Menu">
+  <div class="dh"><b style="font-size:21px;letter-spacing:-.02em">Pustaka Ereader</b>
+    <button type="button" class="burger" style="display:flex" id="closeDrawer" aria-label="Tutup menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+  <a class="dl" style="--i:0" href="#beranda">Katalog</a>
+  <a class="dl" style="--i:1" href="#populer">Paling dicari</a>
+  <a class="dl" style="--i:2" href="#genre">Genre</a>
+  <a class="dl" style="--i:3" href="#lapor">Lapor</a>
+</aside>
+
+<main id="main" tabindex="-1" style="outline:none"><div id="view"></div></main>
+
+<footer>
+  <div class="wrap in">
+    <span>&copy; Pustaka Ereader &middot; Demo desain, semua buku contoh berstatus domain publik.</span>
+    <nav aria-label="Footer">
+      <a href="#" data-soon="Halaman Tentang belum dibuat di demo ini.">Tentang</a>
+      <a href="#" data-soon="Panduan membaca belum dibuat di demo ini.">Panduan membaca</a>
+      <a href="#" data-soon="Halaman Lisensi buku belum dibuat di demo ini.">Lisensi buku</a>
+      <a href="#lapor">Lapor</a>
+      <a href="#admin-katalog">Admin (demo)</a>
+    </nav>
+  </div>
+</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var esc=function(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+var reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var HAS_VT=!!document.startViewTransition&&!reduced;
+var root=document.documentElement;
+
+/* ================= DATA ================= */
+var SHERLOCK=["To Sherlock Holmes she is always the woman. I have seldom heard him mention her under any other name. In his eyes she eclipses and predominates the whole of her sex. It was not that he felt any emotion akin to love for Irene Adler. All emotions, and that one particularly, were abhorrent to his cold, precise but admirably balanced mind. He was, I take it, the most perfect reasoning and observing machine that the world has seen, but as a lover he would have placed himself in a false position. He never spoke of the softer passions, save with a gibe and a sneer. They were admirable things for the observer, excellent for drawing the veil from men’s motives and actions. But for the trained reasoner to admit such intrusions into his own delicate and finely adjusted temperament was to introduce a distracting factor which might throw a doubt upon all his mental results. Grit in a sensitive instrument, or a crack in one of his own high-power lenses, would not be more disturbing than a strong emotion in a nature such as his. And yet there was but one woman to him, and that woman was the late Irene Adler, of dubious and questionable memory.", "I had seen little of Holmes lately. My marriage had drifted us away from each other. My own complete happiness, and the home-centred interests which rise up around the man who first finds himself master of his own establishment, were sufficient to absorb all my attention, while Holmes, who loathed every form of society with his whole Bohemian soul, remained in our lodgings in Baker Street, buried among his old books.", "One night I was returning from a journey to a patient, when my way led me through Baker Street. As I passed the well-remembered door, I was seized with a keen desire to see Holmes again, and to know how he was employing his extraordinary powers."];
+var C={brown:['#5A4A42','#FBF1E6'],terra:['#C9715A','#FBF1E6'],cream:['#F3E3CF','#3B2F2A'],sage:['#6E8B6A','#FBF1E6'],honey:['#E8B94F','#3B2F2A'],blue:['#5F7F94','#FBF1E6']};
+function B(id,title,cover,author,year,pages,genre,col,isNew,blurb,lang,paras,chapter){
+  return {id:id,col:col,files:{},title:title,cover:cover,author:author,year:year,pages:pages,genre:genre,bg:C[col][0],fg:C[col][1],isNew:!!isNew,blurb:blurb,lang:lang||'Inggris',paras:paras,chapter:chapter||'Pembukaan',pub:true};
+}
+var books=[
+B('sherlock-holmes','The Adventures of Sherlock Holmes','Sherlock Holmes','Arthur Conan Doyle',1892,307,'Misteri','brown',1,'Dua belas kisah pertama sang detektif dari Baker Street, dengan Dr.\u00A0Watson sebagai penutur. Setiap cerita berdiri sendiri, jadi mudah dibaca sedikit demi sedikit di sela perjalanan.','Inggris',SHERLOCK,'A Scandal in Bohemia'),
+B('dracula','Dracula','Dracula','Bram Stoker',1897,418,'Horor','terra',1,'Novel yang dituturkan lewat surat, jurnal, dan kliping koran tentang Count Dracula dan orang-orang yang memburunya.','Inggris',['3 May. Bistritz.—Left Munich at 8:35 P.M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late. Buda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets.','The impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.'],'Jurnal Jonathan Harker'),
+B('meditations','Meditations','Meditations','Marcus Aurelius',null,254,'Filsafat','cream',1,'Catatan pribadi seorang kaisar Romawi tentang disiplin diri, kerendahan hati, dan ketenangan batin.','Inggris',['From my grandfather Verus I learned good morals and the government of my temper.','From the reputation and remembrance of my father, modesty and a manly character.','From my mother, piety and beneficence, and abstinence, not only from evil deeds, but even from evil thoughts; and further, simplicity in my way of living, far removed from the habits of the rich.'],'Buku Pertama'),
+B('pride-and-prejudice','Pride and Prejudice','Pride and Prejudice','Jane Austen',1813,432,'Romansa','sage',0,'Kisah Elizabeth Bennet dan Mr. Darcy tentang kesombongan, prasangka, dan cinta yang lahir dari salah paham.','Inggris',['It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.','However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters.','“My dear Mr. Bennet,” said his lady to him one day, “have you heard that Netherfield Park is let at last?”','Mr. Bennet replied that he had not.'],'Bab 1'),
+B('moby-dick','Moby-Dick','Moby-Dick','Herman Melville',1851,635,'Petualangan','honey',0,'Perburuan Kapten Ahab terhadap paus putih raksasa, dikisahkan oleh pelaut bernama Ishmael.','Inggris',['Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation.','Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; then, I account it high time to get to sea as soon as I can.'],'Loomings'),
+B('max-havelaar','Max Havelaar','Max Havelaar','Multatuli',1860,320,'Sastra klasik','blue',0,'Novel Belanda yang membongkar penindasan sistem tanam paksa di Hindia Belanda lewat mata seorang asisten residen.','Belanda',['Ik ben makelaar in koffie, en woon op de Lauriergracht, No. 37.','Het is mijn gewoonte niet, romans te schrijven, of zulke dingen, en het heeft dan ook lang geduurd, voor ik er toe overging een paar riemen papier extra te bestellen.'],'Bab 1'),
+B('habis-gelap','Habis Gelap Terbitlah Terang','Habis Gelap Terbitlah Terang','R.A. Kartini',1911,268,'Sejarah','terra',0,'Kumpulan surat R.A. Kartini tentang pendidikan, perempuan, dan cita-cita pembaruan.','Indonesia',['Naskah pratinjau untuk buku ini belum ditambahkan di demo.','Di situs sebenarnya, pratinjau diambil dari halaman awal berkas EPUB yang diunggah.'],'Pratinjau'),
+B('frankenstein','Frankenstein','Frankenstein','Mary Shelley',1818,280,'Horor','brown',0,'Seorang ilmuwan muda menciptakan makhluk hidup dan harus menanggung akibatnya.','Inggris',['You will rejoice to hear that no disaster has accompanied the commencement of an enterprise which you have regarded with such evil forebodings. I arrived here yesterday, and my first task is to assure my dear sister of my welfare and increasing confidence in the success of my undertaking.','I am already far north of London, and as I walk in the streets of Petersburgh, I feel a cold northern breeze play upon my cheeks, which braces my nerves and fills me with delight.'],'Surat 1'),
+B('art-of-war','The Art of War','The Art of War','Sun Tzu',null,112,'Filsafat','honey',0,'Risalah strategi kuno yang ringkas, dibaca hingga kini untuk perang, bisnis, dan kehidupan.','Inggris',['Sun Tzu said: The art of war is of vital importance to the State. It is a matter of life and death, a road either to safety or to ruin. Hence it is a subject of inquiry which can on no account be neglected.','The art of war, then, is governed by five constant factors, to be taken into account in one’s deliberations, when seeking to determine the conditions obtaining in the field.'],'Bab 1'),
+B('treasure-island','Treasure Island','Treasure Island','Robert Louis Stevenson',1883,292,'Petualangan','blue',0,'Petualangan bajak laut, peta harta karun, dan Long John Silver yang tak bisa ditebak.','Inggris',['Squire Trelawney, Dr. Livesey, and the rest of these gentlemen having asked me to write down the whole particulars about Treasure Island, from the beginning to the end, keeping nothing back but the bearings of the island, and that only because there is still treasure not yet lifted, I take up my pen in the year of grace 17__ and go back to the time when my father kept the Admiral Benbow inn.'],'Bagian Satu'),
+B('time-machine','The Time Machine','The Time Machine','H.G. Wells',1895,118,'Fiksi ilmiah','sage',0,'Seorang penemu menjelajah ke masa depan yang jauh dan menemukan masyarakat yang terbelah dua.','Inggris',['The Time Traveller (for so it will be convenient to speak of him) was expounding a recondite matter to us. His grey eyes shone and twinkled, and his usually pale face was flushed and animated.','The fire burned brightly, and the soft radiance of the incandescent lights in the lilies of silver caught the bubbles that flashed and passed in our glasses.'],'Bab 1'),
+B('alice','Alice’s Adventures in Wonderland','Alice in Wonderland','Lewis Carroll',1865,200,'Anak dan remaja','cream',0,'Alice jatuh ke lubang kelinci dan tiba di dunia yang aturannya serba terbalik.','Inggris',['Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, “and what is the use of a book,” thought Alice “without pictures or conversations?”','So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.'],'Bab 1'),
+B('crime-and-punishment','Crime and Punishment','Crime and Punishment','Fyodor Dostoevsky',1866,545,'Sastra klasik','brown',0,'Seorang mahasiswa miskin di St. Petersburg melakukan kejahatan dan digerogoti rasa bersalah.','Inggris',['On an exceptionally hot evening early in July a young man came out of the garret in which he lodged in S. Place and walked slowly, as though in hesitation, towards K. bridge.','He had successfully avoided meeting his landlady on the staircase. His garret was under the roof of a high, five-storied house and was more like a cupboard than a room.'],'Bagian Satu'),
+B('around-the-world','Around the World in Eighty Days','Around the World','Jules Verne',1872,220,'Petualangan','terra',0,'Phileas Fogg bertaruh bisa mengelilingi dunia dalam delapan puluh hari, bersama pelayannya yang setia.','Inggris',['Mr. Phileas Fogg lived, in 1872, at No. 7, Saville Row, Burlington Gardens, the house in which Sheridan died in 1814.','He was one of the most noticeable members of the Reform Club, though he seemed always to avoid attracting attention; an enigmatical personage, about whom little was known, except that he was a polished man of the world.'],'Bab 1'),
+B('dorian-gray','The Picture of Dorian Gray','Dorian Gray','Oscar Wilde',1890,254,'Sastra klasik','sage',0,'Seorang pemuda tampan menjaga kecantikannya, sementara lukisan dirinya yang menanggung dosanya.','Inggris',['The studio was filled with the rich odour of roses, and when the light summer wind stirred amidst the trees of the garden, there came through the open door the heavy scent of the lilac, or the more delicate perfume of the pink-flowering thorn.','In the centre of the room, clamped to an upright easel, stood the full-length portrait of a young man of extraordinary personal beauty.'],'Bab 1'),
+B('little-women','Little Women','Little Women','Louisa May Alcott',1868,449,'Anak dan remaja','honey',0,'Empat saudari March tumbuh dewasa di masa Perang Saudara Amerika.','Inggris',['“Christmas won’t be Christmas without any presents,” grumbled Jo, lying on the rug.','“It’s so dreadful to be poor!” sighed Meg, looking down at her old dress.','“I don’t think it’s fair for some girls to have plenty of pretty things, and other girls nothing at all,” added little Amy, with an injured sniff.'],'Bab 1'),
+B('walden','Walden','Walden','Henry David Thoreau',1854,352,'Filsafat','cream',0,'Catatan dua tahun hidup sederhana di tepi danau, tentang alam dan kemandirian.','Inggris',['When I wrote the following pages, or rather the bulk of them, I lived alone, in the woods, a mile from any neighbor, in a house which I had built myself, on the shore of Walden Pond, in Concord, Massachusetts, and earned my living by the labor of my hands only.'],'Ekonomi'),
+B('hound','The Hound of the Baskervilles','The Hound of the Baskervilles','Arthur Conan Doyle',1902,256,'Misteri','blue',0,'Holmes dan Watson menyelidiki kutukan anjing raksasa yang menghantui rawa Dartmoor.','Inggris',['Mr. Sherlock Holmes, who was usually very late in the mornings, save upon those not infrequent occasions when he was up all night, was seated at the breakfast table.','I stood upon the hearth-rug and picked up the stick which our visitor had left behind him the night before.'],'Bab 1')
+];
+var GENRES=['Semua','Sastra klasik','Misteri','Petualangan','Filsafat','Fiksi ilmiah','Horor','Romansa','Sejarah','Anak dan remaja'];
+var FEAT=['sherlock-holmes','dracula','meditations'];
+var TOP=['pride-and-prejudice','moby-dick','sherlock-holmes','dracula','max-havelaar'];
+var drafts=[
+ {title:'Great Expectations',author:'Charles Dickens',genre:'Sastra klasik',year:1861,pages:null,fmts:['EPUB'],st:'Draf'},
+ {title:'The Jungle Book',author:'Rudyard Kipling',genre:'',year:1894,pages:212,fmts:['EPUB','AZW3'],st:'Draf'},
+ {title:'Anna Karenina',author:'Leo Tolstoy',genre:'Sastra klasik',year:1878,pages:null,fmts:['EPUB'],st:'Draf'}
+];
+var reports=[
+ {id:1,kind:'Tautan rusak',book:'Dracula',desc:'Tombol unduh AZW3 mengarah ke halaman kosong.',when:'2 jam lalu',done:false},
+ {id:2,kind:'Berkas tidak bisa dibuka',book:'Moby-Dick',desc:'EPUB gagal dibuka di Kobo Clara, muncul pesan berkas rusak.',when:'Kemarin',done:false},
+ {id:3,kind:'Informasi keliru',book:'Max Havelaar',desc:'Tahun terbit tertulis 1860, seharusnya 1860 untuk edisi pertama, tapi halaman asli tampak berbeda.',when:'2 hari lalu',done:true},
+ {id:4,kind:'Hak cipta',book:'[Judul buku]',desc:'Pelapor menyebut buku ini belum berstatus domain publik di negaranya.',when:'4 hari lalu',done:false}
+];
+var REASONS=[
+ ['tautan','Tautan unduhan rusak','Tombol unduh tidak berfungsi atau mengarah ke halaman lain.'],
+ ['berkas','Berkas tidak bisa dibuka','Berkas terunduh tetapi gagal dibuka di perangkat baca.'],
+ ['info','Informasi buku keliru','Judul, penulis, genre, tahun, atau jumlah halaman tidak sesuai.'],
+ ['hakcipta','Masalah hak cipta','Buku ini seharusnya tidak dibagikan secara bebas.'],
+ ['konten','Konten tidak pantas','Ada isi yang melanggar aturan atau menyesatkan.'],
+ ['lain','Lainnya','Masalah lain yang tidak ada di daftar ini.']
+];
+function bySlug(id){return books.filter(function(b){return b.id===id})[0]}
+function yrOf(b){return b.year===null?0:b.year}
+function yrText(b){return b.year?String(b.year):'Klasik'}
+
+/* ================= STATE ================= */
+var S={q:'',genre:'Semua',year:'all',pages:'all',sort:'new',page:1,feat:0,
+  fmt:'epub',size:18,theme:'terang',offset:0,
+  lastBook:null,reportBook:'',reportDone:false,
+  up:{loaded:false,loading:false,title:'',author:'',year:'',genre:'',pages:'',tested:false,files:[]}};
+var PER=12, bannerTimer=null, route=null;
+
+
+/* ================= GITHUB (penyimpanan + admin) ================= */
+var CFG=(function(){
+  var c=window.PT_CONFIG||{},h=location.hostname,p=location.pathname.split('/').filter(Boolean),o=c.owner,r=c.repo;
+  if(!o&&/\.github\.io$/.test(h)){o=h.split('.')[0];r=(p[0]&&p[0].indexOf('.')<0)?p[0]:h}
+  return {owner:o||'',repo:r||'',branch:c.branch||'main',live:!!(o&&r)};
+})();
+var GH={
+  tok:function(){try{return localStorage.getItem('pt-gh')||''}catch(e){return ''}},
+  setTok:function(t){try{t?localStorage.setItem('pt-gh',t):localStorage.removeItem('pt-gh')}catch(e){}},
+  api:function(path,opt){
+    opt=opt||{};var h={'Accept':'application/vnd.github+json'},t=GH.tok();
+    if(t)h.Authorization='Bearer '+t;if(opt.body)h['Content-Type']='application/json';
+    return fetch('https://api.github.com/repos/'+CFG.owner+'/'+CFG.repo+path,{method:opt.method||'GET',headers:h,body:opt.body?JSON.stringify(opt.body):undefined}).then(function(r){
+      return r.json().catch(function(){return {}}).then(function(j){if(!r.ok){var e=new Error(j.message||('HTTP '+r.status));e.status=r.status;throw e}return j})});
+  },
+  u8:function(s){return btoa(unescape(encodeURIComponent(s)))},
+  fromB64:function(c){return decodeURIComponent(escape(atob(String(c).replace(/\s/g,''))))},
+  readList:function(){
+    return GH.api('/contents/data/books.json?ref='+encodeURIComponent(CFG.branch)).then(function(j){
+      if(j.content&&j.encoding==='base64')return {sha:j.sha,list:JSON.parse(GH.fromB64(j.content))};
+      return GH.api('/git/blobs/'+j.sha).then(function(b){return {sha:j.sha,list:JSON.parse(GH.fromB64(b.content))}});
+    },function(e){if(e.status===404)return {sha:null,list:[]};throw e});
+  },
+  writeList:function(list,sha,msg){
+    var body={message:msg,content:GH.u8(JSON.stringify(list,null,1)),branch:CFG.branch};if(sha)body.sha=sha;
+    return GH.api('/contents/data/books.json',{method:'PUT',body:body});
+  },
+  mutate:function(fn,msg){
+    function once(){return GH.readList().then(function(r){var out=fn(r.list);return GH.writeList(out,r.sha,msg).then(function(){return out})})}
+    return once().catch(function(e){if(e.status===409||e.status===422)return once();throw e});
+  },
+  putFile:function(path,file){
+    return new Promise(function(ok,no){var fr=new FileReader();fr.onload=function(){ok(String(fr.result).split(',')[1])};fr.onerror=no;fr.readAsDataURL(file)}).then(function(b64){
+      return GH.api('/contents/'+path.split('/').map(encodeURIComponent).join('/'),{method:'PUT',body:{message:'Unggah '+path,content:b64,branch:CFG.branch}})});
+  },
+  delFile:function(path){
+    var ep='/contents/'+path.split('/').map(encodeURIComponent).join('/');
+    return GH.api(ep+'?ref='+encodeURIComponent(CFG.branch)).then(function(j){return GH.api(ep,{method:'DELETE',body:{message:'Hapus '+path,sha:j.sha,branch:CFG.branch}})});
+  }
+};
+function serialize(b){return {id:b.id,title:b.title,cover:b.cover,author:b.author,year:b.year,pages:b.pages,genre:b.genre,col:b.col,isNew:!!b.isNew,blurb:b.blurb,lang:b.lang,chapter:b.chapter,paras:b.paras,pub:b.pub!==false,files:b.files||{}}}
+function hydrate(o){var b=B(o.id,o.title,o.cover||o.title,o.author,o.year==null?null:o.year,o.pages,o.genre,C[o.col]?o.col:'brown',o.isNew,o.blurb||'',o.lang,(o.paras&&o.paras.length)?o.paras:['Pratinjau belum tersedia untuk buku ini.'],o.chapter);b.pub=o.pub!==false;b.files=o.files||{};return b}
+window.__PT_EXPORT=function(){return JSON.stringify(books.map(serialize),null,1)};
+function fixLists(){
+  var pubs=books.filter(function(b){return b.pub});
+  FEAT=FEAT.filter(function(id){var b=bySlug(id);return b&&b.pub});
+  if(!FEAT.length)FEAT=pubs.slice(0,3).map(function(b){return b.id});
+  TOP=TOP.filter(function(id){var b=bySlug(id);return b&&b.pub});
+  pubs.forEach(function(b){if(TOP.length<5&&TOP.indexOf(b.id)<0)TOP.push(b.id)});
+}
+function loadBooks(){
+  if(!CFG.live)return Promise.resolve();
+  reports=[];drafts=[];
+  return fetch('data/books.json?v='+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(l){books=l.map(hydrate);fixLists()}).catch(function(){});
+}
+/* ---- baca EPUB di browser ---- */
+function zipIndex(buf){
+  var dv=new DataView(buf),i=buf.byteLength-22;
+  while(i>=0&&dv.getUint32(i,true)!==0x06054b50)i--;
+  if(i<0)throw new Error('zip');
+  var cnt=dv.getUint16(i+10,true),off=dv.getUint32(i+16,true),ents={},td=new TextDecoder();
+  for(var k=0;k<cnt;k++){
+    if(dv.getUint32(off,true)!==0x02014b50)break;
+    var nl=dv.getUint16(off+28,true),el=dv.getUint16(off+30,true),cl=dv.getUint16(off+32,true);
+    ents[td.decode(new Uint8Array(buf,off+46,nl))]={m:dv.getUint16(off+10,true),cs:dv.getUint32(off+20,true),lo:dv.getUint32(off+42,true)};
+    off+=46+nl+el+cl;
+  }
+  return ents;
+}
+function zipRead(buf,e){
+  var dv=new DataView(buf),st=e.lo+30+dv.getUint16(e.lo+26,true)+dv.getUint16(e.lo+28,true),data=new Uint8Array(buf,st,e.cs);
+  if(e.m===0)return Promise.resolve(new TextDecoder().decode(data));
+  var ds=new DecompressionStream('deflate-raw'),w=ds.writable.getWriter();w.write(data);w.close();
+  return new Response(ds.readable).arrayBuffer().then(function(b){return new TextDecoder().decode(b)});
+}
+function readEpub(file){
+  return file.arrayBuffer().then(function(buf){
+    var ents=zipIndex(buf),get=function(n){return ents[n]?zipRead(buf,ents[n]):Promise.reject(new Error('nofile'))};
+    var xml=function(t){return new DOMParser().parseFromString(t,'application/xml')};
+    return get('META-INF/container.xml').then(function(c){
+      var root=xml(c).querySelector('rootfile').getAttribute('full-path'),dir=root.indexOf('/')>-1?root.slice(0,root.lastIndexOf('/')+1):'';
+      return get(root).then(function(o){
+        var d=xml(o),q=function(sel){var e=d.getElementsByTagNameNS('*',sel)[0];return e?e.textContent.trim():''};
+        var man={};Array.prototype.forEach.call(d.getElementsByTagNameNS('*','item'),function(it){man[it.getAttribute('id')]=it.getAttribute('href')});
+        var spine=Array.prototype.map.call(d.getElementsByTagNameNS('*','itemref'),function(r){return man[r.getAttribute('idref')]}).filter(Boolean);
+        var yr=(q('date').match(/\d{4}/)||[''])[0],lm={en:'Inggris',id:'Indonesia',nl:'Belanda',de:'Jerman',fr:'Prancis',es:'Spanyol'},lg=q('language').slice(0,2).toLowerCase();
+        var out={title:q('title'),author:q('creator'),year:yr,lang:lm[lg]||'Inggris',paras:[],chapter:'Pembukaan'};
+        var i=0;
+        function next(){
+          if(i>=spine.length||out.paras.length>=6)return out;
+          var href=decodeURIComponent(spine[i++].split('#')[0]),full=(dir+href).replace(/[^\/]+\/\.\.\//g,'');
+          return get(full).catch(function(){return ''}).then(function(h){
+            if(!h)return next();
+            var doc=new DOMParser().parseFromString(h,'text/html');
+            if(/gutenberg/i.test(doc.body.textContent.slice(0,1500))&&/license|ebook/i.test(doc.body.textContent.slice(0,1500)))return next();
+            Array.prototype.forEach.call(doc.querySelectorAll('p'),function(p){
+              var t=p.textContent.replace(/\s+/g,' ').trim();
+              if(t.length>80&&out.paras.length<6)out.paras.push(t.length>700?t.slice(0,700).replace(/\s\S*$/,'')+'…':t);
+            });
+            return next();
+          });
+        }
+        return next();
+      });
+    });
+  });
+}
+
+/* ================= UTIL ================= */
+var toastT;
+function toast(msg){var t=$('#toast');t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},3200)}
+function check(c,sw){return '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7" stroke="'+(c||'var(--accent)')+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'}
+function countUp(el,to){if(reduced){el.textContent=to;return}var t0=performance.now(),d=900;(function f(t){var p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,4);el.textContent=Math.round(to*e);if(p<1)requestAnimationFrame(f)})(t0)}
+function vt(kind,update){
+  if(!HAS_VT){update();return Promise.resolve()}
+  root.classList.add('vt-'+kind);
+  var t;try{t=document.startViewTransition(function(){update()})}catch(e){update();root.classList.remove('vt-'+kind);return Promise.resolve()}
+  var done=function(){root.classList.remove('vt-'+kind)};
+  t.finished.then(done,done);
+  return t.finished.catch(function(){});
+}
+function introOnce(){if(window.__splashOn)return;root.classList.add('intro');setTimeout(function(){root.classList.remove('intro')},1800)}
+
+/* ================= ROUTER ================= */
+function parse(){
+  var h=decodeURIComponent((location.hash||'').replace(/^#/,''));
+  if(h.indexOf('buku-')===0){var b=bySlug(h.slice(5));if(b)return {name:'book',id:b.id}}
+  if(h==='lapor')return {name:'report'};
+  if(h==='admin-unggah')return {name:'aup'};
+  if(h==='admin-katalog')return {name:'acat'};
+  if(h==='admin-laporan')return {name:'arep'};
+  return {name:'home',anchor:(h==='populer'||h==='genre')?h:null};
+}
+function sameView(a,b){return a&&b&&a.name===b.name&&a.id===b.id}
+function go(){
+  var next=parse();
+  closeDrawer();
+  if(route&&sameView(route,next)){ if(next.anchor)scrollToAnchor(next.anchor); else window.scrollTo({top:0,behavior:reduced?'auto':'smooth'}); return }
+  var first=!route;
+  var prev=route; route=next;
+  if(first){paint(next);introOnce();return}
+  vt('nav',function(){paint(next);window.scrollTo({top:0,behavior:'instant'})}).then(function(){
+    if(next.anchor)scrollToAnchor(next.anchor);
+    var el=$('.cv[data-vt]');if(el){el.style.viewTransitionName='';el.removeAttribute('data-vt')}
+  });
+  if(!HAS_VT)introOnce();
+}
+function scrollToAnchor(a){var el=document.getElementById(a==='genre'?'genres':'populer');if(el){var y=el.getBoundingClientRect().top+window.scrollY-96;window.scrollTo({top:y,behavior:reduced?'auto':'smooth'})}}
+function paint(r){
+  clearInterval(bannerTimer);
+  document.body.classList.toggle('is-admin',r.name.charAt(0)==='a'&&r.name!=='arep'||r.name==='arep');
+  $$('.nav a').forEach(function(a){var k=a.getAttribute('data-nav');a.classList.toggle('on',(k==='home'&&r.name==='home'&&!r.anchor)||(k==='report'&&r.name==='report')||(k==='populer'&&r.anchor==='populer')||(k==='genre'&&r.anchor==='genre'))});
+  var v0=$('#view'),v=v0.cloneNode(false);v0.parentNode.replaceChild(v,v0);
+  if(r.name==='home'){v.innerHTML=homeHTML();wireHome();
+    if(S.lastBook){var cvEl=$('.card[data-id="'+S.lastBook+'"] .cv');if(cvEl){cvEl.style.viewTransitionName='cover';cvEl.setAttribute('data-vt','1')}}}
+  else if(r.name==='book'){var b=bySlug(r.id);S.lastBook=b.id;v.innerHTML=bookHTML(b);wireBook(b)}
+  else if(r.name==='report'){v.innerHTML=reportHTML();wireReport()}
+  else if(r.name==='aup'){v.innerHTML=adminShell('up',upHTML());wireGh();wireUp()}
+  else if(r.name==='acat'){v.innerHTML=adminShell('cat',catHTML());wireGh();wireCat()}
+  else if(r.name==='arep'){v.innerHTML=adminShell('rep',repHTML());wireGh();wireRep()}
+  document.title='Pustaka Ereader - '+({home:'Katalog',book:'Detail buku',report:'Lapor',aup:'Admin: Unggah',acat:'Admin: Katalog',arep:'Admin: Laporan'}[r.name]);
+}
+
+/* ================= HOME ================= */
+function cardHTML(b,i){
+  return '<a class="card rise" style="--i:'+(i%12)+'" href="#buku-'+b.id+'" data-id="'+b.id+'">'+
+  '<div class="cv" style="background:'+b.bg+';color:'+b.fg+'">'+(b.isNew?'<span class="badge">BARU</span>':'')+'<span class="ct">'+esc(b.cover)+'</span></div>'+
+  '<div class="ci"><b>'+esc(b.title)+'</b><span class="a">'+esc(b.author)+'</span><span class="m">'+yrText(b)+' &middot; '+b.pages+' hal &middot; '+esc(b.genre)+'</span><span class="ok">'+check('var(--accent)')+'E-reader compatible</span></div></a>';
+}
+function filtered(){
+  var q=S.q.trim().toLowerCase();
+  var r=books.filter(function(b){
+    if(!b.pub)return false;
+    if(S.genre!=='Semua'&&b.genre!==S.genre)return false;
+    var y=yrOf(b);
+    if(S.year==='lt1850'&&!(y<1850))return false;
+    if(S.year==='1850'&&!(y>=1850&&y<=1899))return false;
+    if(S.year==='1900'&&!(y>=1900))return false;
+    if(S.pages==='lt200'&&!(b.pages<200))return false;
+    if(S.pages==='mid'&&!(b.pages>=200&&b.pages<=400))return false;
+    if(S.pages==='gt400'&&!(b.pages>400))return false;
+    if(q&&(b.title+' '+b.author).toLowerCase().indexOf(q)===-1)return false;
+    return true});
+  if(S.sort==='year')r=r.slice().sort(function(a,b){return yrOf(a)-yrOf(b)});
+  if(S.sort==='title')r=r.slice().sort(function(a,b){return a.title.localeCompare(b.title)});
+  if(S.sort==='pages')r=r.slice().sort(function(a,b){return a.pages-b.pages});
+  return r;
+}
+function gridInner(list){
+  if(!list.length)return '<div class="empty"><b style="font-size:18px;color:var(--ink);display:block;margin-bottom:6px">Belum ada buku yang cocok</b>Coba ganti genre atau kosongkan filter.</div>';
+  var h='';
+  list.forEach(function(b,i){
+    h+=cardHTML(b,i);
+    if(i===5)h+='<div class="ad" style="aspect-ratio:2/3;border-radius:26px"><b>Iklan</b><span>Slot native</span></div>';
+  });
+  return h;
+}
+function pagerHTML(total){
+  var n=Math.max(1,Math.ceil(total/PER));if(n<2)return '';var h='';
+  for(var i=1;i<=n;i++)h+='<button type="button" data-p="'+i+'" class="'+(i===S.page?'on':'')+'" aria-label="Halaman '+i+'">'+i+'</button>';
+  return h;
+}
+function featHTML(){
+  var h='<div class="slides">';
+  FEAT.forEach(function(id,i){var b=bySlug(id);
+    h+='<article class="slide'+(i===S.feat?' on':(i<S.feat?' prev':''))+'" data-i="'+i+'" style="background-color:'+(b.fg==='#3B2F2A'?'#7D5E4D':b.bg)+';color:'+(b.fg==='#3B2F2A'?'#FBF1E6':b.fg)+'" aria-hidden="'+(i===S.feat?'false':'true')+'">'+
+    '<div class="tx"><span class="stag">Pilihan pekan ini</span><h2>'+esc(b.title)+'</h2><span class="meta">'+esc(b.author)+' &middot; '+yrText(b)+' &middot; '+b.pages+' hal &middot; '+esc(b.genre)+'</span><p>'+esc(b.blurb.split('. ')[0].replace(/\.$/,''))+'.</p>'+
+    '<div class="acts"><a class="btn" style="background:var(--paper);color:var(--ink)" href="#buku-'+b.id+'">Lihat buku</a></div></div>'+
+    '<div class="bk" style="background:'+b.bg+';color:'+b.fg+';border:2px solid rgba(255,255,255,.28)"><span style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase">'+esc(b.author)+'</span><span style="font-size:22px;font-weight:500;line-height:1.1">'+esc(b.cover)+'</span></div></article>';
+  });
+  h+='</div><div class="dots" role="tablist" aria-label="Pilihan unggulan">';
+  FEAT.forEach(function(id,i){h+='<button type="button" role="tab" data-f="'+i+'" class="'+(i===S.feat?'on':'')+'" aria-label="Tampilkan '+esc(bySlug(id).title)+'"></button>'});
+  return h+'</div>';
+}
+function homeHTML(){
+  var list=filtered();
+  var chips=GENRES.map(function(g){return '<button type="button" class="chip'+(g===S.genre?' on':'')+'" data-g="'+esc(g)+'" aria-pressed="'+(g===S.genre)+'">'+esc(g)+'</button>'}).join('');
+  function sel(id,label,opts,val){return '<label class="sel">'+label+'<select id="'+id+'">'+opts.map(function(o){return '<option value="'+o[0]+'"'+(o[0]===val?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select></label>'}
+  var top=TOP.map(function(id,i){var b=bySlug(id);return '<a href="#buku-'+b.id+'" data-id="'+b.id+'"><span class="n">'+(i+1)+'</span><span class="c" style="background:'+b.bg+'"></span><span class="t"><b>'+esc(b.title)+'</b><span>'+esc(b.author)+'</span></span></a>'}).join('');
+  var page=list.slice((S.page-1)*PER,S.page*PER);
+  return '<div class="wrap">'+
+  '<section class="banner rise" style="--i:0" aria-label="Buku pilihan" id="banner">'+featHTML()+'</section>'+
+  '<div class="genres rise" style="--i:1" id="genres" role="group" aria-label="Genre">'+chips+'</div>'+
+  '<div class="cols"><section aria-label="Katalog buku">'+
+   '<div class="bar rise" style="--i:2"><h2 class="cnt" id="cnt">'+cntText(list)+'</h2>'+
+   sel('fy','Tahun terbit',[['all','Semua'],['lt1850','Sebelum 1850'],['1850','1850 - 1899'],['1900','1900 ke atas']],S.year)+
+   sel('fp','Jumlah halaman',[['all','Semua'],['lt200','Kurang dari 200'],['mid','200 - 400'],['gt400','Lebih dari 400']],S.pages)+
+   sel('fs','Urutkan',[['new','Terbaru ditambahkan'],['year','Tahun terbit'],['title','Judul A-Z'],['pages','Jumlah halaman']],S.sort)+'</div>'+
+   '<div id="grid">'+gridInner(page)+'</div><div class="pager" id="pager">'+pagerHTML(list.length)+'</div></section>'+
+  '<aside class="side" aria-label="Samping"><section id="populer" class="rise" style="--i:3"><h2>Novel paling dicari</h2><div class="top">'+top+'</div></section>'+
+   '<div class="ad rise" style="--i:4;width:300px;max-width:100%;height:250px;align-self:center"><b>Iklan</b><span>300 x 250</span></div>'+
+   '<div class="ad tall rise" style="--i:5;width:300px;max-width:100%;height:600px;align-self:center"><b>Iklan</b><span>300 x 600</span></div></aside></div></div>';
+}
+function cntText(list){return (S.genre==='Semua'?'Semua buku':S.genre)+': '+list.length+' buku'}
+function wireHome(){
+  var v=$('#view');
+  v.addEventListener('click',function(e){
+    var g=e.target.closest('[data-g]');if(g){S.genre=g.getAttribute('data-g');S.page=1;updateGrid();return}
+    var p=e.target.closest('[data-p]');if(p){S.page=+p.getAttribute('data-p');updateGrid(true);return}
+    var f=e.target.closest('[data-f]');if(f){setFeat(+f.getAttribute('data-f'),true);return}
+    var c=e.target.closest('.card');if(c){var cv=$('.cv',c);cv.style.viewTransitionName='cover';cv.setAttribute('data-vt','1');S.lastBook=c.getAttribute('data-id');return}
+    var t=e.target.closest('.top a');if(t)S.lastBook=t.getAttribute('data-id');
+  });
+  ['fy','fp','fs'].forEach(function(id){$('#'+id).addEventListener('change',function(e){var k={fy:'year',fp:'pages',fs:'sort'}[id];S[k]=e.target.value;S.page=1;updateGrid()})});
+  var ban=$('#banner');
+  ban.addEventListener('mouseenter',function(){clearInterval(bannerTimer)});
+  ban.addEventListener('mouseleave',startBanner);
+  startBanner();
+}
+function startBanner(){clearInterval(bannerTimer);if(reduced)return;bannerTimer=setInterval(function(){setFeat((S.feat+1)%FEAT.length)},6500)}
+function setFeat(i,manual){
+  var slides=$$('#banner .slide'),dots=$$('#banner .dots button');if(!slides.length)return;
+  var old=S.feat;S.feat=i;
+  slides.forEach(function(s,k){s.classList.remove('on');s.classList.toggle('prev',k<i);s.setAttribute('aria-hidden',k===i?'false':'true')});
+  slides[i].classList.add('on');
+  dots.forEach(function(d,k){d.classList.toggle('on',k===i)});
+  if(manual)startBanner();
+}
+function updateGrid(scroll){
+  var cards=$$('#grid .card');
+  cards.forEach(function(c){c.style.viewTransitionName='card-'+c.getAttribute('data-id')});
+  var list=filtered();
+  var maxP=Math.max(1,Math.ceil(list.length/PER));if(S.page>maxP)S.page=maxP;
+  var page=list.slice((S.page-1)*PER,S.page*PER);
+  var upd=function(){
+    $('#grid').innerHTML=gridInner(page);
+    $('#cnt').textContent=cntText(list);
+    $('#pager').innerHTML=pagerHTML(list.length);
+    $$('#genres .chip').forEach(function(c){var on=c.getAttribute('data-g')===S.genre;c.classList.toggle('on',on);c.setAttribute('aria-pressed',on)});
+    $$('#grid .card').forEach(function(c){c.style.viewTransitionName='card-'+c.getAttribute('data-id')});
+    $$('#grid .rise').forEach(function(c){c.classList.remove('rise')});
+    if(scroll){var y=$('#grid').getBoundingClientRect().top+window.scrollY-170;if(window.scrollY>y)window.scrollTo({top:y,behavior:'instant'})}
+  };
+  var clear=function(){$$('#grid .card').forEach(function(c){c.style.viewTransitionName=''})};
+  if(!HAS_VT){upd();clear();$$('#grid .card').forEach(function(c,i){c.animate([{opacity:0,transform:'translateY(16px)'},{opacity:1,transform:'none'}],{duration:500,delay:i*30,easing:'cubic-bezier(.22,1,.36,1)',fill:'backwards'})});return}
+  vt('grid',upd).then(clear);
+}
+
+/* ================= DETAIL + READER ================= */
+function paginate(b,size){
+  var words=[];
+  b.paras.forEach(function(p,pi){p.split(/\s+/).forEach(function(w,wi){words.push({w:w,para:wi===0&&pi>0})})});
+  var cpl=Math.max(8,Math.floor(252/(size*0.54))),maxLines=Math.max(4,Math.floor(280/(size*1.6)));
+  var pages=[],start=0,lines=1,len=0;
+  words.forEach(function(wd,i){
+    var nl=false;
+    if(wd.para&&len>0)nl=true;else if(len>0&&len+1+wd.w.length>cpl)nl=true;
+    var nx=lines+(nl?1:0);
+    if(nl&&nx>maxLines){pages.push({start:start,end:i});start=i;lines=1;len=wd.w.length;return}
+    if(nl){lines=nx;len=wd.w.length}else{len=len+(len>0?1:0)+wd.w.length}
+  });
+  pages.push({start:start,end:words.length});
+  return {words:words,pages:pages};
+}
+var THEMES={terang:{l:'Terang',bg:'#FFF9F2',fg:'#3B2F2A',line:'#EBD9C8',muted:'#7A6A60'},sepia:{l:'Sepia',bg:'#EBDDBF',fg:'#3B2F1E',line:'#C9B791',muted:'#5C4C33'},gelap:{l:'Gelap',bg:'#1B1614',fg:'#F0E0D0',line:'#5A4A42',muted:'#A58B76'}};
+function fmtOpts(b){
+  if(!CFG.live)return '<option value="epub">EPUB</option><option value="azw3">AZW3</option><option value="pdf">PDF</option>';
+  var k=Object.keys(b.files||{});if(!k.length)return '<option value="epub">EPUB</option>';
+  return k.map(function(x){return '<option value="'+x+'">'+x.toUpperCase()+'</option>'}).join('');
+}
+function bookHTML(b){
+  var rel=books.filter(function(x){return x.id!==b.id&&x.pub}).sort(function(a,c){return (c.genre===b.genre)-(a.genre===b.genre)}).slice(0,4);
+  S.offset=0;
+  var themeBtns=['terang','sepia','gelap'].map(function(t){return '<button type="button" class="chip" data-t="'+t+'" style="min-height:48px">'+THEMES[t].l+'</button>'}).join('');
+  var tiles=[['Penulis',b.author],['Genre',b.genre],['Tahun terbit',yrText(b)],['Halaman buku asli',b.pages],['Bahasa',b.lang],['Lisensi','Domain publik']].map(function(t){return '<div class="tile"><dt>'+t[0]+'</dt><dd>'+esc(t[1])+'</dd></div>'}).join('');
+  return '<div class="wrap"><nav class="crumb rise" style="--i:0" aria-label="Jejak"><a href="#beranda">Beranda</a>/<a href="#beranda" data-genre="'+esc(b.genre)+'">'+esc(b.genre)+'</a>/<b>'+esc(b.title)+'</b></nav>'+
+  '<section class="dtl"><div class="dcover" style="background:'+b.bg+';color:'+b.fg+'"><span class="au">'+esc(b.author)+'</span><h2>'+esc(b.cover)+'</h2><i class="ln"></i></div>'+
+  '<div class="dinfo"><div class="tags rise" style="--i:1"><span class="tag">'+esc(b.genre)+'</span><span class="tag">Klasik</span><span class="tag f">'+check('var(--paper)')+'&nbsp;E-reader compatible</span></div>'+
+  '<h1 class="rise" style="--i:2">'+esc(b.title)+'</h1><p class="by rise" style="--i:3">'+esc(b.author)+'</p><p class="ds rise" style="--i:4">'+esc(b.blurb)+'</p>'+
+  '<div class="dl-box rise" style="--i:5"><p style="font-size:15px">Buku ini tersedia dalam beberapa format berkas. Pilih yang sesuai dengan perangkatmu.</p><div class="dl-row"><label class="sel">Berkas<select id="fmt">'+fmtOpts(b)+'</select></label><a href="#" class="btn" id="dl">'+dlIcon()+'<span id="dlt">Unduh EPUB</span></a></div></div>'+
+  '<dl class="tiles rise" style="--i:6;margin:0">'+tiles+'</dl>'+
+  '<a href="#lapor" class="lnk rise" style="--i:7" id="rpt">'+'<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 14V2m0 1h9l-2 3 2 3H3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Laporkan buku ini</a></div></section></div>'+
+  '<section class="rd" id="reader"><div class="wrap in"><div><h2>Coba baca dulu di layar e-reader</h2><p class="lead">Pratinjau memperlihatkan halaman awal buku ini. Ubah ukuran huruf dan tema untuk melihat teks tersusun ulang seperti di e-reader asli.</p>'+
+  '<div class="ctl"><div class="row"><span class="lb">Huruf</span><button type="button" class="sq" id="sm" aria-label="Perkecil huruf" style="font-size:15px">A</button><button type="button" class="sq" id="lg" aria-label="Perbesar huruf" style="font-size:22px">A</button><span id="szl" style="font-size:14px;color:var(--ink2)"></span></div>'+
+  '<div class="row"><span class="lb">Tema</span>'+themeBtns+'</div><p class="note" id="endnote" style="display:none">Ini akhir pratinjau. Unduh bukunya untuk membaca selengkapnya.</p></div></div>'+
+  '<div><div class="dev" id="dev" tabindex="0" aria-label="Pratinjau e-reader. Gunakan tombol panah untuk berpindah halaman."><div class="scr" id="scr"><div class="hd"><span id="hbk"></span><span id="hch"></span></div><div class="tx" id="ptx" aria-live="polite"></div><div class="ft"><div class="pb"><i id="pbi"></i></div><div style="display:flex;justify-content:space-between"><span id="pno"></span><span id="ppc"></span></div></div>'+
+  '<button class="zone l" id="zl" aria-label="Halaman sebelumnya" type="button"></button><button class="zone r" id="zr" aria-label="Halaman berikutnya" type="button"></button></div></div>'+
+  '<div class="nxt"><button type="button" class="btn ghost" id="pv" style="background:var(--panel)">Sebelumnya</button><button type="button" class="btn" id="nx">Berikutnya</button></div></div></div></section>'+
+  '<div class="wrap" style="padding-top:34px"><div class="ad" style="width:min(728px,100%);height:90px;margin:0 auto"><b>Iklan</b><span>728 x 90</span></div></div>'+
+  '<section class="wrap rel"><h2>Bacaan serupa</h2><div id="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:26px 22px">'+rel.map(function(x,i){return cardHTML(x,i)}).join('')+'</div></section>';
+}
+function dlIcon(){return '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v10m0 0l-4-4m4 4l4-4M4 17h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'}
+function wireBook(b){
+  var v=$('#view');
+  v.addEventListener('click',function(e){
+    var c=e.target.closest('.card');if(c){var cv=$('.cv',c);var dc=$('.dcover');if(dc)dc.style.viewTransitionName='none';cv.style.viewTransitionName='cover';return}
+    var g=e.target.closest('[data-genre]');if(g){S.genre=g.getAttribute('data-genre');S.page=1}
+  });
+  $('#rpt').addEventListener('click',function(){S.reportBook=b.title;S.reportDone=false});
+  var fmt=$('#fmt');if(CFG.live&&!fmt.querySelector('option[value="'+S.fmt+'"]')&&fmt.options.length)S.fmt=fmt.options[0].value;fmt.value=S.fmt;$('#dlt').textContent='Unduh '+S.fmt.toUpperCase();
+  fmt.addEventListener('change',function(){S.fmt=fmt.value;var t=$('#dlt');t.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-8px)'}],{duration:140,fill:'forwards'}).onfinish=function(){t.textContent='Unduh '+S.fmt.toUpperCase();t.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:260,easing:'cubic-bezier(.22,1,.36,1)'})}});
+  $('#dl').addEventListener('click',function(e){e.preventDefault();
+    if(!CFG.live){toast('Ini demo desain: unduhan belum aktif.');return}
+    var u=(b.files||{})[S.fmt];if(!u){toast('Berkas buku ini belum diunggah.');return}
+    var a=document.createElement('a');a.href=u;a.download=u.split('/').pop();document.body.appendChild(a);a.click();a.remove();});
+  var cache={};function pg(){var k=S.size;if(!cache[k])cache[k]=paginate(b,k);return cache[k]}
+  function curIdx(P){var c=0;P.pages.forEach(function(p,i){if(p.start<=S.offset)c=i});return c}
+  function draw(dir,instant){
+    var P=pg(),cur=curIdx(P),pgn=P.pages[cur],text='';
+    for(var i=pgn.start;i<pgn.end;i++){if(i>pgn.start)text+=P.words[i].para?'\n':' ';text+=P.words[i].w}
+    var T=THEMES[S.theme],scr=$('#scr'),tx=$('#ptx');
+    scr.style.background=T.bg;scr.style.color=T.fg;
+    $('.hd',scr).style.color=T.muted;$('.hd',scr).style.borderColor=T.line;$('.ft',scr).style.color=T.muted;$('.pb',scr).style.background=T.line;$('#pbi').style.background=T.fg;
+    tx.style.fontSize=S.size+'px';
+    $('#hbk').textContent=b.cover;$('#hch').textContent=b.chapter;
+    var apply=function(){tx.textContent=text;$('#pno').textContent='Hal. '+(cur+1)+' / '+P.pages.length;$('#ppc').textContent=Math.round((cur+1)/P.pages.length*100)+'%';$('#pbi').style.width=((cur+1)/P.pages.length*100)+'%'};
+    if(instant||reduced||!dir){apply()}else{
+      var a=tx.animate([{opacity:1,transform:'translateX(0)'},{opacity:0,transform:'translateX('+(-dir*26)+'px)'}],{duration:170,easing:'ease-in',fill:'forwards'});
+      a.onfinish=function(){apply();tx.animate([{opacity:0,transform:'translateX('+(dir*26)+'px)'},{opacity:1,transform:'none'}],{duration:440,easing:'cubic-bezier(.22,1,.36,1)'});a.cancel()}
+    }
+    $('#pv').style.opacity=cur===0?.45:1;$('#nx').style.opacity=cur===P.pages.length-1?.45:1;
+    $('#endnote').style.display=cur===P.pages.length-1?'block':'none';
+    if(cur===P.pages.length-1)$('#endnote').animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:500,easing:'cubic-bezier(.22,1,.36,1)'});
+    $('#szl').textContent=S.size+' px';
+    $$('[data-t]').forEach(function(x){var on=x.getAttribute('data-t')===S.theme;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on)});
+  }
+  function step(d){var P=pg(),cur=curIdx(P),n=cur+d;if(n<0||n>=P.pages.length)return;S.offset=P.pages[n].start;draw(d)}
+  $('#pv').onclick=function(){step(-1)};$('#nx').onclick=function(){step(1)};$('#zl').onclick=function(){step(-1)};$('#zr').onclick=function(){step(1)};
+  $('#sm').onclick=function(){S.size=Math.max(14,S.size-2);draw(1)};$('#lg').onclick=function(){S.size=Math.min(26,S.size+2);draw(-1)};
+  $$('[data-t]').forEach(function(x){x.onclick=function(){S.theme=x.getAttribute('data-t');draw(0,true)}});
+  $('#dev').addEventListener('keydown',function(e){if(e.key==='ArrowRight'){step(1);e.preventDefault()}if(e.key==='ArrowLeft'){step(-1);e.preventDefault()}});
+  var sx=null,scr=$('#scr');
+  scr.addEventListener('pointerdown',function(e){sx=e.clientX});
+  scr.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>44){step(dx<0?1:-1);e.preventDefault()}});
+  draw(0,true);
+}
+
+/* ================= LAPOR ================= */
+function reportHTML(){
+  var opts=books.map(function(b){return '<option value="'+esc(b.title)+'">'}).join('');
+  if(S.reportDone)return '<div class="narrow"><div class="ok-box card-box"><svg width="76" height="76" viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="28" stroke="#6E8B6A" stroke-width="3.5" stroke-linecap="round" transform="rotate(-90 32 32)"/><path d="M19 33l9 9 17-20" stroke="#6E8B6A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><h1 style="font-size:34px;margin:0">Laporan terkirim</h1><p style="color:var(--muted);max-width:420px">Terima kasih sudah membantu. Pengelola akan memeriksa laporanmu secepatnya.</p><div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center"><a class="btn" href="#beranda">Kembali ke katalog</a><button class="btn ghost" id="again" type="button">Kirim laporan lain</button></div></div></div>';
+  return '<div class="narrow"><h1 class="rise" style="--i:0">Lapor masalah</h1><p class="rise" style="--i:1;color:var(--muted);font-size:18px">Temukan tautan rusak, berkas yang tidak bisa dibuka, atau informasi yang keliru? Beri tahu kami.</p>'+
+  '<form class="frm" id="rf" novalidate><fieldset style="border:0;padding:0;margin:0"><legend style="font-weight:600;margin-top:22px">Apa masalahnya?</legend><div class="rs">'+
+  REASONS.map(function(r,i){return '<label class="rise" style="--i:'+(i+2)+'"><input type="radio" name="r" value="'+r[0]+'"'+(i===0?' checked':'')+'><span><b style="font-weight:600">'+r[1]+'</b><small>'+r[2]+'</small></span></label>'}).join('')+'</div></fieldset>'+
+  '<label class="l">Buku yang dilaporkan<input class="field" id="rb" list="bl" value="'+esc(S.reportBook)+'" placeholder="Ketik judul buku"><datalist id="bl">'+opts+'</datalist></label>'+
+  '<label class="l">Ceritakan lebih jelas <span>Wajib diisi</span><textarea class="field" id="rd" placeholder="Contoh: tombol unduh AZW3 mengarah ke halaman kosong."></textarea></label>'+
+  (CFG.live?'<p style="color:var(--muted);font-size:15px;margin-top:4px">Laporan dikirim lewat GitHub, jadi kamu perlu akun GitHub. Isi laporan bersifat publik, jadi jangan menulis email atau data pribadi.</p>':'<label class="l">Email <span>Opsional, hanya jika kamu ingin dikabari</span><input class="field" id="re" type="email" placeholder="nama@email.com"></label>')+
+  '<div><button class="btn" type="submit">Kirim laporan</button></div><p id="rerr" style="color:var(--err);font-weight:500;min-height:22px"></p></form></div>';
+}
+function wireReport(){
+  var a=$('#again');if(a){a.onclick=function(){S.reportDone=false;S.reportBook='';vt('nav',function(){$('#view').innerHTML=reportHTML();wireReport()})};return}
+  $('#rf').addEventListener('submit',function(e){
+    e.preventDefault();
+    var d=$('#rd').value.trim();
+    if(!d){$('#rerr').textContent='Tolong isi penjelasan singkat dulu.';$('#rd').focus();$('#rd').animate([{transform:'translateX(0)'},{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'translateX(-5px)'},{transform:'none'}],{duration:380});return}
+    var r=$('input[name=r]:checked').value,k=REASONS.filter(function(x){return x[0]===r})[0][1];
+    var bk=$('#rb').value.trim()||'(tidak disebut)';
+    if(CFG.live){
+      var url='https://github.com/'+CFG.owner+'/'+CFG.repo+'/issues/new?labels=laporan&title='+encodeURIComponent('[Laporan] '+k+': '+bk)+'&body='+encodeURIComponent('Jenis: '+k+'\nBuku: '+bk+'\n\n'+d);
+      window.open(url,'_blank','noopener');
+    }else reports.unshift({id:Date.now(),kind:k,book:bk,desc:d,when:'Baru saja',done:false});
+    S.reportDone=true;vt('nav',function(){$('#view').innerHTML=reportHTML();wireReport();window.scrollTo({top:0,behavior:'instant'})});
+  });
+}
+
+/* ================= ADMIN ================= */
+function ghBar(){
+  if(!CFG.live)return '';
+  var t=GH.tok(),repo=esc(CFG.owner+'/'+CFG.repo);
+  return '<div class="card-box ghb" id="ghb" style="padding:18px 22px;margin-bottom:22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center">'+
+    (t?'<span class="pill ok">Tersambung</span><span style="color:var(--ink2);font-size:15px;flex:1;min-width:180px">Perubahan disimpan ke <b>'+repo+'</b>. Situs diperbarui sekitar satu menit setelah disimpan.</span><button type="button" class="btn ghost" id="ghx" style="min-height:44px">Putuskan</button>'
+    :'<span class="pill dr">Belum tersambung</span><span style="color:var(--ink2);font-size:15px;flex:1;min-width:200px">Tempel token GitHub untuk mengunggah dan mengubah buku di <b>'+repo+'</b>. Token hanya disimpan di browser ini.</span><input class="field" id="ght" type="password" autocomplete="off" placeholder="github_pat_..." style="max-width:260px"><button type="button" class="btn" id="ghs" style="min-height:44px">Sambungkan</button>')+'</div>';
+}
+function wireGh(){
+  var s=$('#ghs'),x=$('#ghx');
+  if(s)s.onclick=function(){
+    var v=$('#ght').value.trim();if(!v){toast('Tempel token dulu.');return}
+    GH.setTok(v);s.disabled=true;s.textContent='Memeriksa...';
+    GH.api('').then(function(j){
+      if(j.permissions&&!j.permissions.push){GH.setTok('');throw new Error('Token tidak punya izin menulis ke repo ini.')}
+      toast('Tersambung ke GitHub.');vt('grid',function(){$('#ghb').outerHTML=ghBar();wireGh()});
+    }).catch(function(e){GH.setTok('');s.disabled=false;s.textContent='Sambungkan';toast('Gagal: '+(e.status===401?'token ditolak.':e.status===404?'repo tidak ditemukan atau token tidak punya akses.':e.message))});
+  };
+  if(x)x.onclick=function(){GH.setTok('');vt('grid',function(){$('#ghb').outerHTML=ghBar();wireGh()});toast('Token dihapus dari browser ini.')};
+}
+function needTok(){if(!CFG.live)return false;if(!GH.tok()){toast('Sambungkan token GitHub dulu di bagian atas halaman.');return true}return false}
+function adminShell(active,content){
+  content=ghBar()+content;
+  var ic={up:'<path d="M10 14V4m0 0L6 8m4-4l4 4M3 16h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',cat:'<path d="M4 4h12v12H4zM4 8h12M8 8v8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',rep:'<path d="M5 17V3m0 1h9l-2 3 2 3H5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'};
+  function a(k,h,t){return '<a href="#'+h+'" class="'+(active===k?'on':'')+'"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">'+ic[k]+'</svg>'+t+'</a>'}
+  var open=reports.filter(function(r){return !r.done}).length;
+  return '<div class="adm"><aside class="asd"><a class="brand" href="#admin-katalog"><svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true"><rect x="5" y="2.5" width="20" height="25" rx="5" stroke="var(--ink)" stroke-width="2"/><path d="M10 10h10M10 15h10M10 20h6" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/></svg><span style="display:flex;flex-direction:column;line-height:1.15"><b>Pustaka Ereader</b><span>Admin</span></span></a>'+
+  '<nav aria-label="Menu admin">'+a('cat','admin-katalog','Katalog')+a('up','admin-unggah','Unggah buku')+a('rep','admin-laporan','Laporan'+(open?' ('+open+')':''))+'</nav><button type="button" class="modeb" data-mode="1" style="margin-top:auto"><span class="mode" style="width:36px;height:36px;border:0;background:rgba(255,249,242,.55);pointer-events:none"><svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 119.5 4a7 7 0 0010.5 10.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Mode gelap / terang</button><a class="back" href="#beranda" style="margin-top:0">Lihat situs &rarr;</a></aside><main class="amain">'+content+'</main></div>';
+}
+function allRows(){
+  if(CFG.live)return books.map(function(b){return {title:b.title,author:b.author,genre:b.genre,year:b.year,pages:b.pages,fmts:Object.keys(b.files||{}).map(function(x){return x.toUpperCase()}),st:b.pub?'Terbit':'Draf',id:b.id}});
+  var pubs=books.filter(function(b){return b.pub}).map(function(b){return {title:b.title,author:b.author,genre:b.genre,year:b.year,pages:b.pages,fmts:['EPUB','AZW3','PDF'],st:'Terbit',id:b.id}});
+  return pubs.concat(drafts);
+}
+function missing(r){return (r.genre?0:1)+(r.pages?0:1)+(r.year||r.year===null?0:1)}
+function catHTML(){
+  var rows=allRows(),pub=rows.filter(function(r){return r.st==='Terbit'}).length,dr=rows.length-pub,inc=rows.filter(function(r){return r.st==='Draf'&&(!r.pages||!r.genre)}).length;
+  return '<div class="ahd rise" style="--i:0"><div><h1>Katalog buku</h1><p style="color:var(--ink2);margin-top:6px">Kelola buku yang tampil di situs, dan lengkapi yang masih draf.</p></div><a class="btn" href="#admin-unggah">+ Unggah buku</a></div>'+
+  '<div class="stats rise" style="--i:1"><div class="stat" style="background:var(--okbg)"><b data-n="'+pub+'">0</b><span>Terbit</span></div><div class="stat" style="background:var(--drbg)"><b data-n="'+dr+'">0</b><span>Draf</span></div><div class="stat" style="background:var(--badbg)"><b data-n="'+inc+'">0</b><span>Data belum lengkap</span></div></div>'+
+  '<div class="rise" style="--i:2;display:flex;flex-wrap:wrap;gap:12px;align-items:center"><label class="search" style="margin:0;width:min(340px,100%)"><span class="sr">Cari buku</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="var(--muted)" stroke-width="2"/><path d="M14 14l4 4" stroke="var(--muted)" stroke-width="2" stroke-linecap="round"/></svg><input id="cq" type="search" placeholder="Cari judul atau penulis"></label>'+
+  ['Semua','Terbit','Draf'].map(function(s,i){return '<button type="button" class="chip'+(i===0?' on':'')+'" data-s="'+s+'">'+s+'</button>'}).join('')+'</div>'+
+  '<div class="tbl scroll-x rise" style="--i:3"><table><thead><tr><th>Buku</th><th>Genre</th><th>Tahun</th><th>Halaman</th><th>Format</th><th>Data</th><th>Status</th><th></th></tr></thead><tbody id="tb"></tbody></table></div>';
+}
+function rowsHTML(f,q){
+  return allRows().filter(function(r){return (f==='Semua'||r.st===f)&&(!q||(r.title+' '+r.author).toLowerCase().indexOf(q)>-1)}).map(function(r){
+    var ok=5-missing(r)-(0);
+    return '<tr><td><b style="font-weight:600">'+esc(r.title)+'</b><br><span style="color:var(--muted);font-size:13px">'+esc(r.author)+'</span></td><td>'+(r.genre?esc(r.genre):'<span class="pill bad">Kosong</span>')+'</td><td>'+(r.year||'Klasik')+'</td><td>'+(r.pages||'<span class="pill bad">Kosong</span>')+'</td><td>'+r.fmts.map(function(x){return '<span class="fmt">'+x+'</span>'}).join('')+'</td><td>'+(ok)+'/5</td><td><span class="pill '+(r.st==='Terbit'?'ok':'dr')+'">'+r.st+'</span></td><td>'+(CFG.live?'<button class="chip" style="min-height:36px" data-tg="'+esc(r.id)+'">'+(r.st==='Terbit'?'Jadikan draf':'Terbitkan')+'</button> <button class="chip" style="min-height:36px" data-del="'+esc(r.id)+'">Hapus</button>':'<button class="chip" style="min-height:36px" data-edit="1">Ubah</button>')+'</td></tr>';
+  }).join('')||'<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:36px">Tidak ada buku yang cocok.</td></tr>';
+}
+function wireCat(){
+  var f='Semua',q='';
+  var tb=$('#tb');tb.innerHTML=rowsHTML(f,q);
+  $$('[data-n]').forEach(function(el){countUp(el,+el.getAttribute('data-n'))});
+  function refresh(){var rows=$$('tr',tb);var run=function(){tb.innerHTML=rowsHTML(f,q)};
+    if(HAS_VT){vt('grid',run)}else run()}
+  $$('[data-s]').forEach(function(c){c.onclick=function(){f=c.getAttribute('data-s');$$('[data-s]').forEach(function(x){x.classList.toggle('on',x===c)});refresh()}});
+  $('#cq').oninput=function(e){q=e.target.value.trim().toLowerCase();refresh()};
+  tb.addEventListener('click',function(e){
+    if(e.target.closest('[data-edit]'))toast('Halaman ubah belum dibuat di demo ini.');
+    var tg=e.target.closest('[data-tg]'),dl=e.target.closest('[data-del]');
+    if(tg){if(needTok())return;var id=tg.getAttribute('data-tg');tg.disabled=true;
+      GH.mutate(function(l){l.forEach(function(o){if(o.id===id)o.pub=!(o.pub!==false)});return l},'Ubah status '+id).then(function(l){books=l.map(hydrate);fixLists();vt('grid',function(){tb.innerHTML=rowsHTML(f,q)});toast('Status diubah.')}).catch(function(er){tg.disabled=false;toast('Gagal menyimpan: '+er.message)})}
+    if(dl){if(needTok())return;var id2=dl.getAttribute('data-del');
+      if(dl.getAttribute('data-sure')!=='1'){dl.setAttribute('data-sure','1');dl.textContent='Yakin hapus?';setTimeout(function(){if(dl.isConnected){dl.removeAttribute('data-sure');dl.textContent='Hapus'}},3500);return}
+      var old=bySlug(id2),paths=old?Object.keys(old.files||{}).map(function(k){return old.files[k]}):[];dl.disabled=true;
+      GH.mutate(function(l){return l.filter(function(o){return o.id!==id2})},'Hapus '+id2).then(function(l){books=l.map(hydrate);fixLists();vt('grid',function(){tb.innerHTML=rowsHTML(f,q)});toast('Buku dihapus.');paths.reduce(function(p,x){return p.then(function(){return GH.delFile(x)}).catch(function(){})},Promise.resolve())}).catch(function(er){dl.disabled=false;toast('Gagal menghapus: '+er.message)})}
+  });
+}
+function repHTML(){return '<div class="ahd rise" style="--i:0"><div><h1>Laporan pengunjung</h1><p style="color:var(--ink2);margin-top:6px">Tindak laporan dari pengunjung, lalu tandai selesai.</p></div></div><div class="rise" style="--i:1;display:flex;gap:10px"><button type="button" class="chip on" data-r="all">Semua</button><button type="button" class="chip" data-r="open">Belum ditangani</button></div><div id="rl"></div>'}
+function repList(f){
+  var l=reports.filter(function(r){return f==='all'||!r.done});
+  if(!l.length)return '<div class="empty">Semua laporan sudah ditangani. Mantap.</div>';
+  return l.map(function(r,i){return '<article class="card-box rp'+(r.done?' done':'')+'" data-id="'+r.id+'" style="view-transition-name:rp-'+r.id+'"><div class="top2"><span class="pill '+(r.done?'ok':'dr')+'">'+(r.done?'Selesai':'Baru')+'</span><b style="font-weight:600">'+esc(r.kind)+'</b><span style="color:var(--muted);font-size:13px;margin-left:auto">'+esc(r.when)+'</span></div><p style="color:var(--muted);font-size:14px">Buku: <b style="color:var(--ink);font-weight:600">'+esc(r.book)+'</b></p><p>'+esc(r.desc)+'</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px"><button class="btn ghost" style="min-height:42px;padding:0 18px" data-tg="'+r.id+'">'+(r.done?'Buka kembali':'Tandai selesai')+'</button><a class="btn ghost" style="min-height:42px;padding:0 18px" href="#beranda">Buka buku</a></div></article>'}).join('');
+}
+function ago(iso){var m=Math.max(1,Math.round((Date.now()-new Date(iso))/60000));if(m<60)return m+' menit lalu';var h=Math.round(m/60);if(h<24)return h+' jam lalu';var d=Math.round(h/24);return d+' hari lalu'}
+function loadReports(){
+  return GH.api('/issues?state=all&per_page=50').then(function(l){
+    reports=l.filter(function(i){return !i.pull_request&&/^\[Laporan\]/.test(i.title)}).map(function(i){
+      var m=i.title.replace(/^\[Laporan\]\s*/,'').split(': '),body=String(i.body||'').split('\n\n').slice(1).join('\n\n')||String(i.body||'');
+      return {id:i.number,kind:m[0]||'Laporan',book:m.slice(1).join(': ')||'(tidak disebut)',desc:body,when:ago(i.created_at),done:i.state==='closed'}});
+  });
+}
+function wireRep(){
+  var f='all',box=$('#rl');
+  box.innerHTML=repList(f);
+  if(CFG.live){box.innerHTML='<div class="empty">Memuat laporan...</div>';loadReports().then(function(){rerender()}).catch(function(e){box.innerHTML='<div class="empty">Gagal memuat laporan: '+esc(e.message)+'</div>'})}
+  function rerender(){var run=function(){box.innerHTML=repList(f);var nv=$('.asd nav a.on');if(nv){var open=reports.filter(function(r){return !r.done}).length;nv.lastChild.textContent='Laporan'+(open?' ('+open+')':'')}};
+    if(HAS_VT){$$('#rl .rp').forEach(function(e){e.style.viewTransitionName='rp-'+e.getAttribute('data-id')});vt('grid',run)}else run()}
+  $$('[data-r]').forEach(function(c){c.onclick=function(){f=c.getAttribute('data-r');$$('[data-r]').forEach(function(x){x.classList.toggle('on',x===c)});rerender()}});
+  box.addEventListener('click',function(e){var t=e.target.closest('[data-tg]');if(!t)return;var r=reports.filter(function(x){return String(x.id)===t.getAttribute('data-tg')})[0];
+    if(CFG.live){if(needTok())return;t.disabled=true;GH.api('/issues/'+r.id,{method:'PATCH',body:{state:r.done?'open':'closed'}}).then(function(){r.done=!r.done;rerender()}).catch(function(er){t.disabled=false;toast('Gagal: '+er.message)});return}
+    r.done=!r.done;rerender()});
+}
+
+/* ----- Unggah ----- */
+var SAMPLE={title:'The Wonderful Wizard of Oz',author:'L. Frank Baum',year:'1900',files:['wizard-of-oz.epub','wizard-of-oz.azw3']};
+var PAL=['brown','terra','cream','sage','honey','blue'];
+function upDone(){var u=S.up;return {t:!!u.title,a:!!u.author,g:!!u.genre,y:!!u.year,p:!!(+u.pages>0)}}
+function upHTML(){
+  var u=S.up;
+  var gopts='<option value="">Pilih genre</option>'+GENRES.slice(1).map(function(g){return '<option'+(u.genre===g?' selected':'')+'>'+g+'</option>'}).join('');
+  return '<div class="ahd rise" style="--i:0"><div><h1>Unggah buku baru</h1><p style="color:var(--ink2);margin-top:6px">Unggah berkas, periksa data, lalu terbitkan ke katalog.</p></div></div>'+
+  '<div class="ug"><div style="display:flex;flex-direction:column;gap:22px">'+
+  '<div class="dz rise" style="--i:1" id="dz"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><path d="M22 30V10m0 0l-8 8m8-8l8 8M8 36h28" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><b style="font-size:18px">Tarik berkas ke sini</b><span style="color:var(--muted);font-size:14px">EPUB, AZW3, atau PDF. Satu buku bisa punya beberapa format.</span><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><label class="btn" style="cursor:pointer">Pilih berkas<input type="file" id="fi" multiple accept=".epub,.azw3,.pdf,.mobi" class="sr"></label><button type="button" class="btn ghost" id="calibre">Impor dari Calibre</button></div><div class="files" id="files"></div></div>'+
+  '<div class="card-box rise" style="--i:2;padding:26px"><h2 style="font-size:22px;font-weight:600;margin-bottom:16px">Data buku</h2><div class="fg">'+
+  '<label class="full">Judul <span class="bd f" id="b1" style="display:none">Dari file</span><input class="field" id="ft" value="'+esc(u.title)+'" placeholder="Terbaca otomatis dari berkas"></label>'+
+  '<label>Penulis <span class="bd f" id="b2" style="display:none">Dari file</span><input class="field" id="fa" value="'+esc(u.author)+'" placeholder="Terbaca otomatis"></label>'+
+  '<label>Tahun terbit <span class="bd f" id="b3" style="display:none">Dari file</span><input class="field" id="fy" inputmode="numeric" value="'+esc(u.year)+'" placeholder="Contoh: 1900"></label>'+
+  '<label>Genre <span class="bd m">Isi manual</span><select class="field" id="fg">'+gopts+'</select></label>'+
+  '<label>Jumlah halaman buku asli <span class="bd m">Isi manual</span><input class="field" id="fp" inputmode="numeric" value="'+esc(u.pages)+'" placeholder="Lihat di buku cetaknya"></label>'+
+  '</div></div></div>'+
+  '<div class="stickyc rise" style="--i:3"><div class="card-box" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:18px">Kelengkapan data</b><b id="pc" style="color:var(--accent)">0%</b></div><div class="meter" style="margin-top:12px"><i id="mi"></i></div>'+
+  '<ul class="chk" id="chk">'+[['t','Judul'],['a','Penulis'],['g','Genre'],['y','Tahun terbit'],['p','Jumlah halaman asli']].map(function(x){return '<li data-k="'+x[0]+'"><i>'+check('var(--paper)')+'</i>'+x[1]+'</li>'}).join('')+'</ul>'+
+  '<label style="display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:18px;background:var(--tint);cursor:pointer;font-size:14.5px"><input type="checkbox" id="tested" style="width:20px;height:20px;accent-color:var(--accent);margin-top:2px"'+(u.tested?' checked':'')+'><span><b style="font-weight:600">Sudah dites di e-reader</b><br><span style="color:var(--muted);font-size:13px">Label "E-reader compatible" hanya muncul setelah ini dicentang.</span></span></label>'+
+  '<div style="display:flex;flex-direction:column;gap:10px;margin-top:16px"><button type="button" class="btn" id="pub" disabled>Terbitkan</button><button type="button" class="btn ghost" id="draft">Simpan sebagai draf</button></div></div>'+
+  '<div><p style="font-size:13px;color:var(--muted);margin-bottom:8px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Tampilan di katalog</p><div id="pv2" style="width:190px"></div></div></div></div>';
+}
+function wireUp(){
+  var u=S.up;
+  function paintFiles(){
+    $('#files').innerHTML=u.files.map(function(n,i){return '<div class="fl" style="animation-delay:'+(i*120)+'ms"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M5 2h8l4 4v14H5z" stroke="var(--accent)" stroke-width="1.8" stroke-linejoin="round"/></svg><span class="nm">'+esc(n)+'</span><span class="pr"><i></i></span></div>'}).join('');
+    requestAnimationFrame(function(){requestAnimationFrame(function(){$$('#files .pr i').forEach(function(i){i.style.width='100%'})})});
+  }
+  function typeInto(id,val,badge,delay){
+    var el=$(id);if(!el)return;el.value='';
+    setTimeout(function(){var b=$(badge);if(b){b.style.display='inline-block';b.animate([{opacity:0,transform:'scale(.7)'},{opacity:1,transform:'none'}],{duration:400})}
+      var i=0;(function t(){if(reduced){el.value=val;sync();return}el.value=val.slice(0,++i);sync();if(i<val.length)setTimeout(t,28)})()},delay);
+  }
+  function sync(){u.title=$('#ft').value.trim();u.author=$('#fa').value.trim();u.year=$('#fy').value.trim();u.genre=$('#fg').value;u.pages=$('#fp').value.trim();u.tested=$('#tested').checked;refresh()}
+  function load(names,fobjs){
+    if(CFG.live&&fobjs){u.fobjs=fobjs;u.files=names;u.loaded=true;paintFiles();
+      var ep=fobjs.filter(function(f){return /\.epub$/i.test(f.name)})[0];
+      if(!ep){toast('Berkas dibaca, tapi isi data bukunya manual karena tidak ada EPUB.');return}
+      readEpub(ep).then(function(m){
+        u.paras=m.paras;u.lang=m.lang;
+        typeInto('#ft',m.title||'','#b1',700);typeInto('#fa',m.author||'','#b2',700+(m.title||'').length*28+200);typeInto('#fy',m.year||'','#b3',700+((m.title||'').length+(m.author||'').length)*28+400);
+        toast(m.title?'Berkas dibaca. Judul, penulis, dan tahun terisi otomatis.':'Berkas dibaca, tapi datanya kosong. Isi manual.')
+      }).catch(function(){toast('EPUB ini tidak bisa dibaca otomatis. Isi data manual.')});
+      return}
+    u.files=names;u.loaded=true;paintFiles();
+    var s=SAMPLE;typeInto('#ft',s.title,'#b1',900);typeInto('#fa',s.author,'#b2',900+s.title.length*28+200);typeInto('#fy',s.year,'#b3',900+(s.title.length+s.author.length)*28+400);
+    toast('Berkas dibaca. Judul, penulis, dan tahun terisi otomatis.');
+  }
+  function refresh(){
+    var d=upDone(),n=0;
+    $$('#chk li').forEach(function(li){var ok=d[li.getAttribute('data-k')];li.classList.toggle('done',ok);if(ok)n++});
+    var pc=Math.round(n/5*100);$('#pc').textContent=pc+'%';$('#mi').style.width=pc+'%';
+    $('#pub').disabled=!(n===5&&u.tested);
+    var pal=C[PAL[(u.genre?GENRES.indexOf(u.genre):0)%PAL.length]];
+    var title=u.title||'Judul buku';
+    $('#pv2').innerHTML='<div class="card" style="pointer-events:none"><div class="cv" style="background:'+pal[0]+';color:'+pal[1]+'"><span class="ct" style="font-size:18px">'+esc(title)+'</span></div><div class="ci"><b>'+esc(title)+'</b><span class="a">'+esc(u.author||'Penulis')+'</span><span class="m">'+(u.year||'Tahun')+' &middot; '+(u.pages||'0')+' hal &middot; '+esc(u.genre||'Genre')+'</span>'+(u.tested?'<span class="ok">'+check('var(--accent)')+'E-reader compatible</span>':'<span class="m" style="margin-top:5px">Belum dites di e-reader</span>')+'</div></div>';
+  }
+  function commitBook(pubFlag){
+    if(needTok())return;
+    if(!u.title){toast('Isi judul dulu.');return}
+    if(!u.fobjs||!u.fobjs.length){toast('Pilih berkas buku dulu.');return}
+    var ids=books.map(function(b){return b.id}),base=u.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'buku',id=base,n=2;
+    while(ids.indexOf(id)>-1)id=base+'-'+(n++);
+    var pb=$('#pub'),db=$('#draft');pb.disabled=db.disabled=true;
+    var files={},ups=u.fobjs.map(function(f){var ext=(f.name.split('.').pop()||'').toLowerCase(),safe=f.name.toLowerCase().replace(/[^a-z0-9._-]+/g,'-');return {f:f,ext:ext,path:'books/'+id+'/'+safe}}).filter(function(x){return /^(epub|azw3|mobi|pdf)$/.test(x.ext)});
+    if(!ups.length){toast('Format berkas harus EPUB, AZW3, MOBI, atau PDF.');pb.disabled=db.disabled=false;return}
+    var k=0,label=pubFlag?pb:db,orig=label.textContent;
+    ups.reduce(function(p,x){return p.then(function(){label.textContent='Mengunggah '+(++k)+'/'+ups.length+'...';return GH.putFile(x.path,x.f)}).then(function(){files[x.ext]=x.path})},Promise.resolve()).then(function(){
+      label.textContent='Menyimpan katalog...';
+      var nb=B(id,u.title,u.title,u.author||'-',u.year?+u.year:null,+u.pages||null,u.genre,PAL[(u.genre?GENRES.indexOf(u.genre):0)%PAL.length],true,'',u.lang||'Inggris',u.paras&&u.paras.length?u.paras:['Pratinjau buku ini belum tersedia.'],'Pembukaan');
+      nb.pub=pubFlag;nb.files=files;
+      return GH.mutate(function(l){l.unshift(serialize(nb));return l},(pubFlag?'Terbitkan ':'Draf ')+u.title).then(function(l){books=l.map(hydrate);fixLists()});
+    }).then(function(){resetUp();toast(pubFlag?'Buku diterbitkan. Situs diperbarui sekitar satu menit lagi.':'Draf tersimpan.');if(pubFlag){S.genre='Semua';S.page=1;S.sort='new';location.hash='beranda'}else location.hash='admin-katalog'})
+    .catch(function(e){label.textContent=orig;pb.disabled=db.disabled=false;toast('Gagal mengunggah: '+(e.status===401?'token ditolak.':e.status===403||e.status===404?'token tidak punya izin menulis ke repo.':e.message))});
+  }
+  paintFiles();
+  ['#ft','#fa','#fy','#fp'].forEach(function(id){$(id).addEventListener('input',sync)});
+  $('#fg').addEventListener('change',sync);$('#tested').addEventListener('change',sync);
+  $('#fi').addEventListener('change',function(e){var fs=Array.prototype.slice.call(e.target.files);if(fs.length)load(fs.map(function(f){return f.name}),fs)});
+  $('#calibre').onclick=function(){load(['metadata.opf (Calibre)','wizard-of-oz.epub','wizard-of-oz.azw3'])};
+  var dz=$('#dz');['dragenter','dragover'].forEach(function(ev){dz.addEventListener(ev,function(e){e.preventDefault();dz.classList.add('drag')})});
+  ['dragleave','drop'].forEach(function(ev){dz.addEventListener(ev,function(e){e.preventDefault();dz.classList.remove('drag')})});
+  dz.addEventListener('drop',function(e){var fs=Array.prototype.slice.call(e.dataTransfer.files);if(fs.length)load(fs.map(function(f){return f.name}),fs)});
+  $('#draft').onclick=function(){
+    if(CFG.live){commitBook(false);return}
+    if(!u.title){toast('Isi judul dulu supaya draf bisa disimpan.');return}
+    drafts.unshift({title:u.title,author:u.author||'-',genre:u.genre,year:u.year?+u.year:null,pages:+u.pages||null,fmts:u.files.length?['EPUB','AZW3']:['EPUB'],st:'Draf'});resetUp();toast('Draf tersimpan.');location.hash='admin-katalog'};
+  $('#pub').onclick=function(){
+    if(CFG.live){commitBook(true);return}
+    var idx=books.length%PAL.length,col=PAL[idx];
+    var nb=B(slug(u.title),u.title,u.title,u.author,+u.year,+u.pages,u.genre,col,true,'Buku baru yang baru saja diterbitkan dari halaman admin demo.','Inggris',['Pratinjau buku ini akan diambil dari halaman awal berkas EPUB.'],'Pratinjau');
+    books.unshift(nb);resetUp();toast('Buku diterbitkan. Lihat di katalog.');S.genre='Semua';S.page=1;S.sort='new';location.hash='beranda';
+  };
+  if(u.loaded){['#ft','#fa','#fy'].forEach(function(id,i){$(['#b1','#b2','#b3'][i]).style.display='inline-block'})}
+  refresh();
+}
+function slug(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'-'+(Date.now()%1000)}
+function resetUp(){S.up={loaded:false,loading:false,title:'',author:'',year:'',genre:'',pages:'',tested:false,files:[]}}
+
+/* ================= MODE GELAP ================= */
+function curTheme(){return root.getAttribute('data-theme')==='dark'?'dark':'light'}
+function setTheme(t,x,y){
+  var apply=function(){root.setAttribute('data-theme',t);try{localStorage.setItem('pt-theme',t)}catch(e){}
+    var b=$('#modeBtn');if(b)b.setAttribute('aria-label',t==='dark'?'Ganti ke mode terang':'Ganti ke mode gelap')};
+  if(!HAS_VT){root.classList.add('theming');apply();setTimeout(function(){root.classList.remove('theming')},700);return}
+  root.classList.add('vt-theme');
+  var tr;try{tr=document.startViewTransition(apply)}catch(e){apply();root.classList.remove('vt-theme');return}
+  var r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+  tr.ready.then(function(){root.animate({clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+r+'px at '+x+'px '+y+'px)']},{duration:750,easing:'cubic-bezier(.22,1,.36,1)',pseudoElement:'::view-transition-new(root)'})},function(){});
+  tr.finished.then(function(){root.classList.remove('vt-theme')},function(){root.classList.remove('vt-theme')});
+}
+function toggleTheme(el){var r=el.getBoundingClientRect();setTheme(curTheme()==='dark'?'light':'dark',r.left+r.width/2,r.top+r.height/2)}
+$('#modeBtn').setAttribute('aria-label',curTheme()==='dark'?'Ganti ke mode terang':'Ganti ke mode gelap');
+$('#modeBtn').addEventListener('click',function(e){toggleTheme(e.currentTarget)});
+document.addEventListener('click',function(e){var m=e.target.closest('[data-mode]');if(m)toggleTheme(m)});
+
+/* ================= GLOBAL ================= */
+var qIn=$('#q'),qT;
+qIn.addEventListener('input',function(){
+  clearTimeout(qT);qT=setTimeout(function(){
+    S.q=qIn.value;S.page=1;
+    if(route&&route.name==='home')updateGrid();else location.hash='beranda';
+  },160);
+});
+qIn.addEventListener('keydown',function(e){if(e.key==='Enter'){S.q=qIn.value;S.page=1;if(route&&route.name==='home')updateGrid();else location.hash='beranda'}});
+function openDrawer(){document.body.classList.add('drawer');$('#burger').setAttribute('aria-expanded','true')}
+function closeDrawer(){document.body.classList.remove('drawer');$('#burger').setAttribute('aria-expanded','false')}
+$('#burger').onclick=openDrawer;$('#closeDrawer').onclick=closeDrawer;$('#scrim').onclick=closeDrawer;
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer()});
+document.addEventListener('click',function(e){var s=e.target.closest('[data-soon]');if(s){e.preventDefault();toast(s.getAttribute('data-soon'))}});
+window.addEventListener('scroll',function(){$('#hdr').classList.toggle('scrolled',window.scrollY>8)},{passive:true});
+window.addEventListener('hashchange',go);
+var dataReady=loadBooks();
+dataReady.then(function(){go()});
+
+var Splash=(function(){
+  var el,ease='cubic-bezier(.65,0,.35,1)';
+  function init(node){el=node}
+  function reset(){el.getAnimations({subtree:true}).forEach(function(a){a.cancel()});el.classList.remove('go');el.style.display='grid';void el.offsetWidth}
+  function start(){reset();el.classList.add('go')}
+  function finish(done){
+    var d=el.querySelector('.dot').getBoundingClientRect(),x=d.left+d.width/2,y=d.top+d.height/2,r=Math.hypot(innerWidth,innerHeight);
+    var a=el.animate([{clipPath:'circle('+r+'px at '+x+'px '+y+'px)'},{clipPath:'circle(0px at '+x+'px '+y+'px)'}],{duration:1000,easing:ease,fill:'forwards'});
+    el.querySelector('.sp-logo').animate([{transform:'scale(1)',opacity:1},{transform:'scale(.78)',opacity:.0}],{duration:1000,easing:ease,fill:'forwards'});
+    a.onfinish=function(){el.style.display='none';if(done)done()};
+  }
+  return {init:init,start:start,finish:finish,reset:reset};
+})();
+
+/* ===== Splash: tampil saat pertama dibuka. Ganti MIN_MS dengan sinyal muat asli bila perlu, lalu panggil Splash.finish() ===== */
+(function(){
+  var sp=document.getElementById('sp'),MIN_MS=reduced?600:2750,t0=Date.now(),ok=false;
+  window.__splashOn=true;Splash.init(sp);sp.classList.toggle('dark',document.documentElement.getAttribute('data-theme')==='dark');
+  document.documentElement.style.overflow='hidden';Splash.start();
+  function end(){ if(ok)return;ok=true;
+    var go2=function(){document.documentElement.style.overflow='';window.__splashOn=false;introOnce()};
+    if(reduced){sp.style.display='none';go2()}else{Splash.finish(go2)}}
+  var ready=new Promise(function(r){ if(document.readyState==='complete')r();else addEventListener('load',r) }).then(function(){return dataReady});
+  var wait=new Promise(function(r){setTimeout(r,MIN_MS)});
+  Promise.all([ready,wait]).then(end);
+  setTimeout(end,6000);
+})();
+
+})();
+</script>
+</body>
+</html>
