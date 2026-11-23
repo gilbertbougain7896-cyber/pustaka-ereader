@@ -1,5 +1,41 @@
 [
  {
+  "id": "kesetiaan-mr-x",
+  "title": "Kesetiaan Mr. X",
+  "cover": "Kesetiaan Mr. X",
+  "author": "Keigo Higashino",
+  "year": 2021,
+  "pages": 320,
+  "genres": [
+   "Sastra klasik",
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Sastra klasik, Misteri, Thriller",
+  "col": "terra",
+  "coverImg": "books/kesetiaan-mr-x/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "SATU",
+  "paras": [
+   "Pukul 07.35. Seperti biasa, Ishigami meninggalkan apartemen pagi-pagi sekali. Embusan angin terasa dingin, padahal saat ini awal Maret. Ia mulai melangkah dengan dagu terkubur dalam-dalam di balik syal. Sebelum pergi, tatapannya tertuju ke tempat parkir sepeda, menyadari ketidakhadiran sepeda hijau di antara deretan sepeda.",
+   "Setelah dua puluh meter berjalan kaki ke selatan, sampailah ia di jalan utama Shin-Ohashi. Sisi timur jalan itu mengarah ke Distrik Edogawa, sementara sisi baratnya mengarah ke Nihonbashi, jembatan yang membentang di atas Sungai Sumida menuju jembatan lain, Shin-Ohashi.",
+   "Rute tercepat menuju tempat kerja Ishigami lurus terus ke selatan. Jika tetap berjalan lurus beberapa ratus meter, ia akan tiba di Taman Kiyosumi. Di dekat taman itulah SMA swasta tempatnya mengajar matematika berada.",
+   "Begitu melihat lampu lalu lintas di depannya berubah merah, Ishigami berbelok ke kanan, menuju Shin-Ohashi. Jaketnya berkibar-kibar diterpa angin dari arah depan. Ia menenggelamkan kedua tangan ke saku jaket dan terus berjalan sambil agak membungkuk.",
+   "Permukaan Sungai Sumida terlihat keruh ketimbang biasanya akibat pantulan kelabu awan tebal yang menutupi langit. Kapal kecil berlayar menuju hulu sungai. Ishigami mengamati kapal yang melaju sementara melintasi jembatan.",
+   "Sesampainya di seberang, Ishigami menuruni tangga jembatan lalu menyusuri trotoar yang dibangun di kedua sisi sungai. Kawasan ini, bahkan sampai sekitar Jembatan Kiyosu di depan sana, jarang disambangi keluarga atau pasangan yang berjalan-jalan. Apalagi, di hari libur. Kau akan segera tahu alasannya kalau mampir ke Shin-Ohashi. Gubuk kardus beratap terpal biru yang dihuni tunawisma tampak berderet-deret. Mungkin karena tempat ini berada tepat di bawah jembatan yang dapat melindungi mereka dari terpaan angin dan hujan. Buktinya, tidak satu pun gubuk biru serupa di sisi lain sungai. Memang, para tunawisma itu merasa lebih nyaman jika tinggal berkelompok.",
+   "Ishigami terus berjalan sembari melirik sekilas gubuk-gubuk itu. Sebagian besar gubuk berukuran cukup besar untuk manusia bisa berdiri di dalamnya, tapi ada juga yang tingginya hanya sebatas pinggang sehingga lebih cocok disebut kotak kardus. Mungkin penghuninya merasa tempat itu memadai asalkan bisa untuk tidur.",
+   "Tanda-tanda kehidupan terlihat dari deretan hanger jemuran di dekat gubuk dan kardus. Seorang lelaki sedang membungkuk melewati susuran di pinggir sungai sambil menggosok gigi. Ishigami sering melihatnya. Usia pria itu di atas enam puluh tahun, rambutnya yang mulai memutih diikat ke belakang. Kelihatannya ia sudah tidak berminat untuk bekerja. Jika menginginkan pekerjaan fisik, tidak mungkin ia masih berkeliaran di jam-jam ini karena pekerjaan jenis itu selalu dimulai pagi-pagi sekali. Jelas ia juga tidak ingin bekerja kantoran. Kalaupun ada lowongan, mustahil ia bisa sampai ke tahap wawancara dengan rambut panjangnya. Tentu saja, kemungkinan ada perusahaan yang berminat mempekerjakan pria seusianya nyaris nol."
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/kesetiaan-mr-x/kesetiaan-mr.-x---keigo-higashino.azw3",
+   "epub": "books/kesetiaan-mr-x/kesetiaan-mr.-x---keigo-higashino.epub",
+   "pdf": "books/kesetiaan-mr-x/kesetiaan-mr.-x---keigo-higashino.pdf"
+  }
+ },
+ {
   "id": "hujan",
   "title": "Hujan",
   "cover": "Hujan",
