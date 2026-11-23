@@ -1,5 +1,46 @@
 [
  {
+  "id": "keajaiban-toko-kelontong-namiya",
+  "title": "Keajaiban Toko Kelontong Namiya",
+  "cover": "Keajaiban Toko Kelontong Namiya",
+  "author": "Keigo Higashino",
+  "year": 2026,
+  "pages": 400,
+  "genres": [
+   "Sastra klasik",
+   "Misteri"
+  ],
+  "genre": "Sastra klasik, Misteri",
+  "col": "terra",
+  "coverImg": "books/keajaiban-toko-kelontong-namiya/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 6",
+  "paras": [
+   "Upacara pemakaman keesokan harinya berjalan lancar. Raut wajah para pelayat tidak jauh berbeda dari kemarin. Para kerabat datang lebih awal, tapi akibat kejadian semalam, mereka bersikap agak dingin kepada Katsurō. Paman yang kemarin menyapanya juga tidak mendekatinya.",
+   "Selain kerabat, kehadiran para pemilik toko",
+   "di distrik pertokoan serta para anggota perhimpunan warga setempat menarik perhatiannya. Mereka semua adalah orang-orang yang Katsurō kenal sejak masih kecil.",
+   "Katsurō melihat sosok teman sekelasnya di",
+   "antara mereka. Ia sempat tidak mengenalinya karena temannya itu berpakaian resmi, tapi jelas pria itu teman sekelasnya di SMP. Sama seperti Uomatsu, keluarga temannya membuka usaha pembuatan hanko¹⁴ di distrik pertokoan.",
+   "¹⁴ Hanko: stempel nama keluarga yang digunakan sebagai",
+   "pengganti tanda tangan pada dokumen-dokumen resmi.",
+   "Katsurō teringat cerita hidup temannya itu.",
+   "Ayah teman sekelasnya itu meninggal saat dia masih kecil, dan dia mempelajari teknik mengukir stempel dari kakeknya. Setelah lulus SMA, dia langsung ikut membantu di toko keluarga. Itu berarti hari ini dia hadir sebagai perwakilan toko keluarganya.",
+   "Setelah menyalakan dupa, saat lewat di",
+   "depan Katsurō dan keluarganya, temannya itu menunduk dengan khidmat. Penampilan temannya itu membuatnya terlihat lebih tua daripada Katsurō.",
+   "Setelah upacara selesai, peti jenazah dibawa",
+   "keluar dari ruangan, dilanjutkan dengan prosesi kremasi. Setelah itu hanya anggota keluarga dan kerabat yang kembali ke balai pertemuan untuk mengadakan ritual shōnanoka¹⁵. Terakhir, Takeo memberi salam di depan para kerabat, sekaligus menandai berakhirnya prosesi acara.",
+   "¹⁵ Shōnanoka: pembacaan doa di hari ketujuh"
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/keajaiban-toko-kelontong-namiya/keajaiban-toko-kelontong-namiya---keigo-higashino.azw3",
+   "epub": "books/keajaiban-toko-kelontong-namiya/keajaiban-toko-kelontong-namiya---keigo-higashino.epub",
+   "pdf": "books/keajaiban-toko-kelontong-namiya/keajaiban-toko-kelontong-namiya---keigo-higashino.pdf"
+  }
+ },
+ {
   "id": "teka-teki-rumah-aneh",
   "title": "Teka-Teki Rumah Aneh",
   "cover": "Teka-Teki Rumah Aneh",
