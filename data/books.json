@@ -1,5 +1,29 @@
 [
  {
+  "id": "berani-tidak-disukai",
+  "title": "Berani Tidak Disukai",
+  "cover": "Berani Tidak Disukai",
+  "author": "Ichiro Kishimi",
+  "year": 2025,
+  "pages": 344,
+  "genres": [
+   "Filsafat"
+  ],
+  "genre": "Filsafat",
+  "col": "blue",
+  "coverImg": "books/berani-tidak-disukai/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/berani-tidak-disukai/berani-tidak-disukai---ichiro-kishimi.azw3",
+   "epub": "books/berani-tidak-disukai/berani-tidak-disukai---ichiro-kishimi.epub",
+   "pdf": "books/berani-tidak-disukai/berani-tidak-disukai---ichiro-kishimi.pdf"
+  }
+ },
+ {
   "id": "dosa-malaikat",
   "title": "Dosa Malaikat",
   "cover": "Dosa Malaikat",
