@@ -1,5 +1,44 @@
 [
  {
+  "id": "platina-data",
+  "title": "Platina Data",
+  "cover": "Platina Data",
+  "author": "Keigo Higashino",
+  "year": 2024,
+  "pages": 480,
+  "genres": [
+   "Misteri",
+   "Thriller",
+   "Fiksi ilmiah"
+  ],
+  "genre": "Misteri, Thriller, Fiksi ilmiah",
+  "col": "cream",
+  "coverImg": "books/platina-data/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "paras": [
+   "Ditemukan mayat seorang wanita yang mengenakan kamisol biru cerah. Payudaranya yang montok tersembunyi di balik kamisol, sementara bagian pinggang ke bawah terekspos tanpa celana dalam. Kalung coker biru tua melilit di lehernya. Kulit di atas kalung berwarna merah kehitaman. Penyelidik berpengalaman langsung mengenalinya sebagai memar bekas cekikan tangan kosong.",
+   "Asama Reiji memegangi sebuah alat elektronik berukuran kecil. Dua utas kabel tipis menghubungkannya pada jepitan logam di bagian ujungnya. Asama sudah berkali-kali melihat perangkat tersebut.",
+   "“Lagi-lagi dentori ya,” komentar Tokura, polisi yang lebih junior dari Asama, saat melongok melihat benda yang dipegang Asama. “Belakangan ini makin banyak saja yang memakainya.”",
+   "“Benarkah alat ini bisa membuat orang giting?”",
+   "“Katanya begitu, tapi saya sendiri belum pernah pakai.” Kemudian Tokura berbisik di telinga Asama, “Bagaimana jika Anda mencobanya? Dari yang saya dengar, dentori tidak berpengaruh buruk pada tubuh kalau cuma dipakai sebentar.”",
+   "“Kalau begitu, ini, kau saja yang coba.”",
+   "Mendengar ucapan Asama, si polisi junior mengangkat bahu dan tertawa kecut, lalu beringsut menjauh. Setelah melihat Tokura beranjak, Asama menaruh kembali alat elektronik tersebut ke tempat semula. Benda itu berada di nakas ketika jasad korban ditemukan.",
+   "Proses identifikasi TKP masih berlangsung. Secara etika, Asama dan orang-orang Divisi Penyidikan I semestinya tidak boleh mendekati TKP sampai petugas forensik menuntaskan tugas mereka, tapi para penyelidik berpendapat bahwa mematuhinya justru menghalangi mereka melakukan penyelidikan awal.",
+   "TKP pembunuhan berlokasi di salah satu kamar love hotel di pinggiran Shibuya. Pegawai hotel menemukan jasad korban ketika masuk ke kamar untuk membersihkannya. Korban pembunuhan adalah perempuan yang diperkirakan berusia awal dua puluhan dan ditemukan tergeletak di tempat tidur.",
+   "Meskipun didapati tanda-tanda korban melakukan hubungan seks, tidak ada sisa sperma dalam tubuhnya. Di TKP juga tidak ditemukan kondom bekas pakai. Petugas kepolisian menduga pelaku membawa pergi kondom yang dipakainya beserta isi tas korban. Dompet dan ponsel yang seharusnya dibawa oleh korban, menghilang dari dalam tasnya. Bahkan tidak tersisa satu hal pun untuk memverifikasi identitas korban.",
+   "Ini kasus sepele yang kerap terjadi, pikir Asama. Laki-laki tolol dan perempuan tolol terbawa suasana, lantas pergi ke love hotel untuk bercinta. Setelah bosan melakukan seks normal, keduanya pun membuat “permainan” lebih seru dan menggairahkan dengan menggunakan dentori yang dibawa salah seorang dari mereka. Dentori adalah alat stimulasi otak yang akhir-akhir ini digandrungi anak-anak muda. Katanya, apabila memasang jepitan elektrode ke kedua telinga dan menyalakan alat, denyut listrik bertegangan rendah akan mengalir ke otak, memberikan efek memabukkan yang berbeda dengan narkotika pada si pengguna. Dan sudah tentu itu bukan barang resmi yang mengantongi izin dari negara. Perangkat tersebut ciptaan seseorang dari negara lain dan didistribusikan melalui pasar gelap. Belakangan ini, barang-barang ilegal mencurigakan lainnya juga banyak beredar di masyarakat. Dentori merupakan singkatan…"
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/platina-data/platina-data---keigo-higashino.azw3",
+   "epub": "books/platina-data/platina-data---keigo-higashino.epub",
+   "pdf": "books/platina-data/platina-data---keigo-higashino.pdf"
+  }
+ },
+ {
   "id": "girls-in-the-dark",
   "title": "Girls in the Dark",
   "cover": "Girls in the Dark",
