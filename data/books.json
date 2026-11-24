@@ -1,5 +1,46 @@
 [
  {
+  "id": "masquerade-hotel",
+  "title": "Masquerade Hotel",
+  "cover": "Masquerade Hotel",
+  "author": "Keigo Higashino",
+  "year": 2020,
+  "pages": 304,
+  "genres": [
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Misteri, Thriller",
+  "col": "cream",
+  "coverImg": "books/masquerade-hotel/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "paras": [
+   "Telepon berdering. Telepon internal hotel. Dari mesin telepon di koridor lift lantai enam belas.",
+   "Yamagishi Naomi disergap firasat buruk. Ia baru saja selesai melayani proses check in seorang tamu pria. Kamar yang diberikan untuk tamu tersebut adalah single room di lantai enam belas. Baru lima sampai enam menit berlalu sejak bellboy bernama Machida mengantar tamu tersebut ke kamar sambil membawakan barangnya. Machida adalah staf baru yang belum genap setahun bekerja di hotel tersebut. Naomi waswas. Semoga saja bukan karena Machida membuat kekeliruan parah.",
+   "“Dengan front desk. Ada yang bisa saya bantu?” tanya Naomi.",
+   "“Saya Machida. Anu, saya sudah mengantar tamu tadi ke kamar 1615, tapi beliau bilang kamarnya bau...”",
+   "“Bau?”",
+   "“Bau rokok. Itu harusnya kamar bebas rokok, jadi saya heran kenapa bisa dibilang bau rokok...”",
+   "Naomi mengutak-atik komputer di dekatnya. Layar menampilkan data kamar 1615. Itu memang kamar bebas rokok dan tentu sudah dibersihkan. Tidak ada catatan yang menunjukkan pernah tercium bau rokok di kamar tersebut. “Baiklah. Bagaimana dengan tamunya?”",
+   "“Menunggu di kamar 1615.”",
+   "“Kalau begitu, kau juga tunggu di situ. Aku akan segera ke sana.”",
+   "Setelah menutup telepon, Naomi kembali menekan-nekan keyboard komputer. Kali ini ia mengecek data tamu yang menginap di sana. Karyawan kantor dari Osaka. Karyawan tersebut membuat reservasi seminggu lalu. Dia meminta kamar dengan kriteria bebas rokok, sebisa mungkin terletak di sudut dengan jendela tidak menghadap jalan raya. Naomi sendiri yang melayaninya saat check in, tapi ia tidak menangkap kesan aneh dari tamu tersebut.",
+   "Naomi mengedarkan pandangan sepintas ke area dalam front desk. Manajer front office sedang pergi ke kantor manajemen untuk menghadiri rapat khusus. Naomi menggunakan isyarat tangan untuk memanggil Kawamoto, seorang staf front desk muda.",
+   "“Ada komplain dari tamu kamar 1615. Tolong segera carikan kamar pengganti.”",
+   "“Baik. Single room?” Kawamoto menatap layar komputer.",
+   "“Tolong carikan single, twin, serta deluxe twin room.”"
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/masquerade-hotel/masquerade-hotel---keigo-higashino.azw3",
+   "epub": "books/masquerade-hotel/masquerade-hotel---keigo-higashino.epub",
+   "pdf": "books/masquerade-hotel/masquerade-hotel---keigo-higashino.pdf"
+  }
+ },
+ {
   "id": "catatan-pembunuhan-sang-novelis",
   "title": "Catatan Pembunuhan Sang Novelis",
   "cover": "Catatan Pembunuhan Sang Novelis",
