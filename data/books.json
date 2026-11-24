@@ -1,5 +1,47 @@
 [
  {
+  "id": "girls-in-the-dark",
+  "title": "Girls in the Dark",
+  "cover": "Girls in the Dark",
+  "author": "Akiyoshi Rikako",
+  "year": 2023,
+  "pages": 288,
+  "genres": [
+   "Sastra klasik",
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Sastra klasik, Misteri, Thriller",
+  "col": "terra",
+  "coverImg": "books/girls-in-the-dark/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Inggris",
+  "chapter": "Bab 1",
+  "paras": [
+   "JADWAL PERTEMUAN RUTIN KE-16",
+   "KLUB SASTRA SMA PUTRI SANTA MARIA",
+   "1. Salam Pembuka dan Penjelasan Peraturan Yami-nabe",
+   "oleh Sumikawa Sayuri (Ketua Klub)",
+   "2. Pembacaan naskah: “Tempat Berada”",
+   "oleh Nitani Mirei (Kelas 1-A)",
+   "3. Pembacaan naskah: “Macaronage”",
+   "oleh Kominami Akane (Kelas 2-B)",
+   "4. Pembacaan naskah: “Balkan di Musim Semi”",
+   "oleh Diana Detcheva (Murid Internasional)",
+   "5. Pembacaan naskah: “Perjamuan Lamia”",
+   "oleh Koga Sonoko (Kelas 3-B)",
+   "6. Pembacaan naskah: “Pengebirian Raja Langit”",
+   "oleh Takaoka Shiyo (Kelas 2-C)"
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/girls-in-the-dark/girls-in-the-dark---akiyoshi-rikako.azw3",
+   "epub": "books/girls-in-the-dark/girls-in-the-dark---akiyoshi-rikako.epub",
+   "pdf": "books/girls-in-the-dark/girls-in-the-dark---akiyoshi-rikako.pdf"
+  }
+ },
+ {
   "id": "masquerade-hotel",
   "title": "Masquerade Hotel",
   "cover": "Masquerade Hotel",
