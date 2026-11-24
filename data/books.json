@@ -1,5 +1,47 @@
 [
  {
+  "id": "scheduled-suicide-day",
+  "title": "Scheduled Suicide Day",
+  "cover": "Scheduled Suicide Day",
+  "author": "Akiyoshi Rikako",
+  "year": 2022,
+  "pages": 273,
+  "genres": [
+   "Sastra klasik",
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Sastra klasik, Misteri, Thriller",
+  "col": "terra",
+  "coverImg": "books/scheduled-suicide-day/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "HARI PERTAMA",
+  "paras": [
+   "Taian atau Daian",
+   "Artinya kedamaian yang luar biasa. Hari yang dianggap penuh keberuntungan. Semua kegiatan akan berlangsung dengan sukses.",
+   "Yang membunuh ayahku, adalah ibu tiriku.",
+   "Tapi, ibu tiriku menghancurkan semua bukti, dan sekarang hidup dengan santai.",
+   "Aku kehilangan harapan pada kehidupan yang seperti ini.",
+   "Selamat tinggal.",
+   "Aku berharap suatu hari nanti, karma akan terjatuh dari langit atas ibu tiriku.",
+   "Watanabe Ruri.",
+   "Setelah menulis semua itu di kertas surat, Ruri meletakkan semua benda berharganya di meja pendek yang ada di hadapannya. Mungkin sedikit terlalu banyak untuk biaya menginap sehari di ryokan¹ ini, tapi mengingat dia akan menyusahkan mereka, rasanya itu pun tidak cukup. Dia juga menjajarkan kartu pelajar dan ponselnya. Agar polisi setempat dan pengurus penginapan tidak terlalu repot, ada baiknya dia memastikan mereka tahu siapa dia dan siapa yang bisa dihubungi.",
+   "¹ ryokan = penginapan tradisional ala Jepang.",
+   "Ruri keluar dari kamar setelah berkali-kali mengecek surat wasiatnya. Hampir saja dia keluar menggunakan sandal penginapan, jadi dia buru-buru memasukkan kaki ke sepatunya sendiri.",
+   "Pukul 9:30 malam.",
+   "Lobi penginapan sudah tampak sunyi.",
+   "Mesin penjual otomatis berdengung rendah. Lampu di sudut oleh-oleh sudah padam, barang-barangnya hanya ditutup dengan selembar kain, tampak mengharapkan kebaikan hati para penginap untuk tidak mencurinya. Ada sofa dan juga meja. Ada kursi pijat yang akan beroperasi setelah dimasukkan koin. Setelah melewati itu semua, Ruri meletakkan kunci kamarnya di meja resepsionis, kemudian keluar dari pintu utama."
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/scheduled-suicide-day/scheduled-suicide-day---akiyoshi-rikako.azw3",
+   "epub": "books/scheduled-suicide-day/scheduled-suicide-day---akiyoshi-rikako.epub",
+   "pdf": "books/scheduled-suicide-day/scheduled-suicide-day---akiyoshi-rikako.pdf"
+  }
+ },
+ {
   "id": "platina-data",
   "title": "Platina Data",
   "cover": "Platina Data",
