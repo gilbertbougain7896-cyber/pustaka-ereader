@@ -1,5 +1,47 @@
 [
  {
+  "id": "dosa-malaikat",
+  "title": "Dosa Malaikat",
+  "cover": "Dosa Malaikat",
+  "author": "Keigo Higashino",
+  "year": 2021,
+  "pages": 352,
+  "genres": [
+   "Sastra klasik",
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Sastra klasik, Misteri, Thriller",
+  "col": "terra",
+  "coverImg": "books/dosa-malaikat/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "paras": [
+   "Bunga pansy di pot mulai bermunculan dalam wujud beberapa kuntum mungil. Tanah di pot sudah kering, tapi tidak memudarkan warna cerah kelopaknya. Walau warnanya tidak mencolok, bunga itu tangguh, pikir Ayane sembari menatap ke arah balkon lewat pintu kaca. Nanti aku harus menyiraminya.",
+   "Suara di belakangnya bertanya, “Kau dengar aku atau tidak?”",
+   "Ayane menoleh, lalu tersenyum kecil. “Aku dengar, kok. Mana mungkin tidak?”",
+   "“Seharusnya reaksimu lebih cepat dari itu,” komentar Yoshitaka yang duduk di sofa sambil menyilangkan kaki panjangnya. Meskipun sering mengunjungi gym, dia hanya melatih otot kaki dan pinggang seperlunya supaya bisa mengenakan celana panjang lurus kesukaannya.",
+   "“Tadi aku hanya agak melamun.”",
+   "“Melamun? Sama sekali tidak seperti kau biasanya.” Yoshitaka mengangkat sebelah alisnya yang terawat baik.",
+   "“Karena kau membuatku terkejut.”",
+   "“Oh, ya? Tapi semestinya kau sudah paham rencana hidupku.”",
+   "“Aku... masih berusaha memahaminya.”",
+   "“Sebenarnya apa yang ingin kaukatakan?” Yoshitaka agak menelengkan kepala. Sikapnya tampak santai, seakan tidak menaruh perhatian. Ayane tidak yakin itu akting atau bukan.",
+   "Ayane menarik napas, kemudian kembali menatap wajah tampan laki-laki itu. “Jadi bagimu itu masalah yang sangat penting?”",
+   "“Maksudmu?”",
+   "“Soal... anak.”",
+   "Yoshitaka tersenyum datar seolah mengejek, melayangkan pandangan ke samping sebelum kembali menatap Ayane. “Jadi kau sama sekali tidak menyimak.”"
+  ],
+  "pub": true,
+  "files": {
+   "azw3": "books/dosa-malaikat/dosa-malaikat---keigo-higashino.azw3",
+   "epub": "books/dosa-malaikat/dosa-malaikat---keigo-higashino.epub",
+   "pdf": "books/dosa-malaikat/dosa-malaikat---keigo-higashino.pdf"
+  }
+ },
+ {
   "id": "scheduled-suicide-day",
   "title": "Scheduled Suicide Day",
   "cover": "Scheduled Suicide Day",
