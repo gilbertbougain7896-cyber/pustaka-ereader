@@ -1,5 +1,30 @@
 [
  {
+  "id": "cantik-itu-luka",
+  "title": "Cantik Itu Luka",
+  "cover": "Cantik Itu Luka",
+  "author": "Eka Kurniawan",
+  "year": 2026,
+  "pages": 512,
+  "genres": [
+   "Sastra klasik",
+   "Sejarah"
+  ],
+  "genre": "Sastra klasik, Sejarah",
+  "col": "terra",
+  "coverImg": "books/cantik-itu-luka/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/cantik-itu-luka/cantik-itu-luka---eka-kurniawan.azw3",
+   "epub": "books/cantik-itu-luka/cantik-itu-luka---eka-kurniawan.epub",
+   "pdf": "books/cantik-itu-luka/cantik-itu-luka---eka-kurniawan.pdf"
+  }
+ },
+ {
   "id": "a-good-girl-s-guide-to-murder",
   "title": "A Good Girl's Guide to Murder",
   "cover": "A Good Girl's Guide to Murder",
