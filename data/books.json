@@ -1,5 +1,35 @@
 [
  {
+  "id": "the-psychology-of-money",
+  "title": "The Psychology of Money",
+  "cover": "The Psychology of Money",
+  "author": "Morgan Housel",
+  "year": 2020,
+  "pages": 240,
+  "genres": [
+   "Personal Finance",
+   "Psychology",
+   "Finance",
+   "Investment",
+   "Self Improvement",
+   "Money Management",
+   "Nonfiction"
+  ],
+  "genre": "Personal Finance, Psychology, Finance, Investment, Self Improvement, Money Management, Nonfiction",
+  "col": "brown",
+  "coverImg": "books/the-psychology-of-money/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/the-psychology-of-money/the-psychology-of-money---morgan-housel.azw3",
+   "epub": "books/the-psychology-of-money/the-psychology-of-money---morgan-housel.epub",
+   "pdf": "books/the-psychology-of-money/the-psychology-of-money---morgan-housel.pdf"
+  }
+ },
+ {
   "id": "cantik-itu-luka",
   "title": "Cantik Itu Luka",
   "cover": "Cantik Itu Luka",
