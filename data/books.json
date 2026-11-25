@@ -1,5 +1,30 @@
 [
  {
+  "id": "angsa-dan-kelelawar",
+  "title": "Angsa dan Kelelawar",
+  "cover": "Angsa dan Kelelawar",
+  "author": "Keigo Higashino",
+  "year": 2023,
+  "pages": 560,
+  "genres": [
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Misteri, Thriller",
+  "col": "cream",
+  "coverImg": "books/angsa-dan-kelelawar/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/angsa-dan-kelelawar/angsa-dan-kelelawar---keigo-higashino.azw3",
+   "epub": "books/angsa-dan-kelelawar/angsa-dan-kelelawar---keigo-higashino.epub",
+   "pdf": "books/angsa-dan-kelelawar/angsa-dan-kelelawar---keigo-higashino.pdf"
+  }
+ },
+ {
   "id": "berani-tidak-disukai",
   "title": "Berani Tidak Disukai",
   "cover": "Berani Tidak Disukai",
