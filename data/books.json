@@ -1,5 +1,31 @@
 [
  {
+  "id": "a-good-girl-s-guide-to-murder",
+  "title": "A Good Girl's Guide to Murder",
+  "cover": "A Good Girl's Guide to Murder",
+  "author": "Holly Jackson",
+  "year": 2023,
+  "pages": 480,
+  "genres": [
+   "Misteri",
+   "Thriller",
+   "Anak dan remaja"
+  ],
+  "genre": "Misteri, Thriller, Anak dan remaja",
+  "col": "cream",
+  "coverImg": "books/a-good-girl-s-guide-to-murder/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/a-good-girl-s-guide-to-murder/a-good-girl-s-guide-to-murder---holly-jackson.azw3",
+   "epub": "books/a-good-girl-s-guide-to-murder/a-good-girl-s-guide-to-murder---holly-jackson.epub",
+   "pdf": "books/a-good-girl-s-guide-to-murder/a-good-girl-s-guide-to-murder---holly-jackson.pdf"
+  }
+ },
+ {
   "id": "angsa-dan-kelelawar",
   "title": "Angsa dan Kelelawar",
   "cover": "Angsa dan Kelelawar",
