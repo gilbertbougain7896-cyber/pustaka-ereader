@@ -1,32 +1,5 @@
 [
  {
-  "id": "a-midsummer-s-equation",
-  "title": "A Midsummer's Equation",
-  "cover": "A Midsummer's Equation",
-  "author": "Keigo Higashino",
-  "year": 2024,
-  "pages": 440,
-  "genres": [
-   "Sastra klasik",
-   "Misteri",
-   "Thriller",
-   "Fiksi ilmiah"
-  ],
-  "genre": "Sastra klasik, Misteri, Thriller, Fiksi ilmiah",
-  "col": "sage",
-  "coverImg": "books/a-midsummer-s-equation/cover.jpg",
-  "isNew": true,
-  "blurb": "",
-  "lang": "Indonesia",
-  "chapter": "Bab 1",
-  "pub": true,
-  "files": {
-   "azw3": "books/a-midsummer-s-equation/a-midsummer-s-equation---keigo-higashino.azw3",
-   "epub": "books/a-midsummer-s-equation/a-midsummer-s-equation---keigo-higashino.epub",
-   "pdf": "books/a-midsummer-s-equation/a-midsummer-s-equation---keigo-higashino.pdf"
-  }
- },
- {
   "id": "the-psychology-of-money",
   "title": "The Psychology of Money",
   "cover": "The Psychology of Money",
