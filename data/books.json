@@ -1,5 +1,31 @@
 [
  {
+  "id": "silent-parade",
+  "title": "Silent Parade",
+  "cover": "Silent Parade",
+  "author": "Keigo Higashino",
+  "year": 2025,
+  "pages": 512,
+  "genres": [
+   "Sastra klasik",
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Sastra klasik, Misteri, Thriller",
+  "col": "sage",
+  "coverImg": "books/silent-parade/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/silent-parade/silent-parade---keigo-higashino.azw3",
+   "epub": "books/silent-parade/silent-parade---keigo-higashino.epub",
+   "pdf": "books/silent-parade/silent-parade---keigo-higashino.pdf"
+  }
+ },
+ {
   "id": "a-midsummer-s-equation",
   "title": "A Midsummer's Equation",
   "cover": "A Midsummer's Equation",
