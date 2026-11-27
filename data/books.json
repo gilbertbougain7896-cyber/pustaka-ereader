@@ -1,5 +1,60 @@
 [
  {
+  "id": "petaka-keluarga-inugami",
+  "title": "Petaka Keluarga Inugami",
+  "cover": "Petaka Keluarga Inugami",
+  "author": "Seishi Yokomizo",
+  "year": 2024,
+  "pages": 376,
+  "genres": [
+   "Sastra klasik",
+   "Misteri",
+   "Thriller"
+  ],
+  "genre": "Sastra klasik, Misteri, Thriller",
+  "col": "sage",
+  "coverImg": "books/petaka-keluarga-inugami/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/petaka-keluarga-inugami/petaka-keluarga-inugami---seishi-yokomizo.azw3",
+   "epub": "books/petaka-keluarga-inugami/petaka-keluarga-inugami---seishi-yokomizo.epub",
+   "pdf": "books/petaka-keluarga-inugami/petaka-keluarga-inugami---seishi-yokomizo.pdf"
+  }
+ },
+ {
+  "id": "gadis-kretek",
+  "title": "Gadis Kretek",
+  "cover": "Gadis Kretek",
+  "author": "Ratih Kumala",
+  "year": 2012,
+  "pages": 288,
+  "genres": [
+   "Sastra klasik",
+   "Sejarah",
+   "Romansa",
+   "Drama Keluarga",
+   "Social Fiction",
+   "Literary Fiction"
+  ],
+  "genre": "Sastra klasik, Sejarah, Romansa, Drama Keluarga, Social Fiction, Literary Fiction",
+  "col": "sage",
+  "coverImg": "books/gadis-kretek/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/gadis-kretek/gadis-kretek---ratih-kumala.azw3",
+   "epub": "books/gadis-kretek/gadis-kretek---ratih-kumala.epub",
+   "pdf": "books/gadis-kretek/gadis-kretek---ratih-kumala.pdf"
+  }
+ },
+ {
   "id": "tuhan-izinkan-aku-menjadi-pelacur",
   "title": "Tuhan, Izinkan Aku Menjadi Pelacur",
   "cover": "Tuhan, Izinkan Aku Menjadi Pelacur",
