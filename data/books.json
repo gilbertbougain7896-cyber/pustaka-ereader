@@ -1,5 +1,167 @@
 [
  {
+  "id": "seporsi-mie-ayam-sebelum-mati",
+  "title": "Seporsi Mie Ayam Sebelum Mati",
+  "cover": "Seporsi Mie Ayam Sebelum Mati",
+  "author": "Brian Khrisna",
+  "year": 2025,
+  "pages": 210,
+  "genres": [
+   "Sastra klasik",
+   "Contemporary Fiction",
+   "Drama",
+   "Mental Health",
+   "Slice of Life",
+   "Emotional Fiction",
+   "Self Discovery"
+  ],
+  "genre": "Sastra klasik, Contemporary Fiction, Drama, Mental Health, Slice of Life, Emotional Fiction, Self Discovery",
+  "col": "sage",
+  "coverImg": "books/seporsi-mie-ayam-sebelum-mati/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/seporsi-mie-ayam-sebelum-mati/seporsi-mie-ayam-sebelum-mati---brian-khrisna.azw3",
+   "epub": "books/seporsi-mie-ayam-sebelum-mati/seporsi-mie-ayam-sebelum-mati---brian-khrisna.epub",
+   "pdf": "books/seporsi-mie-ayam-sebelum-mati/seporsi-mie-ayam-sebelum-mati---brian-khrisna.pdf"
+  },
+  "added": 1795852788102,
+  "buy": ""
+ },
+ {
+  "id": "sisi-tergelap-surga",
+  "title": "Sisi Tergelap Surga",
+  "cover": "Sisi Tergelap Surga",
+  "author": "Brian Khrisna",
+  "year": 2023,
+  "pages": 304,
+  "genres": [
+   "Sastra klasik",
+   "Slice of Life",
+   "Social Fiction",
+   "Drama",
+   "Urban Life",
+   "Realistic Fiction",
+   "Social Criticism"
+  ],
+  "genre": "Sastra klasik, Slice of Life, Social Fiction, Drama, Urban Life, Realistic Fiction, Social Criticism",
+  "col": "sage",
+  "coverImg": "books/sisi-tergelap-surga/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/sisi-tergelap-surga/sisi-tergelap-surga---brian-khrisna.azw3",
+   "epub": "books/sisi-tergelap-surga/sisi-tergelap-surga---brian-khrisna.epub",
+   "pdf": "books/sisi-tergelap-surga/sisi-tergelap-surga---brian-khrisna.pdf"
+  },
+  "added": 1795852815441,
+  "buy": ""
+ },
+ {
+  "id": "parable",
+  "title": "Parable",
+  "cover": "Parable",
+  "author": "Brian Khrisna",
+  "year": 2021,
+  "pages": 688,
+  "genres": [
+   "Sastra klasik",
+   "Anak dan remaja",
+   "Romansa",
+   "School Life",
+   "Comedy",
+   "Drama",
+   "Coming of Age",
+   "Slice of Life"
+  ],
+  "genre": "Sastra klasik, Anak dan remaja, Romansa, School Life, Comedy, Drama, Coming of Age, Slice of Life",
+  "col": "sage",
+  "coverImg": "books/parable/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/parable/parable---brian-khrisna.azw3",
+   "epub": "books/parable/parable---brian-khrisna.epub",
+   "pdf": "books/parable/parable---brian-khrisna.pdf"
+  },
+  "added": 1795852845868,
+  "buy": ""
+ },
+ {
+  "id": "pergi",
+  "title": "Pergi",
+  "cover": "Pergi",
+  "author": "Tere Liye",
+  "year": 2018,
+  "pages": 455,
+  "genres": [
+   "Sastra klasik",
+   "Action",
+   "Petualangan",
+   "Thriller",
+   "Misteri",
+   "Fantasy",
+   "Mafia",
+   "Drama"
+  ],
+  "genre": "Sastra klasik, Action, Petualangan, Thriller, Misteri, Fantasy, Mafia, Drama",
+  "col": "sage",
+  "coverImg": "books/pergi/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/pergi/pergi---tere-liye.azw3",
+   "epub": "books/pergi/pergi---tere-liye.epub",
+   "pdf": "books/pergi/pergi---tere-liye.pdf"
+  },
+  "added": 1795852856134,
+  "buy": ""
+ },
+ {
+  "id": "tentang-kamu",
+  "title": "Tentang Kamu",
+  "cover": "Tentang Kamu",
+  "author": "Tere Liye",
+  "year": 2023,
+  "pages": 503,
+  "genres": [
+   "Sastra klasik",
+   "Drama",
+   "Fiction",
+   "Romansa",
+   "Family",
+   "Sejarah",
+   "Life Journey"
+  ],
+  "genre": "Sastra klasik, Drama, Fiction, Romansa, Family, Sejarah, Life Journey",
+  "col": "sage",
+  "coverImg": "books/tentang-kamu/cover.jpg",
+  "isNew": true,
+  "blurb": "",
+  "lang": "Indonesia",
+  "chapter": "Bab 1",
+  "pub": true,
+  "files": {
+   "azw3": "books/tentang-kamu/tentang-kamu---tere-liye.azw3",
+   "epub": "books/tentang-kamu/tentang-kamu---tere-liye.epub",
+   "pdf": "books/tentang-kamu/tentang-kamu---tere-liye.pdf"
+  },
+  "added": 1795852867539,
+  "buy": ""
+ },
+ {
   "id": "petaka-keluarga-inugami",
   "title": "Petaka Keluarga Inugami",
   "cover": "Petaka Keluarga Inugami",
